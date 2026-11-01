@@ -11,3 +11,10 @@ Shader: Complex "Corruption" glitch shader (heavy GPU load)
 Result: "doesn't lag much" - Tested by our community member Sky.
 
 "This proves that the engine is highly optimized and can easily run on cheap devices."
+
+
+I guess you’re probably wondering why the source code isn’t open source.
+
+I don’t want to follow in the footsteps of the older generation.
+
+You also know how chaotic this community is.
