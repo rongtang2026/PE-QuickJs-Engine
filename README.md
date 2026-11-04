@@ -5,6 +5,8 @@ This engine is a heavily modified, pure mobile reconstruction based on the origi
 
 "I have the utmost respect for the original authors and pay my highest tribute to them"
 
+If the version looks like just "1.0", it is a debug test build. Only versions prefixed with "r-" are official releases.
+
 Performance Test on Ultra-Budget Phone
 Device: itel P663L (Android 13, 8GB RAM)
 Shader: Complex "Corruption" glitch shader (heavy GPU load)
