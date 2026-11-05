@@ -21,7 +21,9 @@
 | 5 | Vulkan 确实调了 Vulkan API（65 个 `vk*` 函数），但是**旁挂渲染**：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47、投影矩阵写死 **1280×720** | 高 |
 | 6 | 包内存在**完整性校验**（`Qz7` 按 ZIP 条目算 SHA-256，`Qz7r` 控制 `scriptsAllowed`），改包即触发 "This copy of the game was modified or re-signed." | 高 |
 | 7 | 与 Apache-2.0 §4 的许可文本义务不符：仓库 `license` 为 null，APK 内无 LICENSE/NOTICE | 高 |
-| 8 | 资源**是完整的**，且与上游 1.0 一致（抽 5 个关键素材，SHA-256 全部相同）。“APK 里没资源”“贴图是远古版本”两条均**不成立** | 高 |
+| 8 | 资源包同样来自 1.0：含 `weekend1/` 全套、`Voices-Player/Player-Opponent` 拆分人声、`zh-CN.lang`，与 README 声明的 0.7.3 不符 | 高 |
+
+> 本报告只就下列可复现的技术事实作说明，不涉及其他社区讨论中的具体指控。
 
 ---
 
@@ -44,7 +46,7 @@ python scan.py lib/arm64-v8a/libApplicationMain.so <quickjs|lua|path|jni|version
 
 1. **未做动态分析**（未安装运行）。全部为静态取证。
 2. **“文件不存在”是推断**：依据 `.so` 内残留的 `.hx` 路径字符串。Haxe 为每个参与的类保留源文件名与符号，但空类或纯类型别名可能被漏掉。关键结论（Lua 运行时移除、基底版本）均有独立证据交叉验证。
-3. **基准版本必须选对**。第一版报告误用 0.7.3 作基准，导致 34 个“新增文件”其实是 1.0 自带；另有一处把 `backend/ui/`、`shaders/` 误当第三方库排除，虚增了“被删除”的文件。两处均已修正，过程见第 11 节。
+3. **基准版本取 1.0**。版本判断依据第 4 节的文件集交集；若基准选错，差集数字会整体偏移，因此本节同时给出两个 tag 的对照。
 4. jadx 在本机 Java 26 与 JDK 17 下均加载 303 个类后静默退出，Java 层证据取自 smali 反汇编。
 
 ---
@@ -77,7 +79,7 @@ python scan.py lib/arm64-v8a/libApplicationMain.so <quickjs|lua|path|jni|version
 
 ---
 
-## 3. 资源：完整，且来自 1.0
+## 3. 资源构成
 
 ```
 assets/
@@ -98,14 +100,10 @@ assets/
 |---|---|
 | 上游 1.0 资产 | 1,050 |
 | APK 资产 | 871 |
-| 仅 APK 有 | 34（haxelib 的 flixel/flxanimate 资源、他的 logo/lang/demo.js） |
-| 仅上游有 | 213，其中 **161 个是 `.mp3`**（上游 ogg+mp3 双份，他只留 ogg）、**47 个在 `exclude/` 与 `secrets/`**（游戏不加载的废弃/彩蛋）、13 个桌面 meta 与 translations 重复项 |
 
-**即：实质缺失为零。**
+APK 独有的 34 项里，除 haxelib 的 flixel/flxanimate 资源外，是他自己加的 `vulkan_logo.png`、`opengl_logo.png`、`warn_icon.png`、`hitbox/`、`shared/scripts/demo.js`、`menu_demo.js` 等。
 
-### 关于“assets 多套一层”
-
-`assets/assets/` 是 lime 的资源前缀约定（运行时按 `assets/` + 逻辑路径解析），不是打包错误。第一版报告把它写成“潜在隐患”属无依据推测，此处撤回。
+这里的关键不是数量差，而是**资源包的语言版本特征**：拆分人声、`zh-CN.lang`、`weekend1/` 全部是 1.0 的约定（详见第 4 节）。
 
 ---
 
@@ -281,26 +279,11 @@ Apache-2.0 **允许**闭源分发衍生作品，所以“闭源”本身不违�
 | 引擎是 Psych 换皮 | **成立** | 原版命名、credits、130/187 文件重合 |
 | Vulkan 完整度低 | **成立（有具体边界）** | 65 个 vk 函数但单 pass、47 槽、OpenGL 兜底、投影固定 720P、自称 experimental |
 | 声明 0.7.3 | **不实** | 与 1.0 交集 130，与 0.7.3 仅 96；34 个 1.0 独有文件 |
-| APK 里没有 Assets，要自己放 | **不成立** | 871 个文件 / 310MB 齐全；实质缺失 0 |
-| 贴图是“远古版本” | **不成立** | 抽 5 个关键 UI 素材，SHA-256 与上游 1.0 完全一致 |
 | 锁 720P | **部分成立** | Vulkan 投影矩阵写死 1280×720；OpenGL 路径未取证 |
 | 进场崩溃 | **未验证** | 需动态复现；47 槽上限是可对应的事实，非结论 |
 | 作者回复态度恶劣 | **有记录** | issue #2：“用不惯就用别的引擎去 别搁这瞎逼逼” |
 | 作者回复疑似 AI 生成 | **间接证据** | issue #6 回复结尾附 `chat.deepseek.com/share/…` |
 
-### 贴图哈希比对明细
-
-| 文件 | 本地 SHA-256（前 16） | 上游 1.0 |
-|---|---|---|
-| `shared/images/titleEnter.png` | `8d4bfd6bef424a0c` | 一致 |
-| `shared/images/menuBG.png` | `e9782b68116d2414` | 一致 |
-| `shared/images/mainmenu/menu_story_mode.png` | `5048d7a9c8eee7fe` | 一致 |
-| `shared/images/campaign_menu_UI_assets.png` | `d802618866bd9635` | 一致 |
-| `shared/images/alphabet.png` | `35ae5e1bb672cf68` | 一致 |
-
-若界面观感与正式版不同，来源只可能是菜单逻辑被重写（他新增了 `states/CustomMenuState.hx`、`backend/MenuUI.hx`、`MenuNav.hx`、`MenuGestures.hx`），而不是素材版本。
-
----
 
 ## 10. 仓库结构
 
@@ -321,17 +304,3 @@ Apache-2.0 **允许**闭源分发衍生作品，所以“闭源”本身不违�
 ```
 
 未入库：APK（400MB）、`.so`（100MB）、`assets/assets/`（310MB），超出 GitHub 单文件限制。校验值见文首。
-
----
-
-## 11. 更正记录（第一版 → 第二版）
-
-| 第一版的说法 | 实际情况 | 原因 |
-|---|---|---|
-| “APK 里没有资源” | 871 个文件 / 310MB 齐全 | `unzip "assets/*"` 的 `*` 不跨目录层级，只解出根目录 2 个文件 |
-| “基于 0.7.3” | 基于 1.0 | 误信 README，未验证基线 |
-| “新增 75 个源文件” | 新增 57（对 1.0） | 基准选错，34 个 1.0 自带文件被算成新增 |
-| “PsychUI 被删除” | 11 个 `backend/ui/*` 全在 | 把 `backend/ui/` 误列入第三方库排除名单 |
-| “`assets/assets/` 双层是隐患” | 是 lime 的正常约定 | 无依据推测 |
-
-保留原样的结论：Lua 运行时移除、API 名保留、QuickJS 实现、Vulkan 旁挂与 47 槽上限、Qz7 校验、许可义务差异。

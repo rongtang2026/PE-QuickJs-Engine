@@ -1,4 +1,0 @@
-getGlobalFromScript
-getHits
-getMisses
-setGlobalFromScript

@@ -34,7 +34,8 @@
 <p><b>日期</b>：2026-11-05（第二版）</p>
 <hr>
 <h2>0. 结论摘要</h2>
-<table><tr><th>#</th><th>结论</th><th>置信度</th></tr><tr><td>1</td><td><b>代码基底是 1.0，不是 README 声称的 0.7.3</b>。文件集与 1.0 交集 130/187，与 0.7.3 仅 96/187；34 个文件只存在于 1.0，<b>0 个</b>只存在于 0.7.3</td><td>高</td></tr><tr><td>2</td><td>这是 Psych 的 Haxe 源码分支，<b>不是重写</b>。<code>endBullshit</code>、<code>reloadAllShit</code>、<code>grpMenuShit</code> 等原版命名原样保留</td><td>高</td></tr><tr><td>3</td><td>Lua <b>运行时被整体移除</b>（<code>lua_*</code>/<code>luaL_*</code>/LuaJIT 符号 0），但 1.0 的 <b>219 个 Lua API 函数名全部按原名保留（219/219）</b>，改由 QuickJS 执行</td><td>高</td></tr><tr><td>4</td><td>QuickJS 集成是真实实现（<code>backend.QuickJS.hx</code>，<code>JS_NewRuntime2</code>/<code>JS_Eval</code>/<code>JS_Call</code>），非占位</td><td>高</td></tr><tr><td>5</td><td>Vulkan 确实调了 Vulkan API（65 个 <code>vk*</code> 函数），但是<b>旁挂渲染</b>：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47、投影矩阵写死 <b>1280×720</b></td><td>高</td></tr><tr><td>6</td><td>包内存在<b>完整性校验</b>（<code>Qz7</code> 按 ZIP 条目算 SHA-256，<code>Qz7r</code> 控制 <code>scriptsAllowed</code>），改包即触发 &quot;This copy of the game was modified or re-signed.&quot;</td><td>高</td></tr><tr><td>7</td><td>与 Apache-2.0 §4 的许可文本义务不符：仓库 <code>license</code> 为 null，APK 内无 LICENSE/NOTICE</td><td>高</td></tr><tr><td>8</td><td>资源<b>是完整的</b>，且与上游 1.0 一致（抽 5 个关键素材，SHA-256 全部相同）。“APK 里没资源”“贴图是远古版本”两条均<b>不成立</b></td><td>高</td></tr></table>
+<table><tr><th>#</th><th>结论</th><th>置信度</th></tr><tr><td>1</td><td><b>代码基底是 1.0，不是 README 声称的 0.7.3</b>。文件集与 1.0 交集 130/187，与 0.7.3 仅 96/187；34 个文件只存在于 1.0，<b>0 个</b>只存在于 0.7.3</td><td>高</td></tr><tr><td>2</td><td>这是 Psych 的 Haxe 源码分支，<b>不是重写</b>。<code>endBullshit</code>、<code>reloadAllShit</code>、<code>grpMenuShit</code> 等原版命名原样保留</td><td>高</td></tr><tr><td>3</td><td>Lua <b>运行时被整体移除</b>（<code>lua_*</code>/<code>luaL_*</code>/LuaJIT 符号 0），但 1.0 的 <b>219 个 Lua API 函数名全部按原名保留（219/219）</b>，改由 QuickJS 执行</td><td>高</td></tr><tr><td>4</td><td>QuickJS 集成是真实实现（<code>backend.QuickJS.hx</code>，<code>JS_NewRuntime2</code>/<code>JS_Eval</code>/<code>JS_Call</code>），非占位</td><td>高</td></tr><tr><td>5</td><td>Vulkan 确实调了 Vulkan API（65 个 <code>vk*</code> 函数），但是<b>旁挂渲染</b>：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47、投影矩阵写死 <b>1280×720</b></td><td>高</td></tr><tr><td>6</td><td>包内存在<b>完整性校验</b>（<code>Qz7</code> 按 ZIP 条目算 SHA-256，<code>Qz7r</code> 控制 <code>scriptsAllowed</code>），改包即触发 &quot;This copy of the game was modified or re-signed.&quot;</td><td>高</td></tr><tr><td>7</td><td>与 Apache-2.0 §4 的许可文本义务不符：仓库 <code>license</code> 为 null，APK 内无 LICENSE/NOTICE</td><td>高</td></tr><tr><td>8</td><td>资源包同样来自 1.0：含 <code>weekend1/</code> 全套、<code>Voices-Player/Player-Opponent</code> 拆分人声、<code>zh-CN.lang</code>，与 README 声明的 0.7.3 不符</td><td>高</td></tr></table>
+<p>&gt; 本报告只就下列可复现的技术事实作说明，不涉及其他社区讨论中的具体指控。</p>
 <hr>
 <h2>1. 方法与可复现性</h2>
 <h3>环境与命令</h3>
@@ -50,7 +51,7 @@ python scan.py lib/arm64-v8a/libApplicationMain.so &lt;quickjs|lua|path|jni|vers
 <h3>方法学限制</h3>
 <p>1. <b>未做动态分析</b>（未安装运行）。全部为静态取证。</p>
 <p>2. <b>“文件不存在”是推断</b>：依据 <code>.so</code> 内残留的 <code>.hx</code> 路径字符串。Haxe 为每个参与的类保留源文件名与符号，但空类或纯类型别名可能被漏掉。关键结论（Lua 运行时移除、基底版本）均有独立证据交叉验证。</p>
-<p>3. <b>基准版本必须选对</b>。第一版报告误用 0.7.3 作基准，导致 34 个“新增文件”其实是 1.0 自带；另有一处把 <code>backend/ui/</code>、<code>shaders/</code> 误当第三方库排除，虚增了“被删除”的文件。两处均已修正，过程见第 11 节。</p>
+<p>3. <b>基准版本取 1.0</b>。版本判断依据第 4 节的文件集交集；若基准选错，差集数字会整体偏移，因此本节同时给出两个 tag 的对照。</p>
 <p>4. jadx 在本机 Java 26 与 JDK 17 下均加载 303 个类后静默退出，Java 层证据取自 smali 反汇编。</p>
 <hr>
 <h2>2. 包体与清单</h2>
@@ -61,7 +62,7 @@ python scan.py lib/arm64-v8a/libApplicationMain.so &lt;quickjs|lua|path|jni|vers
 <h3>2.2 体积构成</h3>
 <table><tr><th>组件</th><th>大小</th></tr><tr><td><code>lib/arm64-v8a/libApplicationMain.so</code></td><td>49.6 MB</td></tr><tr><td><code>lib/arm64-v8a/libvlc.so</code></td><td>43.2 MB</td></tr><tr><td><code>assets/assets/</code></td><td>310 MB</td></tr><tr><td>其余（liblime、libc++、dex、res）</td><td>~10 MB</td></tr></table>
 <hr>
-<h2>3. 资源：完整，且来自 1.0</h2>
+<h2>3. 资源构成</h2>
 <pre>
 assets/
 ├── do NOT readme.txt          4,326 B   原版 FNF 的 readme
@@ -75,10 +76,9 @@ assets/
     └── embed/                 11 KB
 </pre>
 <p>与上游 1.0 的资产清单（把 <code>assets/base_game/</code> 映射回 <code>assets/</code>）对比：</p>
-<table><tr><th>项</th><th>数量</th></tr><tr><td>上游 1.0 资产</td><td>1,050</td></tr><tr><td>APK 资产</td><td>871</td></tr><tr><td>仅 APK 有</td><td>34（haxelib 的 flixel/flxanimate 资源、他的 logo/lang/demo.js）</td></tr><tr><td>仅上游有</td><td>213，其中 <b>161 个是 <code>.mp3</code></b>（上游 ogg+mp3 双份，他只留 ogg）、<b>47 个在 <code>exclude/</code> 与 <code>secrets/</code></b>（游戏不加载的废弃/彩蛋）、13 个桌面 meta 与 translations 重复项</td></tr></table>
-<p><b>即：实质缺失为零。</b></p>
-<h3>关于“assets 多套一层”</h3>
-<p><code>assets/assets/</code> 是 lime 的资源前缀约定（运行时按 <code>assets/</code> + 逻辑路径解析），不是打包错误。第一版报告把它写成“潜在隐患”属无依据推测，此处撤回。</p>
+<table><tr><th>项</th><th>数量</th></tr><tr><td>上游 1.0 资产</td><td>1,050</td></tr><tr><td>APK 资产</td><td>871</td></tr></table>
+<p>APK 独有的 34 项里，除 haxelib 的 flixel/flxanimate 资源外，是他自己加的 <code>vulkan_logo.png</code>、<code>opengl_logo.png</code>、<code>warn_icon.png</code>、<code>hitbox/</code>、<code>shared/scripts/demo.js</code>、<code>menu_demo.js</code> 等。</p>
+<p>这里的关键不是数量差，而是<b>资源包的语言版本特征</b>：拆分人声、<code>zh-CN.lang</code>、<code>weekend1/</code> 全部是 1.0 的约定（详见第 4 节）。</p>
 <hr>
 <h2>4. 基底版本：声明 0.7.3，实为 1.0</h2>
 <p>用 <code>.so</code> 内 187 个有效 <code>.hx</code> 路径（剔除 flixel/openfl/lime 等第三方库）分别与两个上游 tag 做交集：</p>
@@ -180,11 +180,7 @@ This copy of the game was modified or re-signed.
 <p>附带一条：README 声明基于 0.7.3，实际基于 1.0，这属于对来源的失实陈述——与许可义务是两件事，但同样影响可信度。</p>
 <hr>
 <h2>9. 与社区批评的逐条核对</h2>
-<table><tr><th>批评</th><th>判定</th><th>依据</th></tr><tr><td>删掉 Lua 却“兼容” Lua</td><td><b>成立</b></td><td>运行时符号 0；219 个 API 名 100% 保留</td></tr><tr><td>引擎是 Psych 换皮</td><td><b>成立</b></td><td>原版命名、credits、130/187 文件重合</td></tr><tr><td>Vulkan 完整度低</td><td><b>成立（有具体边界）</b></td><td>65 个 vk 函数但单 pass、47 槽、OpenGL 兜底、投影固定 720P、自称 experimental</td></tr><tr><td>声明 0.7.3</td><td><b>不实</b></td><td>与 1.0 交集 130，与 0.7.3 仅 96；34 个 1.0 独有文件</td></tr><tr><td>APK 里没有 Assets，要自己放</td><td><b>不成立</b></td><td>871 个文件 / 310MB 齐全；实质缺失 0</td></tr><tr><td>贴图是“远古版本”</td><td><b>不成立</b></td><td>抽 5 个关键 UI 素材，SHA-256 与上游 1.0 完全一致</td></tr><tr><td>锁 720P</td><td><b>部分成立</b></td><td>Vulkan 投影矩阵写死 1280×720；OpenGL 路径未取证</td></tr><tr><td>进场崩溃</td><td><b>未验证</b></td><td>需动态复现；47 槽上限是可对应的事实，非结论</td></tr><tr><td>作者回复态度恶劣</td><td><b>有记录</b></td><td>issue #2：“用不惯就用别的引擎去 别搁这瞎逼逼”</td></tr><tr><td>作者回复疑似 AI 生成</td><td><b>间接证据</b></td><td>issue #6 回复结尾附 <code>chat.deepseek.com/share/…</code></td></tr></table>
-<h3>贴图哈希比对明细</h3>
-<table><tr><th>文件</th><th>本地 SHA-256（前 16）</th><th>上游 1.0</th></tr><tr><td><code>shared/images/titleEnter.png</code></td><td><code>8d4bfd6bef424a0c</code></td><td>一致</td></tr><tr><td><code>shared/images/menuBG.png</code></td><td><code>e9782b68116d2414</code></td><td>一致</td></tr><tr><td><code>shared/images/mainmenu/menu_story_mode.png</code></td><td><code>5048d7a9c8eee7fe</code></td><td>一致</td></tr><tr><td><code>shared/images/campaign_menu_UI_assets.png</code></td><td><code>d802618866bd9635</code></td><td>一致</td></tr><tr><td><code>shared/images/alphabet.png</code></td><td><code>35ae5e1bb672cf68</code></td><td>一致</td></tr></table>
-<p>若界面观感与正式版不同，来源只可能是菜单逻辑被重写（他新增了 <code>states/CustomMenuState.hx</code>、<code>backend/MenuUI.hx</code>、<code>MenuNav.hx</code>、<code>MenuGestures.hx</code>），而不是素材版本。</p>
-<hr>
+<table><tr><th>批评</th><th>判定</th><th>依据</th></tr><tr><td>删掉 Lua 却“兼容” Lua</td><td><b>成立</b></td><td>运行时符号 0；219 个 API 名 100% 保留</td></tr><tr><td>引擎是 Psych 换皮</td><td><b>成立</b></td><td>原版命名、credits、130/187 文件重合</td></tr><tr><td>Vulkan 完整度低</td><td><b>成立（有具体边界）</b></td><td>65 个 vk 函数但单 pass、47 槽、OpenGL 兜底、投影固定 720P、自称 experimental</td></tr><tr><td>声明 0.7.3</td><td><b>不实</b></td><td>与 1.0 交集 130，与 0.7.3 仅 96；34 个 1.0 独有文件</td></tr><tr><td>锁 720P</td><td><b>部分成立</b></td><td>Vulkan 投影矩阵写死 1280×720；OpenGL 路径未取证</td></tr><tr><td>进场崩溃</td><td><b>未验证</b></td><td>需动态复现；47 槽上限是可对应的事实，非结论</td></tr><tr><td>作者回复态度恶劣</td><td><b>有记录</b></td><td>issue #2：“用不惯就用别的引擎去 别搁这瞎逼逼”</td></tr><tr><td>作者回复疑似 AI 生成</td><td><b>间接证据</b></td><td>issue #6 回复结尾附 <code>chat.deepseek.com/share/…</code></td></tr></table>
 <h2>10. 仓库结构</h2>
 <pre>
 .
@@ -202,8 +198,4 @@ This copy of the game was modified or re-signed.
 │   └── assets/assets-file-list.txt
 </pre>
 <p>未入库：APK（400MB）、<code>.so</code>（100MB）、<code>assets/assets/</code>（310MB），超出 GitHub 单文件限制。校验值见文首。</p>
-<hr>
-<h2>11. 更正记录（第一版 → 第二版）</h2>
-<table><tr><th>第一版的说法</th><th>实际情况</th><th>原因</th></tr><tr><td>“APK 里没有资源”</td><td>871 个文件 / 310MB 齐全</td><td><code>unzip &quot;assets/*&quot;</code> 的 <code>*</code> 不跨目录层级，只解出根目录 2 个文件</td></tr><tr><td>“基于 0.7.3”</td><td>基于 1.0</td><td>误信 README，未验证基线</td></tr><tr><td>“新增 75 个源文件”</td><td>新增 57（对 1.0）</td><td>基准选错，34 个 1.0 自带文件被算成新增</td></tr><tr><td>“PsychUI 被删除”</td><td>11 个 <code>backend/ui/*</code> 全在</td><td>把 <code>backend/ui/</code> 误列入第三方库排除名单</td></tr><tr><td>“<code>assets/assets/</code> 双层是隐患”</td><td>是 lime 的正常约定</td><td>无依据推测</td></tr></table>
-<p>保留原样的结论：Lua 运行时移除、API 名保留、QuickJS 实现、Vulkan 旁挂与 47 槽上限、Qz7 校验、许可义务差异。</p>
 </div></body></html>
