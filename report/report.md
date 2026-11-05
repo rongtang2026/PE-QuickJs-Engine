@@ -19,9 +19,10 @@
 | 3 | Lua **运行时被整体移除**（`lua_*`/`luaL_*`/LuaJIT 符号 0），但 1.0 的 **219 个 Lua API 函数名全部按原名保留（219/219）**，改由 QuickJS 执行 | 高 |
 | 4 | QuickJS 集成是真实实现（`backend.QuickJS.hx`，`JS_NewRuntime2`/`JS_Eval`/`JS_Call`），非占位 | 高 |
 | 5 | Vulkan 确实调了 Vulkan API（65 个 `vk*` 函数），但是**旁挂渲染**：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47、投影矩阵写死 **1280×720** | 高 |
-| 6 | 包内存在**完整性校验**（`Qz7` 按 ZIP 条目算 SHA-256，`Qz7r` 控制 `scriptsAllowed`），改包即触发 "This copy of the game was modified or re-signed." | 高 |
+| 6 | 包内存在**完整性校验**：签名证书 SHA-256、签名者数、debuggable 标志、APK 条目白名单（`Qz7`，判定在 `Qz7r`），改包即触发 "This copy of the game was modified or re-signed." | 高 |
 | 7 | 与 Apache-2.0 §4 的许可文本义务不符：仓库 `license` 为 null，APK 内无 LICENSE/NOTICE | 高 |
-| 8 | 资源包同样来自 1.0：含 `weekend1/` 全套、`Voices-Player/Player-Opponent` 拆分人声、`zh-CN.lang`，与 README 声明的 0.7.3 不符 | 高 |
+| 8 | 当前最新发布 `1.1`（2026-11-04）就是本包，`debuggable=true`、debug 签名，按作者自定规则不算正式版 | 高 |
+| 9 | 资源包同样来自 1.0：含 `weekend1/` 全套、`Voices-Player/Voices-Opponent` 拆分人声、`zh-CN.lang`，与 README 声明的 0.7.3 不符 | 高 |
 
 > 本报告只就下列可复现的技术事实作说明，不涉及其他社区讨论中的具体指控。
 
@@ -76,6 +77,22 @@ python scan.py lib/arm64-v8a/libApplicationMain.so <quickjs|lua|path|jni|version
 | `lib/arm64-v8a/libvlc.so` | 43.2 MB |
 | `assets/assets/` | 310 MB |
 | 其余（liblime、libc++、dex、res） | ~10 MB |
+
+### 2.3 发布归属
+
+| release | 发布时间 | 资产名 | 大小 |
+|---|---|---|---|
+| `1.0` | 2026-10-26 | `PsychEngine-debug.apk` | 401,134,643 |
+| `r-1.0.0` | 2026-11-01 | `PEQuickJsEngine-release.apk` | 394,278,505 |
+| `1.1` | 2026-11-04 | `PEQuickJsEngine-debug-test.apk` | **400,750,869** |
+
+本报告分析的 APK 与 `1.1` 资产**同名同大小**，即当前最新发布包。
+
+但该包 `debuggable=true`、使用 debug 签名。而作者在 README 中自定规则：
+
+> If the version looks like just "1.0", it is a debug test build. Only versions prefixed with "r-" are official releases.
+
+按这条规则，`1.1` 不算正式版——最新一个带 `r-` 的发布是 11-01 的 `r-1.0.0`。
 
 ---
 
@@ -230,23 +247,30 @@ issue 原文的时序是“切换到 Vulkan 后进 Weekend1，崩溃”。可对
 
 ---
 
-## 7. 完整性校验：闭源之外还有防改
+## 7. 完整性校验：结构白名单 + 签名摘要
 
-`DingLing/pe/QuickJs/Engine/Qz7`（18.5KB smali）：
+`Qz7` 提供四个探针，判定逻辑在 Haxe 侧（`backend/Qz7r.hx`）：
 
-1. `b()/c()/d()` 取 `PackageInfo`、读签名（`GET_SIGNATURES`）
-2. 遍历 ZIP 条目（`classes*.dex`、`assets/`、`lib/`、`res/`、`META-INF/`、`AndroidManifest.xml`、`resources.arsc`），用 SHA-256 逐项摘要，与内嵌 32 字节表比对（`v()[B`、`a(I)I` 按下标取 4 字节大端）
-3. `okRoot(String)` / `okSo(String)` 检查 root 痕迹与 so 存在性
+| 方法 | 实际行为 |
+|---|---|
+| `v()` | 取签名证书字节做 SHA-256，返回 32 字节，静态字段 `c` 缓存 |
+| `a(int i)` | 从这 32 字节中取第 i 个 4 字节大端整数（i ∈ 0..7） |
+| `b()` | 返回签名者数量（按 `SigningInfo.hasMultipleSigners()` / `getApkContentsSigners()` 分支） |
+| `c()` | `(ApplicationInfo.flags & 0x2) != 0`，即 **debuggable 标志** |
+| `d()` | 打开 `getPackageCodePath()` 的 ZIP 并遍历条目：统计 `classesN.dex` 数量；`lib/` 下走 `okSo()` 白名单；`res/`、`META-INF/`、`kotlin/` 放行；其余根级条目走 `okRoot()` 白名单 |
 
-对应 Haxe 侧 `backend/Qz7r.hx`（`boot`、`scriptsAllowed`）。失败文案：
+两个白名单的实际内容：
 
 ```
-This copy of the game was modified or re-signed.
+okRoot(name)  仅允许: AndroidManifest.xml / resources.arsc / DebugProbesKt.bin
+okSo(path)    仅允许: libApplicationMain.so / libc++_shared.so / liblime.so / libvlc.so
 ```
 
-含义：改包名、去 dex、换 so、重签名都会命中，命中后脚本功能被关。当前包 `debuggable=true` 且为 debug 签名，是测试构建而非 `r-` 正式版。
+**即：结构白名单 + 签名摘要 + debuggable 标志的组合，不做逐条目哈希。**比对所需的期望值以编译常量形式存在于 `.so` 中（非字符串），无法直接从二进制读出。
 
----
+失败文案 `This copy of the game was modified or re-signed.`，命中后 `scriptsAllowed` 置否。
+
+补一条：本包 `debuggable=true`，`c()` 必然返回 1——若该项被计入判定，这份官方发布包自己就会命中最基础的一条。
 
 ## 8. 协议合规性
 
@@ -285,7 +309,40 @@ Apache-2.0 **允许**闭源分发衍生作品，所以“闭源”本身不违�
 | 作者回复疑似 AI 生成 | **间接证据** | issue #6 回复结尾附 `chat.deepseek.com/share/…` |
 
 
-## 10. 仓库结构
+## 10. 其他不一致
+
+### 10.1 示例脚本引用了不存在的文档
+
+`assets/shared/scripts/demo.js` 两处写：
+
+```
+// Every API function is a plain global, the full list is in docs/JS_SCRIPTS.md
+// and in source/psychlua/FunkinJS.hx.
+```
+
+而引擎运行时会生成的文档（`backend/ApiDocs.hx` 的字符串表）只有：
+
+```
+README.md  variables.md
+guides/getting-started.md  health.md  judgement.md  key-lanes.md
+       main-menu.md  mobile-js.md  ranks.md  story-freeplay.md
+（另有 lua/ 与 callbacks 目录）
+```
+
+**没有 `JS_SCRIPTS.md`。**该文件在 `.so` 内不存在任何引用，也不随 APK 分发；仓库又是闭源的，用户无处获取。指向源码 `source/psychlua/FunkinJS.hx` 的那句同理——源码不公开。
+
+### 10.2 文档里的路径是旧的
+
+两份示例脚本注释都写 `/storage/emulated/0/.PsychEngine/mods/...`，而运行时的 mod 根目录是 `.QJsEngine`：
+
+```
+/storage/emulated/0/.QJsEngine/mods        ← 实际使用
+/storage/emulated/0/.PsychEngine           ← 仅出现 1 次，配合 "Mods: migrated" / initExternalFolder
+```
+
+引擎带有从 `.PsychEngine` 迁移到 `.QJsEngine` 的逻辑，所以旧路径不会直接失效，但文档没有再更新。
+
+## 11. 仓库结构
 
 ```
 .

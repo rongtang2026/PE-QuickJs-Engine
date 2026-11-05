@@ -34,7 +34,7 @@
 <p><b>日期</b>：2026-11-05（第二版）</p>
 <hr>
 <h2>0. 结论摘要</h2>
-<table><tr><th>#</th><th>结论</th><th>置信度</th></tr><tr><td>1</td><td><b>代码基底是 1.0，不是 README 声称的 0.7.3</b>。文件集与 1.0 交集 130/187，与 0.7.3 仅 96/187；34 个文件只存在于 1.0，<b>0 个</b>只存在于 0.7.3</td><td>高</td></tr><tr><td>2</td><td>这是 Psych 的 Haxe 源码分支，<b>不是重写</b>。<code>endBullshit</code>、<code>reloadAllShit</code>、<code>grpMenuShit</code> 等原版命名原样保留</td><td>高</td></tr><tr><td>3</td><td>Lua <b>运行时被整体移除</b>（<code>lua_*</code>/<code>luaL_*</code>/LuaJIT 符号 0），但 1.0 的 <b>219 个 Lua API 函数名全部按原名保留（219/219）</b>，改由 QuickJS 执行</td><td>高</td></tr><tr><td>4</td><td>QuickJS 集成是真实实现（<code>backend.QuickJS.hx</code>，<code>JS_NewRuntime2</code>/<code>JS_Eval</code>/<code>JS_Call</code>），非占位</td><td>高</td></tr><tr><td>5</td><td>Vulkan 确实调了 Vulkan API（65 个 <code>vk*</code> 函数），但是<b>旁挂渲染</b>：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47、投影矩阵写死 <b>1280×720</b></td><td>高</td></tr><tr><td>6</td><td>包内存在<b>完整性校验</b>（<code>Qz7</code> 按 ZIP 条目算 SHA-256，<code>Qz7r</code> 控制 <code>scriptsAllowed</code>），改包即触发 &quot;This copy of the game was modified or re-signed.&quot;</td><td>高</td></tr><tr><td>7</td><td>与 Apache-2.0 §4 的许可文本义务不符：仓库 <code>license</code> 为 null，APK 内无 LICENSE/NOTICE</td><td>高</td></tr><tr><td>8</td><td>资源包同样来自 1.0：含 <code>weekend1/</code> 全套、<code>Voices-Player/Player-Opponent</code> 拆分人声、<code>zh-CN.lang</code>，与 README 声明的 0.7.3 不符</td><td>高</td></tr></table>
+<table><tr><th>#</th><th>结论</th><th>置信度</th></tr><tr><td>1</td><td><b>代码基底是 1.0，不是 README 声称的 0.7.3</b>。文件集与 1.0 交集 130/187，与 0.7.3 仅 96/187；34 个文件只存在于 1.0，<b>0 个</b>只存在于 0.7.3</td><td>高</td></tr><tr><td>2</td><td>这是 Psych 的 Haxe 源码分支，<b>不是重写</b>。<code>endBullshit</code>、<code>reloadAllShit</code>、<code>grpMenuShit</code> 等原版命名原样保留</td><td>高</td></tr><tr><td>3</td><td>Lua <b>运行时被整体移除</b>（<code>lua_*</code>/<code>luaL_*</code>/LuaJIT 符号 0），但 1.0 的 <b>219 个 Lua API 函数名全部按原名保留（219/219）</b>，改由 QuickJS 执行</td><td>高</td></tr><tr><td>4</td><td>QuickJS 集成是真实实现（<code>backend.QuickJS.hx</code>，<code>JS_NewRuntime2</code>/<code>JS_Eval</code>/<code>JS_Call</code>），非占位</td><td>高</td></tr><tr><td>5</td><td>Vulkan 确实调了 Vulkan API（65 个 <code>vk*</code> 函数），但是<b>旁挂渲染</b>：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47、投影矩阵写死 <b>1280×720</b></td><td>高</td></tr><tr><td>6</td><td>包内存在<b>完整性校验</b>：签名证书 SHA-256、签名者数、debuggable 标志、APK 条目白名单（<code>Qz7</code>，判定在 <code>Qz7r</code>），改包即触发 &quot;This copy of the game was modified or re-signed.&quot;</td><td>高</td></tr><tr><td>7</td><td>与 Apache-2.0 §4 的许可文本义务不符：仓库 <code>license</code> 为 null，APK 内无 LICENSE/NOTICE</td><td>高</td></tr><tr><td>8</td><td>当前最新发布 <code>1.1</code>（2026-11-04）就是本包，<code>debuggable=true</code>、debug 签名，按作者自定规则不算正式版</td><td>高</td></tr><tr><td>9</td><td>资源包同样来自 1.0：含 <code>weekend1/</code> 全套、<code>Voices-Player/Voices-Opponent</code> 拆分人声、<code>zh-CN.lang</code>，与 README 声明的 0.7.3 不符</td><td>高</td></tr></table>
 <p>&gt; 本报告只就下列可复现的技术事实作说明，不涉及其他社区讨论中的具体指控。</p>
 <hr>
 <h2>1. 方法与可复现性</h2>
@@ -61,6 +61,12 @@ python scan.py lib/arm64-v8a/libApplicationMain.so &lt;quickjs|lua|path|jni|vers
 <p>反汇编出 303 个类：新包名 <code>DingLing/pe/QuickJs/Engine/</code> 14 个，旧包名 <code>com/shadowmario/psychengine/</code> <b>10 个同名类残留</b>（MainActivity、MemoryInfoHelper、VulkanSurfaceHelper 及 7 个内部类）。两套 MainActivity 内容完全相同，都是空的 <code>GameActivity</code> 子类。改包名后未清理旧生成文件，白占约 170KB。</p>
 <h3>2.2 体积构成</h3>
 <table><tr><th>组件</th><th>大小</th></tr><tr><td><code>lib/arm64-v8a/libApplicationMain.so</code></td><td>49.6 MB</td></tr><tr><td><code>lib/arm64-v8a/libvlc.so</code></td><td>43.2 MB</td></tr><tr><td><code>assets/assets/</code></td><td>310 MB</td></tr><tr><td>其余（liblime、libc++、dex、res）</td><td>~10 MB</td></tr></table>
+<h3>2.3 发布归属</h3>
+<table><tr><th>release</th><th>发布时间</th><th>资产名</th><th>大小</th></tr><tr><td><code>1.0</code></td><td>2026-10-26</td><td><code>PsychEngine-debug.apk</code></td><td>401,134,643</td></tr><tr><td><code>r-1.0.0</code></td><td>2026-11-01</td><td><code>PEQuickJsEngine-release.apk</code></td><td>394,278,505</td></tr><tr><td><code>1.1</code></td><td>2026-11-04</td><td><code>PEQuickJsEngine-debug-test.apk</code></td><td><b>400,750,869</b></td></tr></table>
+<p>本报告分析的 APK 与 <code>1.1</code> 资产<b>同名同大小</b>，即当前最新发布包。</p>
+<p>但该包 <code>debuggable=true</code>、使用 debug 签名。而作者在 README 中自定规则：</p>
+<p>&gt; If the version looks like just &quot;1.0&quot;, it is a debug test build. Only versions prefixed with &quot;r-&quot; are official releases.</p>
+<p>按这条规则，<code>1.1</code> 不算正式版——最新一个带 <code>r-</code> 的发布是 11-01 的 <code>r-1.0.0</code>。</p>
 <hr>
 <h2>3. 资源构成</h2>
 <pre>
@@ -156,17 +162,17 @@ Typeface.DEFAULT_BOLD  Bitmap.createBitmap / setPixel / getPixels / recycle
 <h3>6.3 关于“糊”和“崩”</h3>
 <p>issue 原文的时序是“切换到 Vulkan 后进 Weekend1，崩溃”。可对应的静态事实有两条：Vulkan 路径固定 1280×720 再拉伸（糊），以及贴图槽上限 47（Weekend1 的 PhillyStreets 场景素材数量明显超过该值，超限后直接跳过绘制）。<b>但崩溃本身未做动态复现，不作为结论。</b></p>
 <hr>
-<h2>7. 完整性校验：闭源之外还有防改</h2>
-<p><code>DingLing/pe/QuickJs/Engine/Qz7</code>（18.5KB smali）：</p>
-<p>1. <code>b()/c()/d()</code> 取 <code>PackageInfo</code>、读签名（<code>GET_SIGNATURES</code>）</p>
-<p>2. 遍历 ZIP 条目（<code>classes*.dex</code>、<code>assets/</code>、<code>lib/</code>、<code>res/</code>、<code>META-INF/</code>、<code>AndroidManifest.xml</code>、<code>resources.arsc</code>），用 SHA-256 逐项摘要，与内嵌 32 字节表比对（<code>v()[B</code>、<code>a(I)I</code> 按下标取 4 字节大端）</p>
-<p>3. <code>okRoot(String)</code> / <code>okSo(String)</code> 检查 root 痕迹与 so 存在性</p>
-<p>对应 Haxe 侧 <code>backend/Qz7r.hx</code>（<code>boot</code>、<code>scriptsAllowed</code>）。失败文案：</p>
+<h2>7. 完整性校验：结构白名单 + 签名摘要</h2>
+<p><code>Qz7</code> 提供四个探针，判定逻辑在 Haxe 侧（<code>backend/Qz7r.hx</code>）：</p>
+<table><tr><th>方法</th><th>实际行为</th></tr><tr><td><code>v()</code></td><td>取签名证书字节做 SHA-256，返回 32 字节，静态字段 <code>c</code> 缓存</td></tr><tr><td><code>a(int i)</code></td><td>从这 32 字节中取第 i 个 4 字节大端整数（i ∈ 0..7）</td></tr><tr><td><code>b()</code></td><td>返回签名者数量（按 <code>SigningInfo.hasMultipleSigners()</code> / <code>getApkContentsSigners()</code> 分支）</td></tr><tr><td><code>c()</code></td><td><code>(ApplicationInfo.flags &amp; 0x2) != 0</code>，即 <b>debuggable 标志</b></td></tr><tr><td><code>d()</code></td><td>打开 <code>getPackageCodePath()</code> 的 ZIP 并遍历条目：统计 <code>classesN.dex</code> 数量；<code>lib/</code> 下走 <code>okSo()</code> 白名单；<code>res/</code>、<code>META-INF/</code>、<code>kotlin/</code> 放行；其余根级条目走 <code>okRoot()</code> 白名单</td></tr></table>
+<p>两个白名单的实际内容：</p>
 <pre>
-This copy of the game was modified or re-signed.
+okRoot(name)  仅允许: AndroidManifest.xml / resources.arsc / DebugProbesKt.bin
+okSo(path)    仅允许: libApplicationMain.so / libc++_shared.so / liblime.so / libvlc.so
 </pre>
-<p>含义：改包名、去 dex、换 so、重签名都会命中，命中后脚本功能被关。当前包 <code>debuggable=true</code> 且为 debug 签名，是测试构建而非 <code>r-</code> 正式版。</p>
-<hr>
+<p><b>即：结构白名单 + 签名摘要 + debuggable 标志的组合，不做逐条目哈希。</b>比对所需的期望值以编译常量形式存在于 <code>.so</code> 中（非字符串），无法直接从二进制读出。</p>
+<p>失败文案 <code>This copy of the game was modified or re-signed.</code>，命中后 <code>scriptsAllowed</code> 置否。</p>
+<p>补一条：本包 <code>debuggable=true</code>，<code>c()</code> 必然返回 1——若该项被计入判定，这份官方发布包自己就会命中最基础的一条。</p>
 <h2>8. 协议合规性</h2>
 <table><tr><th>项</th><th>状态</th></tr><tr><td>上游 Psych Engine</td><td>Apache License 2.0（GitHub API <code>license.spdx_id = Apache-2.0</code>）</td></tr><tr><td>本项目仓库</td><td><code>license: null</code>，README 明示“我不想走老一辈的老路”</td></tr><tr><td>APK 内许可文件</td><td>全量检索 `license</td><td>notice</td><td>copying<code>，仅 </code>NotoSansSC-LICENSE.txt`</td></tr><tr><td>归属声明</td><td><code>Psych Engine by</code> 等字符串留在 <code>.so</code>，但无版权声明文本、无许可证副本、无 NOTICE</td></tr><tr><td>第三方</td><td><code>libvlc.so</code>（LGPL-2.1+）随包分发，无许可证与源码获取说明</td></tr></table>
 <p>Apache-2.0 <b>允许</b>闭源分发衍生作品，所以“闭源”本身不违约。争议在第 4 条：</p>
@@ -181,7 +187,29 @@ This copy of the game was modified or re-signed.
 <hr>
 <h2>9. 与社区批评的逐条核对</h2>
 <table><tr><th>批评</th><th>判定</th><th>依据</th></tr><tr><td>删掉 Lua 却“兼容” Lua</td><td><b>成立</b></td><td>运行时符号 0；219 个 API 名 100% 保留</td></tr><tr><td>引擎是 Psych 换皮</td><td><b>成立</b></td><td>原版命名、credits、130/187 文件重合</td></tr><tr><td>Vulkan 完整度低</td><td><b>成立（有具体边界）</b></td><td>65 个 vk 函数但单 pass、47 槽、OpenGL 兜底、投影固定 720P、自称 experimental</td></tr><tr><td>声明 0.7.3</td><td><b>不实</b></td><td>与 1.0 交集 130，与 0.7.3 仅 96；34 个 1.0 独有文件</td></tr><tr><td>锁 720P</td><td><b>部分成立</b></td><td>Vulkan 投影矩阵写死 1280×720；OpenGL 路径未取证</td></tr><tr><td>进场崩溃</td><td><b>未验证</b></td><td>需动态复现；47 槽上限是可对应的事实，非结论</td></tr><tr><td>作者回复态度恶劣</td><td><b>有记录</b></td><td>issue #2：“用不惯就用别的引擎去 别搁这瞎逼逼”</td></tr><tr><td>作者回复疑似 AI 生成</td><td><b>间接证据</b></td><td>issue #6 回复结尾附 <code>chat.deepseek.com/share/…</code></td></tr></table>
-<h2>10. 仓库结构</h2>
+<h2>10. 其他不一致</h2>
+<h3>10.1 示例脚本引用了不存在的文档</h3>
+<p><code>assets/shared/scripts/demo.js</code> 两处写：</p>
+<pre>
+// Every API function is a plain global, the full list is in docs/JS_SCRIPTS.md
+// and in source/psychlua/FunkinJS.hx.
+</pre>
+<p>而引擎运行时会生成的文档（<code>backend/ApiDocs.hx</code> 的字符串表）只有：</p>
+<pre>
+README.md  variables.md
+guides/getting-started.md  health.md  judgement.md  key-lanes.md
+       main-menu.md  mobile-js.md  ranks.md  story-freeplay.md
+（另有 lua/ 与 callbacks 目录）
+</pre>
+<p><b>没有 <code>JS_SCRIPTS.md</code>。</b>该文件在 <code>.so</code> 内不存在任何引用，也不随 APK 分发；仓库又是闭源的，用户无处获取。指向源码 <code>source/psychlua/FunkinJS.hx</code> 的那句同理——源码不公开。</p>
+<h3>10.2 文档里的路径是旧的</h3>
+<p>两份示例脚本注释都写 <code>/storage/emulated/0/.PsychEngine/mods/...</code>，而运行时的 mod 根目录是 <code>.QJsEngine</code>：</p>
+<pre>
+/storage/emulated/0/.QJsEngine/mods        ← 实际使用
+/storage/emulated/0/.PsychEngine           ← 仅出现 1 次，配合 &quot;Mods: migrated&quot; / initExternalFolder
+</pre>
+<p>引擎带有从 <code>.PsychEngine</code> 迁移到 <code>.QJsEngine</code> 的逻辑，所以旧路径不会直接失效，但文档没有再更新。</p>
+<h2>11. 仓库结构</h2>
 <pre>
 .
 ├── README.md                      本报告

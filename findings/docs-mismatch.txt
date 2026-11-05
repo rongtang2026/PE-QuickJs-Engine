@@ -1,0 +1,41 @@
+# 示例脚本与运行时文档的不一致
+
+## 1) demo.js 引用的 JS_SCRIPTS.md 不存在
+
+assets/shared/scripts/demo.js:
+  // Every API function is a plain global, the full list is in docs/JS_SCRIPTS.md
+  // and in source/psychlua/FunkinJS.hx.
+
+libApplicationMain.so 中 "JS_SCRIPTS" 出现次数: 0
+
+引擎运行时会生成的文档(backend/ApiDocs.hx 字符串表):
+  README.md
+  variables.md
+  guides/getting-started.md
+  guides/health.md
+  guides/judgement.md
+  guides/key-lanes.md
+  guides/main-menu.md
+  guides/mobile-js.md
+  guides/ranks.md
+  guides/story-freeplay.md
+  lua/  callbacks/
+
+结论: 引用的文件名不在生成清单内, APK 内也无该文件; 仓库闭源, 用户无法获取。
+同一句还指向 source/psychlua/FunkinJS.hx, 源码同样未公开。
+
+## 2) 文档中的 mod 路径仍是旧的
+
+demo.js / menu_demo.js 注释:
+  /storage/emulated/0/.PsychEngine/mods/<mod>/scripts/...
+
+libApplicationMain.so 中路径出现次数:
+  /storage/emulated/0/.QJsEngine           7 次(含 /mods 子路径)
+  /storage/emulated/0/.PsychEngine         1 次
+
+相邻字符串:
+  Mods: migrated
+  backend.Mods.initExternalFolder
+  Mods: could not migrate the old folder (
+
+结论: 存在从 .PsychEngine 到 .QJsEngine 的迁移逻辑, 旧路径不会直接失效, 但文档未同步更新。
