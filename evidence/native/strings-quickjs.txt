@@ -1,0 +1,63 @@
+   2  DingLing.pe.QuickJs.Engine
+   2  /storage/emulated/0/.QJsEngine/
+   2  /storage/emulated/0/.QJsEngine/crash/
+   2  PE-QuickJs-Engine v
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeAddTexture
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeClearText
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeCreate
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeDestroy
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeGetHudLine
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeInfo
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativePumpQuads
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativePushTextQuad
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeSetAtlas
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeSetHudValues
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeSetText
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeSetTexture
+   1  Java_DingLing_pe_QuickJs_Engine_VulkanSurfaceHelper_nativeSubmitQuads
+   1  JS_Call
+   1  JS_Eval
+   1  JS_NewRuntime
+   1  JS_CallConstructor
+   1  JS_CallConstructor2
+   1  JS_EvalFunction
+   1  JS_EvalThis
+   1  JS_NewRuntime2
+   1  DingLing/pe/QuickJs/Engine/Qz7
+   1  DingLing/pe/QuickJs/Engine/VulkanSurfaceHelper
+   1  /storage/emulated/0/Android/data/DingLing.pe.QuickJs.Engine/files/
+   1  JS: QuickJS context created for 
+   1  :backend.QuickJS
+   1  backend.QuickJS.new
+   1  backend/QuickJS.hx
+   1  backend.QuickJS.eval
+   1  backend.QuickJS.call
+   1  backend.QuickJS.hasFunction
+   1  backend.QuickJS.setGlobal
+   1  backend.QuickJS.getGlobal
+   1  backend.QuickJS.runPendingJobs
+   1  backend.QuickJS.close
+   1  backend.QuickJS.handleNative
+   1  backend.QuickJS.onDispatch
+   1  backend.QuickJS.encodeResult
+   1  backend.QuickJS.encodeArgs
+   1  backend.QuickJS.parseResult
+   1  backend.QuickJS.boot
+   1  QuickJS: cannot create JavaScript runtime
+   1  backend.QuickJS
+   1  N7backend11QuickJS_objE
+   1  QuickJS
+   1  /storage/emulated/0/Android/data/DingLing.pe.QuickJs.Engine/files/boot_native.txt
+   1  /data/data/DingLing.pe.QuickJs.Engine/files/boot_native.txt
+   1  /data/user/0/DingLing.pe.QuickJs.Engine/files/boot_native.txt
+   1  PEQuickJsEngine
+   1  PE-QuickJs-Engine
+   1  /storage/emulated/0/Android/data/DingLing.pe.QuickJs.Engine/files/vk_quads.bin
+   1  PE-QuickJs-Engine Vulkan
+   1  QuickJS self-test
+   1  /storage/emulated/0/.QJsEngine/load_log.txt
+   1  /storage/emulated/0/.QJsEngine/mods
+   1  /storage/emulated/0/.QJsEngine
+   1  /storage/emulated/0/.qjs_probe
+   1  DingLing/pe/QuickJs/Engine/MemoryInfoHelper
+   1  QuickJS memory usage -- 2026-06-04 version, %d-bit, malloc limit: %ld

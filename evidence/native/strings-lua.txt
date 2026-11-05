@@ -1,0 +1,104 @@
+   3  initLuaShader
+   2  psychlua.DebugLuaText
+   2  addLuaScript
+   2  removeLuaScript
+   2  makeLuaSprite
+   2  makeAnimatedLuaSprite
+   2  addLuaSprite
+   2  removeLuaSprite
+   2  luaSpriteExists
+   2  luaTextExists
+   2  luaSoundExists
+   2  luaSpriteMakeGraphic
+   2  luaSpriteAddAnimationByPrefix
+   2  luaSpriteAddAnimationByIndices
+   2  luaSpritePlayAnimation
+   2  setLuaSpriteCamera
+   2  setLuaSpriteScrollFactor
+   2  scaleLuaSprite
+   2  getPropertyLuaSprite
+   2  setPropertyLuaSprite
+   2  makeLuaText
+   2  addLuaText
+   2  removeLuaText
+   2  psychlua.LuaUtils
+   2  luaDebugGroup
+   1  psychlua.DebugLuaText.new
+   1  psychlua/DebugLuaText.hx
+   1  psychlua.DebugLuaText.update
+   1  N8psychlua16DebugLuaText_objE
+   1  DebugLuaText
+   1  psychlua.FunkinJS.initLuaShader
+   1  JS: evaluating 
+   1  JS: evaluation done for 
+   1  psychlua.LuaUtils.vars
+   1  psychlua/LuaUtils.hx
+   1  psychlua.LuaUtils.getLuaTween
+   1  psychlua.LuaUtils.setVarInArray
+   1  psychlua.LuaUtils.getVarInArray
+   1  psychlua.LuaUtils.getModSetting
+   1  psychlua.LuaUtils.isMap
+   1  psychlua.LuaUtils.setGroupStuff
+   1  psychlua.LuaUtils.getGroupStuff
+   1  psychlua.LuaUtils.getPropertyLoop
+   1  psychlua.LuaUtils.getObjectDirectly
+   1  psychlua.LuaUtils.isOfTypes
+   1  psychlua.LuaUtils.isLuaSupported
+   1  psychlua.LuaUtils.getTargetInstance
+   1  psychlua.LuaUtils.getLowestCharacterGroup
+   1  psychlua.LuaUtils.addAnimByIndices
+   1  psychlua.LuaUtils.loadFrames
+   1  psychlua.LuaUtils.destroyObject
+   1  psychlua.LuaUtils.cancelTween
+   1  psychlua.LuaUtils.cancelTimer
+   1  psychlua.LuaUtils.formatVariable
+   1  psychlua.LuaUtils.tweenPrepare
+   1  psychlua.LuaUtils.getBuildTarget
+   1  psychlua.LuaUtils.getTweenTypeByString
+   1  psychlua.LuaUtils.getTweenEaseByString
+   1  psychlua.LuaUtils.blendModeFromString
+   1  psychlua.LuaUtils.typeToString
+   1  psychlua.LuaUtils.cameraFromString
+   1  psychlua.LuaUtils.boot
+   1  source/psychlua/LuaUtils.hx
+   1  getLuaTween
+   1  isLuaSupported
+   1  ##PSYCHLUA_FUNCTIONCONTINUE
+   1  ##PSYCHLUA_FUNCTIONSTOPLUA
+   1  ##PSYCHLUA_FUNCTIONSTOPHSCRIPT
+   1  ##PSYCHLUA_FUNCTIONSTOPALL
+   1  N8psychlua12LuaUtils_objE
+   1  LuaUtils
+   1  ##PSYCHLUA_FUNCTIONSTOP
+   1  luaDebugMode
+   1  luaDeprecatedWarnings
+   1  addLuaScript("scripts/extra.lua")
+   1  removeLuaScript("scripts/extra.lua")
+   1  makeLuaSprite("bg", "images/bg", 0, 0)
+   1  makeAnimatedLuaSprite("animated", "images/sheet", 0, 0)
+   1  addLuaSprite("bg", false)
+   1  removeLuaSprite("bg", true)
+   1  makeLuaText("txt", "Hello", 300, 0, 0)
+   1  addLuaText("txt")
+   1  removeLuaText("txt")
+   1  luaFile:String, funcName:String, ?args:Array<Dynamic> = null
+   1  luaFile:String, ?ignoreAlreadyRunning:Bool = false
+   1  luaFile:String
+   1  backend.NativeCrashHandler.luaSelfTest
+   1  backend.NativeCrashHandler.luaSelfTestResult
+   1  backend.NativeCrashHandler.luaSelfTestFaultInfo
+   1  luaSelfTest
+   1  luaSelfTestResult
+   1  luaSelfTestFaultInfo
+   1  openfl.display.Timeline.__evaluateFrameScripts
+   1  _hx___evaluateFrameScripts
+   1  __evaluateFrameScripts
+   1  states.PlayState.getLuaObject
+   1  states.PlayState.callOnLuas
+   1  states.PlayState.setOnLuas
+   1  states.PlayState.initLuaShader
+   1  getLuaObject
+   1  callOnLuas
+   1  setOnLuas
+   1      makeLuaSprite("bg", "images/background", -200, -100)
+   1      addLuaSprite("bg", false)

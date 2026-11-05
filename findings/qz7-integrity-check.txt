@@ -1,0 +1,43 @@
+# Qz7 —— 完整性校验(反汇编摘录)
+
+类: DingLing/pe/QuickJs/Engine/Qz7  (Java 源码 18.5KB smali)
+
+## 方法列表
+
+  .method public constructor <init>()V
+  .method public static a(I)I
+  .method public static b()I
+  .method public static c()I
+  .method public static d()I
+  .method private static okRoot(Ljava/lang/String;)Z
+  .method private static okSo(Ljava/lang/String;)Z
+  .method private static v()[B
+
+## 字符串常量
+
+  ".dex"
+  "classes"
+  "assets/"
+  "lib/"
+  "res/"
+  "META-INF/"
+  "kotlin/"
+  "AndroidManifest.xml"
+  "resources.arsc"
+  "DebugProbesKt.bin"
+  "libApplicationMain.so"
+  "libc++_shared.so"
+  "liblime.so"
+  "libvlc.so"
+  "SHA-256"
+
+## 关键调用
+
+  getPackageInfo   x4
+  GET_SIGNATURES   x0
+  MessageDigest    x3
+  digest           x1
+  okRoot           x2
+  okSo             x2
+  ZipFile          x6
+  entries          x1

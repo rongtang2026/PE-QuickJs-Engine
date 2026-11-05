@@ -1,0 +1,4 @@
+getGlobalFromScript
+getHits
+getMisses
+setGlobalFromScript

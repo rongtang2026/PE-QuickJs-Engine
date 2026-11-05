@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" android:installLocation="auto" package="DingLing.pe.QuickJs.Engine" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <application android:allowBackup="true" android:allowNativeHeapPointerTagging="false" android:debuggable="true" android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="PE-QuickJs-Engine" android:requestLegacyExternalStorage="true" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        <meta-data android:name="SDL_ENV.SDL_IOS_ORIENTATIONS" android:value="LandscapeLeft LandscapeRight"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="true" android:label="PE-QuickJs-Engine" android:launchMode="singleTask" android:name="DingLing.pe.QuickJs.Engine.MainActivity" android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="tv.ouya.intent.category.GAME"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

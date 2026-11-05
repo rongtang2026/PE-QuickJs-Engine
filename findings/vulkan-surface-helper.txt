@@ -1,0 +1,43 @@
+# VulkanSurfaceHelper —— Java 侧实际调用(反汇编统计)
+
+类文件行数: 6249  方法数: 57
+
+## android.graphics 调用统计
+
+  recycle              x7
+  getPixels            x6
+  getWidth             x5
+  getHeight            x5
+  setColor             x4
+  setTextSize          x4
+  createBitmap         x4
+  drawText             x4
+  setAntiAlias         x3
+  DEFAULT_BOLD         x3
+  setTypeface          x3
+  setShadowLayer       x2
+  measureText          x2
+  setPixel             x1
+
+## 是否存在图形 API 引用
+
+  android/opengl             0 次
+  microedition/khronos       0 次
+  libvulkan                  0 次
+  EGL                        0 次
+
+## native 方法声明
+
+  .method private static native nativeAddTexture(I[III)V
+  .method private static native nativeClearText()V
+  .method private static native nativeCreate(Landroid/view/Surface;II)Ljava/lang/String;
+  .method private static native nativeDestroy()V
+  .method private static native nativeGetHudLine(I)Ljava/lang/String;
+  .method private static native nativeInfo()Ljava/lang/String;
+  .method private static native nativePumpQuads()V
+  .method private static native nativePushTextQuad(FFFFI)V
+  .method private static native nativeSetAtlas([III[II)V
+  .method private static native nativeSetHudValues([FI)V
+  .method private static native nativeSetText([III)V
+  .method private static native nativeSetTexture([III)V
+  .method private static native nativeSubmitQuads([FI)V

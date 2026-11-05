@@ -1,0 +1,21 @@
+   2  PE-QuickJs-Engine v
+   1  psychenginemods
+   1  name:String, ?folder:String = "psychenginemods"
+   1  ========== Psych Engine session log ==========
+   1  This file is not inside Psych Engine.
+   1  PE-QuickJs-Engine
+   1  PE-QuickJs-Engine Vulkan
+   1  Error: File loaded is not a Psych Engine/FNF 0.2.x.x chart.
+   1  Error: File loaded is not a valid Psych Engine autosave.
+   1  Error: File loaded is not a Psych Engine chart/events file.
+   1  Open a Psych Engine Chart JSON
+   1  Error: File loaded is not a Psych Engine 0.x.x/FNF 0.2.x.x chart.
+   1  Psych Engine by
+   1  Psych Engine Team
+   1  Main Programmer and Head of Psych Engine
+   1  Main Artist/Animator of Psych Engine
+   1  Ex-Programmer of Psych Engine
+   1  Creator of Pessy, Psych Engine's mascot.
+   1  Psych Engine Discord
+   1   save settings there. Grant "All files access" (Settings -> Apps -> Psych Engine -> Permissions) or create
+   1  File is not inside Psych Engine's folder!

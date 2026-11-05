@@ -1,0 +1,30 @@
+# 包名更换残留
+
+APK 内同时存在两套同名类,旧包名 com.shadowmario.psychengine 未被清理。
+
+
+## smali_classes5/DingLing/pe/QuickJs/Engine
+       952 B  BuildConfig.smali
+       310 B  MainActivity.smali
+      8507 B  MemoryInfoHelper.smali
+     18538 B  Qz7.smali
+      2619 B  VulkanSurfaceHelper$1.smali
+      1924 B  VulkanSurfaceHelper$2.smali
+      1924 B  VulkanSurfaceHelper$3.smali
+      1554 B  VulkanSurfaceHelper$4.smali
+      6067 B  VulkanSurfaceHelper$5.smali
+      1990 B  VulkanSurfaceHelper$6.smali
+       832 B  VulkanSurfaceHelper$7.smali
+    156254 B  VulkanSurfaceHelper.smali
+
+## smali_classes6/com/shadowmario/psychengine
+       311 B  MainActivity.smali
+      8512 B  MemoryInfoHelper.smali
+      2632 B  VulkanSurfaceHelper$1.smali
+      1934 B  VulkanSurfaceHelper$2.smali
+      1934 B  VulkanSurfaceHelper$3.smali
+      1557 B  VulkanSurfaceHelper$4.smali
+      6084 B  VulkanSurfaceHelper$5.smali
+      2001 B  VulkanSurfaceHelper$6.smali
+       835 B  VulkanSurfaceHelper$7.smali
+    156437 B  VulkanSurfaceHelper.smali

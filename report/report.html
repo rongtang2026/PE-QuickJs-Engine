@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PE-QuickJs-Engine 逆向取证报告</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --panel:#ffffff; --ink:#1a1a1a; --ink-2:#4a4a4a; --ink-3:#767676;
+    --line:#e3e2de; --accent:#b4501f; --accent-soft:#fdf2ea;
+    --ok:#2f6b4f; --ok-soft:#eef6f1; --warn:#8a5a00; --warn-soft:#fdf6e7;
+    --bad:#8e2f2f; --bad-soft:#fbeeee;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:56px 28px 100px}
+  header{border-bottom:2px solid var(--ink); padding-bottom:22px; margin-bottom:40px}
+  h1{font-size:30px; line-height:1.3; margin:0 0 14px; letter-spacing:-.4px}
+  .meta{display:flex; flex-wrap:wrap; gap:8px 22px; font-size:13px; color:var(--ink-3)}
+  .meta b{color:var(--ink-2); font-weight:600}
+  code, .mono{
+    font-family:"Cascadia Mono","SF Mono",Consolas,monospace;
+    font-size:12.5px; background:#f0efec; padding:1px 5px; border-radius:3px;
+    word-break:break-all;
+  }
+  h2{font-size:20px; margin:52px 0 18px; padding-left:12px; border-left:3px solid var(--accent); line-height:1.5}
+  h3{font-size:15.5px; margin:30px 0 12px; color:var(--ink)}
+  p{margin:12px 0}
+  ul{margin:10px 0; padding-left:22px}
+  li{margin:6px 0}
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:13.5px; background:var(--panel)}
+  th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{background:#f0efec; font-weight:600; font-size:13px; white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:18px 20px; margin:18px 0}
+  pre{
+    background:#1e1e1c; color:#e8e6e1; padding:16px 18px; border-radius:6px;
+    overflow-x:auto; font-family:"Cascadia Mono","SF Mono",Consolas,monospace;
+    font-size:12.5px; line-height:1.7; margin:16px 0;
+  }
+  pre .c{color:#8f8b82}
+  .callout{border-left:3px solid var(--warn); background:var(--warn-soft); padding:14px 18px; border-radius:0 6px 6px 0; margin:20px 0; font-size:13.5px}
+  .callout.bad{border-color:var(--bad); background:var(--bad-soft)}
+  .callout.ok{border-color:var(--ok); background:var(--ok-soft)}
+  .callout b{color:var(--ink)}
+  .tag{display:inline-block; font-size:11.5px; padding:1px 7px; border-radius:100px; font-weight:600; white-space:nowrap}
+  .t-yes{background:var(--ok-soft); color:var(--ok)}
+  .t-no{background:var(--bad-soft); color:var(--bad)}
+  .t-half{background:var(--warn-soft); color:var(--warn)}
+  .t-unk{background:#efeeea; color:var(--ink-3)}
+  .kpi{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:24px 0}
+  .kpi div{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:14px 16px}
+  .kpi .n{font-size:23px; font-weight:650; letter-spacing:-.5px; display:block; line-height:1.3}
+  .kpi .l{font-size:12px; color:var(--ink-3)}
+  .dim{color:var(--ink-3); font-size:13px}
+  hr{border:none; border-top:1px solid var(--line); margin:44px 0}
+  .foot{font-size:12.5px; color:var(--ink-3); margin-top:56px; padding-top:18px; border-top:1px solid var(--line)}
+  @media print{body{background:#fff} .wrap{padding:0} pre{background:#f4f4f2; color:#1a1a1a}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>PE-QuickJs-Engine 逆向取证报告</h1>
+  <div class="meta">
+    <span><b>对象</b> PEQuickJsEngine-debug-test.apk</span>
+    <span><b>大小</b> 400,750,869 B</span>
+    <span><b>版本</b> 1.1.0 (476)</span>
+    <span><b>日期</b> 2026-11-05</span>
+  </div>
+  <p class="mono" style="margin-top:12px; font-size:11.5px; background:none; padding:0; color:#767676">
+    SHA-256 2a24ebb00bb15efcc2d25eebda88d2067a2386554649d9e77cc0de961bf67142
+  </p>
+</header>
+
+<h2>结论摘要</h2>
+
+<div class="kpi">
+  <div><span class="n">211 / 215</span><span class="l">Lua API 函数名按原名保留</span></div>
+  <div><span class="n">0</span><span class="l">Lua 运行时符号</span></div>
+  <div><span class="n">65</span><span class="l">不同的 vk* 函数</span></div>
+  <div><span class="n">47</span><span class="l">Vulkan 贴图槽上限</span></div>
+</div>
+
+<table>
+  <tr><th style="width:34px">#</th><th>结论</th><th style="width:64px">置信度</th></tr>
+  <tr><td>1</td><td>这是 Psych Engine 0.7.3 的 Haxe 源码分支，<b>不是重写</b>。原生符号保留 <code>endBullshit</code>、<code>reloadAllShit</code>、<code>grpMenuShit</code> 等原版命名</td><td>高</td></tr>
+  <tr><td>2</td><td>Lua <b>运行时被整体移除</b>，但 215 个 API 函数名中 211 个按原名保留，改由 QuickJS 执行</td><td>高</td></tr>
+  <tr><td>3</td><td>QuickJS 集成是真实实现（<code>backend.QuickJS.hx</code>，<code>JS_NewRuntime2</code>/<code>JS_Eval</code>/<code>JS_Call</code>），非占位</td><td>高</td></tr>
+  <tr><td>4</td><td>所谓 Vulkan <b>确实调了 Vulkan API</b>，但只是旁挂渲染：OpenGL 仍在底下运行、单 render pass、贴图槽上限 47，官方文案自称 experimental</td><td>高</td></tr>
+  <tr><td>5</td><td>包内存在<b>完整性校验</b>（<code>Qz7</code> 遍历 ZIP 条目算 SHA-256，<code>Qz7r</code> 决定 <code>scriptsAllowed</code>）</td><td>高</td></tr>
+  <tr><td>6</td><td>与 Apache-2.0 的<b>许可文本义务不符</b>：仓库 <code>license</code> 为 null，APK 内无 LICENSE/NOTICE</td><td>高</td></tr>
+  <tr><td>7</td><td>“APK 里没有资源”的说法<b>不成立</b>：<code>assets/assets/</code> 有 310MB、856 个文件，资源齐全</td><td>高</td></tr>
+</table>
+
+<div class="callout bad">
+  <b>更正</b>：本报告初版曾据一次错误的解包结果（<code>unzip</code> 的 <code>*</code> 通配符不跨目录层级，只解出根目录 2 个文件）判定“assets 为空”。完整解包后该结论作废，已在第 3 节更正并保留方法学教训。
+</div>
+
+<h2>1　方法与可复现性</h2>
+
+<h3>环境</h3>
+<ul>
+  <li>JDK 17 (Temurin 17.0.13+11)、apktool 2.11.1、python 3.13（自写 ELF 字符串提取脚本）</li>
+  <li>jadx 1.5.1 <b>未能产出结果</b>：本机 Java 26 与 JDK 17 下均加载 303 个类后静默退出，故 Java 层证据取自 apktool 的 smali 反汇编</li>
+</ul>
+
+<pre><span class="c"># 清单与资源</span>
+java -jar apktool.jar d -f -s -o apktool_out PEQuickJsEngine-debug-test.apk
+
+<span class="c"># dex -&gt; smali（jadx 不可用时的替代路径）</span>
+java -jar apktool.jar d -f --no-assets -o apktool_full PEQuickJsEngine-debug-test.apk
+
+<span class="c"># native 字符串</span>
+python tools/scan.py lib/arm64-v8a/libApplicationMain.so &lt;quickjs|lua|path|jni&gt;</pre>
+
+<div class="callout">
+  <b>方法学限制</b><br>
+  ① 未做动态分析（未安装运行），全部为静态取证。<br>
+  ② “文件不存在”属推断：基于 <code>.so</code> 内残留的 <code>.hx</code> 路径字符串。Haxe 会为每个参与的类保留源文件名与符号，但空类或纯类型别名可能被误判。关键结论（Lua 运行时移除）已用独立证据交叉验证（<code>lua_*</code> C 符号为 0）。<br>
+  ③ smali 可读性低于 Java，但足以定位 API 调用与常量。
+</div>
+
+<h2>2　包体与清单</h2>
+
+<table>
+  <tr><th>字段</th><th>值</th></tr>
+  <tr><td>package</td><td><code>DingLing.pe.QuickJs.Engine</code></td></tr>
+  <tr><td>versionName / Code</td><td><code>1.1.0</code> / <code>476</code></td></tr>
+  <tr><td>minSdk / targetSdk</td><td><code>21</code> / <code>30</code></td></tr>
+  <tr><td>debuggable</td><td><b style="color:#8e2f2f">true</b></td></tr>
+  <tr><td>主 Activity</td><td><code>DingLing.pe.QuickJs.Engine.MainActivity</code>，继承 <code>org.haxe.lime.GameActivity</code></td></tr>
+  <tr><td>高敏权限</td><td><code>MANAGE_EXTERNAL_STORAGE</code>、<code>READ_PHONE_STATE</code>、<code>READ/WRITE_EXTERNAL_STORAGE</code></td></tr>
+</table>
+
+<p>清单结构基本是 lime 模板原样输出，连 iOS 专用键 <code>SDL_ENV.SDL_IOS_ORIENTATIONS</code> 都保留着。</p>
+
+<h3>2.1　一个包名，两份类</h3>
+<p>反汇编出 303 个类，其中 <code>DingLing/pe/QuickJs/Engine/</code> 14 个，<code>com/shadowmario/psychengine/</code> <b>10 个同名类残留</b>（MainActivity、MemoryInfoHelper、VulkanSurfaceHelper 及 7 个内部类）。两套 MainActivity 内容完全相同，都是空的 <code>GameActivity</code> 子类。<code>VulkanSurfaceHelper.smali</code> 新包名下 6,249 行、57 个方法、156KB，旧包名下另存一份。</p>
+<p>这是<b>改包名后未清理旧生成文件</b>的残留，给 APK 增加约 170KB 无效字节。</p>
+
+<h3>2.2　体积构成</h3>
+<table>
+  <tr><th>组件</th><th>大小</th></tr>
+  <tr><td><code>lib/arm64-v8a/libApplicationMain.so</code></td><td>49.6 MB</td></tr>
+  <tr><td><code>lib/arm64-v8a/libvlc.so</code></td><td>43.2 MB</td></tr>
+  <tr><td><code>assets/assets/</code></td><td>310 MB</td></tr>
+  <tr><td>其余（liblime、libc++、dex、res）</td><td>~10 MB</td></tr>
+</table>
+
+<h2>3　资源：不是“没打包”，是“打包了但门口没铺路”</h2>
+
+<pre>assets/
+├── do NOT readme.txt          4,326 B   原版 FNF 的 readme（含 "i stole this from stamper"）
+├── modsList.txt               0 B       空文件
+└── assets/                    310 MB    真正的游戏资源
+    ├── songs/                 151 MB
+    ├── shared/                 88 MB    characters/data/images/music/scripts/sounds/stages/weeks
+    ├── videos/                 27 MB
+    ├── week1..week7, weekend1  ~40 MB
+    ├── fonts/                 8.1 MB
+    └── embed/                  11 KB</pre>
+
+<p>共 871 个文件，资源是<b>齐的</b>：week1–7、weekend1 的图、音、谱都在。值得注意的只有两点：</p>
+<ul>
+  <li><b>多套了一层 <code>assets/assets/</code></b>。Psych 的 <code>Project.xml</code> 把 <code>assets/</code> 整体打进 APK，运行时路径成了 <code>assets/assets/...</code>；引擎的 <code>Paths.hx</code> 若按 <code>assets/</code> 前缀拼路径就需额外适配。</li>
+  <li><code>assets/modsList.txt</code> 是 <b>0 字节</b>，而 mod 根目录是 <code>/storage/emulated/0/.QJsEngine/mods</code>。主游戏资源随包走，<b>mod 必须用户自己放</b>——这正是 issue 里作者回复“你只需要创建 mods 文件夹就行了呀”的由来。</li>
+</ul>
+
+<div class="callout ok">
+  <b>判定</b>：issue 中“374MB 的 APK 没 Assets”不成立。“进场崩溃”若存在，更可能来自 mod 目录缺失或 <code>assets/assets</code> 路径适配，而非资源缺失。具体崩溃点需动态验证，本报告不下结论。
+</div>
+
+<h2>4　源码血缘：与上游 0.7.3 的差集</h2>
+
+<p>方法：从 <code>.so</code> 提取全部 <code>.hx</code> 路径字符串（1,099 条），剔除 flixel/openfl/lime/haxe 依赖，与 GitHub tag <code>0.7.3</code>（commit <code>2dfa277</code>）的 131 个 <code>.hx</code> 做差集。结果：项目侧 169 个文件，<b>新增 75 个，上游有而此处无 37 个</b>。</p>
+
+<h3>4.1　被移除的（关键）</h3>
+<table>
+  <tr><th>文件</th><th>说明</th></tr>
+  <tr><td><code>psychlua/FunkinLua.hx</code></td><td><b>Lua 解释器接入的主体</b>，删除</td></tr>
+  <tr><td><code>psychlua/CallbackHandler.hx</code></td><td>Lua 回调分发，删除</td></tr>
+  <tr><td><code>psychlua/ExtraFunctions.hx</code></td><td>扩展函数注册表，删除</td></tr>
+  <tr><td><code>psychlua/ReflectionFunctions.hx</code></td><td>反射类函数，删除</td></tr>
+  <tr><td><code>psychlua/ShaderFunctions.hx</code></td><td>着色器函数，删除</td></tr>
+  <tr><td><code>psychlua/TextFunctions.hx</code></td><td>文本函数，删除</td></tr>
+  <tr><td><code>psychlua/DeprecatedFunctions.hx</code></td><td>兼容层，删除</td></tr>
+  <tr><td><code>psychlua/FlxAnimateFunctions.hx</code></td><td>FlxAnimate 绑定，删除</td></tr>
+  <tr><td><code>psychlua/HScript.hx</code></td><td>原 HScript 封装（<code>hscript</code> 库本体仍在）</td></tr>
+  <tr><td><code>import.hx</code></td><td>全局 import 文件消失，说明源码结构被改过</td></tr>
+</table>
+
+<h3>4.2　新增的（75 个，摘录）</h3>
+<ul>
+  <li><b>脚本层</b>：<code>backend/QuickJS.hx</code>、<code>psychlua/FunkinJS.hx</code>、<code>backend/ScriptContext.hx</code>、<code>backend/MenuScriptHost.hx</code></li>
+  <li><b>渲染层</b>：<code>backend/VulkanAndroid.hx</code>、<code>backend/RenderBackend.hx</code>、<code>render/ModRender.hx</code>、<code>render/ModShader.hx</code>、<code>substates/VulkanWarningSubState.hx</code></li>
+  <li><b>移动端</b>：<code>mobile/</code> 下 14 个（MobileControls、VirtualPad、PianoKeys、MobileTextKeyboard 等）</li>
+  <li><b>后端杂项</b>：<code>CrashLog</code>、<code>NativeCrashHandler</code>、<code>HitchLog</code>、<code>LoadTrace</code>、<code>FpsPanelApi</code>、<code>ScoreRank</code>、<code>NoteLanes</code>、<code>Physics</code>、<code>Language</code>、<code>MenuUI</code>、<code>MenuNav</code>、<code>MenuGestures</code>、<code>ApiDocs</code></li>
+</ul>
+
+<h3>4.3　原版痕迹</h3>
+<pre>substates.GameOverSubstate.endBullshit
+states.editors.WeekEditorState.reloadAllShit
+grpMenuShit / optionShit / credTextShit / resetShit
+Psych Engine by / Psych Engine Team</pre>
+<p><b>结论</b>：这是 0.7.3 的二次开发分支，主体结构沿用，脚本层被替换，渲染层被旁挂。</p>
+
+<h2>5　脚本层：名字是 Lua 的，引擎是 JS 的</h2>
+
+<h3>5.1　Lua 确实被拔了</h3>
+<pre>^lua_[a-z]      0 条
+^luaL_[a-z]     0 条
+LuaJIT          0 条
+lua_newstate    0 条
+lua_pcall       0 条</pre>
+<p><b>Lua 运行时被物理移除</b>，不是“隐藏开关”或“保留但禁用”。</p>
+
+<h3>5.2　但 API 名全留着</h3>
+<p>从上游 <code>source/psychlua/*.hx</code> 提取 <code>add_callback(lua, "name", ...)</code> / <code>.set("name", ...)</code> 注册的函数名共 <b>215 个</b>；本 APK 中按原名存在 <b>211 个（98%）</b>。缺的 4 个是：</p>
+<pre>getHits / getMisses / getGlobalFromScript / setGlobalFromScript</pre>
+<p><code>psychlua.FunkinJS</code> 暴露 124 个方法，注册器按域切分：</p>
+<pre>registerCoreFunctions      registerGameFunctions     registerGameFunctions2
+registerInputFunctions     registerMenuFunctions     registerFileFunctions
+registerBackendFunctions    registerAnimateFunctions</pre>
+<p>连 <code>psychlua.FunkinJS.initLuaShader</code> 这种名字里带 Lua 的方法也保留着。</p>
+
+<div class="callout">
+  <b>结论</b>：所谓“对 Lua 的兼容”，是<b>函数名兼容</b>，不是脚本兼容。<code>.lua</code> 文件无法直接运行（没有解释器），但把 <code>makeLuaSprite(...)</code> 改写成 JS 语法后可以调用同名实现。这解释了社区反弹为何最大——老 mod 一行都跑不了，学习成本却不降。
+</div>
+
+<h3>5.3　QuickJS 集成是真的</h3>
+<p><code>backend/QuickJS.hx</code> 方法名完整保留：</p>
+<pre>new / eval / call / hasFunction / setGlobal / getGlobal
+runPendingJobs / handleNative / onDispatch / boot
+encodeResult / encodeArgs / parseResult / close</pre>
+<p>底层调用 <code>JS_NewRuntime2</code>、<code>JS_Eval</code>、<code>JS_Call</code>、<code>JS_CallConstructor</code>、<code>JS_EvalFunction</code>。版本串：</p>
+<pre>QuickJS memory usage -- 2026-06-04 version, %d-bit, malloc limit: %ld</pre>
+
+<h2>6　Vulkan：真调了 API，但是旁挂的</h2>
+
+<h3>6.1　实现深度</h3>
+<p><code>libApplicationMain.so</code> 中出现 <b>65 个不同的 <code>vk*</code> 函数</b>，覆盖 instance/device 创建、swapchain、render pass、pipeline、descriptor、command buffer、image 上传、present 全链路：</p>
+<pre>vkCreateInstance / vkCreateDevice / vkCreateAndroidSurfaceKHR
+vkCreateSwapchainKHR / vkAcquireNextImageKHR / vkQueuePresentKHR
+vkCreateRenderPass / vkCreateGraphicsPipelines / vkCmdDraw
+vkCmdCopyBufferToImage / vkUpdateDescriptorSets / vkQueueSubmit</pre>
+<p>但这套实现有明显边界：</p>
+<ul>
+  <li>没有深度附件、没有 MSAA、多 render pass，<code>vkCmdBeginRenderPass</code> 只有一对</li>
+  <li>贴图槽<b>硬上限 47</b>，日志原文：<code>[VulkanAndroid] texture slots are full (47), further sprites will not be drawn</code></li>
+  <li>引擎自己的说明：<code>OpenGL keeps running underneath until the Vulkan path fully replaces it</code> —— Vulkan 是<b>覆盖层</b>，OpenGL 仍在跑</li>
+  <li>切换前有独立警告页 <code>substates/VulkanWarningSubState</code>，文案 <code>The Vulkan renderer is still experimental.</code></li>
+</ul>
+
+<h3>6.2　Java 侧的 “VulkanSurfaceHelper” 其实是 Canvas 文字层</h3>
+<p>该类 6,249 行 smali、57 个方法，但<b>不含任何 OpenGL/EGL/Vulkan API 调用</b>（<code>android/opengl</code>、<code>javax/microedition/khronos</code>、<code>libvulkan</code> 命中均为 0）。实际工作是：</p>
+<pre>Canvas.drawText ×4        Paint.setTextSize / setColor / setShadowLayer
+Typeface.DEFAULT_BOLD     Bitmap.createBitmap / setPixel / getPixels / recycle</pre>
+<p>即管理一个 <code>SurfaceView</code>，把游戏 Surface 交给 native，同时用 Canvas 画 HUD 文字与诊断信息。native 通过 <code>nativePushTextQuad</code>、<code>nativeSetHudValues</code>、<code>nativeGetHudLine</code> 与之通信。</p>
+
+<div class="callout ok">
+  <b>判定</b>：issue 中“Vulkan 后端完整度不达 3%”是夸张修辞。实际是一个<b>可运行的最小 2D Vulkan 渲染器 + OpenGL 兜底</b>，能画场景、角色、音符、HUD，但受 47 贴图槽与单 pass 限制，离“替换渲染后端”还有距离。
+</div>
+
+<h2>7　完整性校验：闭源之外还有防改</h2>
+
+<p><code>DingLing/pe/QuickJs/Engine/Qz7</code>（18.5KB smali）做了三件事：</p>
+<ul>
+  <li><code>b()/c()/d()</code> 取 <code>PackageInfo</code>、读签名（<code>GET_SIGNATURES</code>）</li>
+  <li>遍历 ZIP 条目（<code>classes*.dex</code>、<code>assets/</code>、<code>lib/</code>、<code>res/</code>、<code>META-INF/</code>、<code>AndroidManifest.xml</code>、<code>resources.arsc</code>），用 <b>SHA-256</b> 逐项摘要，与内嵌 32 字节表比对（<code>v()[B</code>、<code>a(I)I</code> 按下标取 4 字节大端）</li>
+  <li><code>okRoot(String)</code> / <code>okSo(String)</code> —— 检查 root 痕迹与 so 是否存在</li>
+</ul>
+<p>对应 Haxe 侧 <code>backend/Qz7r.hx</code>（字段 <code>k/_f/_v/_w/_c/_m/_z</code>，方法 <code>boot</code>，属性 <code>scriptsAllowed</code>）。失败文案：</p>
+<pre>This copy of the game was modified or re-signed.</pre>
+<p><b>含义</b>：改包名、去 dex、换 so、重签名都会命中；命中后 <code>scriptsAllowed</code> 为 false，脚本功能被关。当前包 <code>debuggable=true</code> 且为 debug 签名，说明这是测试构建，不是 <code>r-</code> 正式版。</p>
+
+<h2>8　协议合规性</h2>
+
+<table>
+  <tr><th>项</th><th>状态</th></tr>
+  <tr><td>上游 Psych Engine</td><td>Apache License 2.0（GitHub API <code>license.spdx_id = Apache-2.0</code>）</td></tr>
+  <tr><td>本项目仓库</td><td><code>license: null</code>，README 明示“我不想走老一辈的老路”</td></tr>
+  <tr><td>APK 内许可文件</td><td>全量检索 <code>license|notice|copying</code>，仅 <code>NotoSansSC-LICENSE.txt</code></td></tr>
+  <tr><td>归属声明</td><td><code>Psych Engine by</code> 等字符串留在 <code>.so</code>，但无版权声明文本、无许可证副本、无 NOTICE</td></tr>
+  <tr><td>第三方</td><td><code>libvlc.so</code>（LGPL-2.1+）随包分发，无许可证与源码获取说明</td></tr>
+</table>
+
+<h3>Apache-2.0 的具体义务</h3>
+<p>Apache-2.0 <b>允许</b>闭源分发衍生作品，所以“闭源”本身不违约。争议点在第 4 条：</p>
+<ul>
+  <li><b>§4(a)</b> 向接收者提供本许可证副本 —— 未提供</li>
+  <li><b>§4(b)</b> 修改过的文件须保留显著修改声明 —— 无</li>
+  <li><b>§4(c)</b> 保留作品中原有的版权、专利、商标、归属声明 —— 源码层版权头随 Haxe 编译消失，仅剩非正式 credits</li>
+  <li><b>§4(d)</b> 原作品含 NOTICE 时须附带其内容 —— 未附带</li>
+</ul>
+
+<div class="callout bad">
+  <b>准确表述</b>：闭源合法，<b>但不带许可证副本与归属声明分发不合法</b>。这一点举证成本低、不易反驳，比“抄代码”之类的指控稳。
+</div>
+
+<p><code>libvlc</code> 的 LGPL-2.1 另有要求：动态链接、允许替换库、提供许可证与源码获取途径。当前 <code>libvlc.so</code> 作为独立 so 打包（非静态链入 <code>libApplicationMain.so</code>），理论上可替换以满足重链接要求，但许可证文本与书面声明仍然缺失。</p>
+
+<h2>9　与社区批评的逐条核对</h2>
+
+<table>
+  <tr><th>批评（issue #2/#6）</th><th style="width:78px">是否成立</th><th>依据</th></tr>
+  <tr><td>删掉 Lua 却“兼容” Lua</td><td><span class="tag t-yes">成立</span></td><td>Lua 运行时符号为 0；215 个 API 名保留 211 个</td></tr>
+  <tr><td>引擎实际是 Psych 换皮</td><td><span class="tag t-yes">成立</span></td><td>原版命名 <code>endBullshit</code> 等、credits、文件树重合</td></tr>
+  <tr><td>Vulkan 完整度极低</td><td><span class="tag t-half">部分成立</span></td><td>65 个 vk 函数、47 槽上限、OpenGL 兜底、自称 experimental</td></tr>
+  <tr><td>APK 里没有 Assets</td><td><span class="tag t-no">不成立</span></td><td><code>assets/assets/</code> 310MB / 856 文件齐全；需自建的是 <code>mods/</code></td></tr>
+  <tr><td>锁 720P 分辨率</td><td><span class="tag t-unk">未验证</span></td><td>本次未做动态测试</td></tr>
+  <tr><td>远古按钮贴图</td><td><span class="tag t-unk">未验证</span></td><td>属素材层面，与逆向证据无关</td></tr>
+  <tr><td>作者回复态度恶劣</td><td><span class="tag t-yes">有记录</span></td><td>issue #2：“用不惯就用别的引擎去 别搁这瞎逼逼”</td></tr>
+  <tr><td>作者回复疑似 AI 生成</td><td><span class="tag t-half">间接证据</span></td><td>issue #6 回复结尾附 <code>chat.deepseek.com/share/…</code> 链接</td></tr>
+</table>
+
+<h2>10　产物与复现要点</h2>
+
+<pre>D:/FNF/job/_re/
+├── tools/            jadx 1.5.1 / apktool 2.11.1 / JDK17 / scan.py
+├── raw/              7 个 dex + 二进制清单 + resources.arsc
+├── full/             完整解包（含 assets 310MB）
+├── apktool_out/      清单与资源（-s 模式）
+├── apktool_full/     smali 反汇编（303 个类）
+├── native/           arm64-v8a 四个 so
+├── upstream/         上游 psychlua/*.hx（0.7.3）
+├── hx_paths.json     .so 内提取的 1099 条 .hx 路径
+├── added_files.json  新增 75 个源文件
+├── lua_present.txt   211 个按原名保留的 Lua API
+└── lua_missing.txt   缺失的 4 个</pre>
+
+<ul>
+  <li><code>unzip</code> 的 <code>*</code> 通配符<b>不跨目录层级</b>，提取 <code>assets/*</code> 只会得到根目录两个文件；须整包解或逐个前缀匹配。这是本报告初版误判的直接原因。</li>
+  <li>jadx 在本机不可用（Java 26/17 均在加载类后异常退出），apktool 的 smali 输出是可靠替代。</li>
+  <li>判断“Haxe 编译产物里某类是否存在”，看 <code>.so</code> 里的 <code>.hx</code> 路径与符号串即可——Haxe 不剥离这些信息。</li>
+</ul>
+
+<div class="foot">
+  静态取证，未运行 APK。所有条目均可按附录命令复现；涉及“不存在”的判断请结合第 1 节方法学限制阅读。
+</div>
+
+</div>
+</body>
+</html>

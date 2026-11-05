@@ -1,0 +1,12 @@
+   2  /storage/emulated/0/.QJsEngine/
+   2  /storage/emulated/0/.QJsEngine/crash/
+   1  /storage/emulated
+   1  /sdcard
+   1  /storage/emulated/0/Android/data/DingLing.pe.QuickJs.Engine/files/
+   1  /storage/emulated/0/Android/data/DingLing.pe.QuickJs.Engine/files/boot_native.txt
+   1  /storage/emulated/0/Android/data/DingLing.pe.QuickJs.Engine/files/vk_quads.bin
+   1  /storage/emulated/0/.QJsEngine/load_log.txt
+   1  /storage/emulated/0/.QJsEngine/mods
+   1  /storage/emulated/0/.QJsEngine
+   1  /storage/emulated/0/.PsychEngine
+   1  /storage/emulated/0/.qjs_probe
