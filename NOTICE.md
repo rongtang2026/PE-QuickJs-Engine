@@ -6,7 +6,7 @@
 
 ## 上游作品归属
 
-该 APK 声明基于 **Friday Night Funkin': Psych Engine 0.7.3**；经文件集比对，其源码与资源分布更接近 tag `1.0`（见 README 第 4 节）。两个 tag 均以同一许可发布，本仓库据此引用。
+该 APK 声明基于 **Friday Night Funkin': Psych Engine 0.7.3**；经文件集比对，其源码与资源分布更接近 tag `1.0`（见 v5 报告第 4 节）。两个 tag 均以同一许可发布，本仓库据此引用。
 
 - 项目：https://github.com/ShadowMario/FNF-PsychEngine
 - 涉及版本：tag `0.7.3`（commit `2dfa277`）与 tag `1.0`
@@ -19,7 +19,7 @@ Friday Night Funkin' 本体与游戏素材版权归 ninjamuffin99、PhantomArcad
 
 ## 分析结论的边界
 
-本仓库只陈述可复现的静态证据，不对作者个人作评价。涉及"某文件不存在"的判断基于编译产物中的符号与路径字符串推断，方法学限制见 README 第 1 节。
+本仓库只陈述可复现的静态证据，不对作者个人作评价。涉及"某文件不存在"的判断基于编译产物中的符号与路径字符串推断，方法学限制见 v5 报告第 1 节。
 
 ## 与本案无关的第三方
 
