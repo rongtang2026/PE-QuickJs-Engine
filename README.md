@@ -1,21 +1,49 @@
-# 我把 PE-QuickJs-Engine 的 APK 拆了
+# 我把 PE-QuickJs-Engine 的三个发布包都拆了
 
-**一个 400MB 的"移动端 FNF 引擎",拆开之后是这样。**
+作者说它基于 Psych Engine 0.7.3。
+**从第一个版本起就是 1.0。**
 
-作者说它基于 Psych Engine 0.7.3。拆完发现:**代码底座是 1.0**。
-作者说它"兼容模组性更上一层楼"。拆完发现:**Lua 运行时一个符号都没有**。
+三个包,同一套流程,数字都在这儿。
 
 ---
 
-## 一分钟版
+## 三个版本摆一起
 
-| 他说的 | 实际的 |
-|---|---|
-| 基于 Psych 0.7.3 | 与 1.0 文件集重合 **130/187**,与 0.7.3 只有 96/187;34 个文件只在 1.0 里,**0 个**只在 0.7.3 里 |
-| 兼容模组 | `lua_*` / `luaL_*` / LuaJIT 符号 **0 个**;219 个 Lua API 函数名**全都在**,但没有解释器,`.lua` 一行都跑不了 |
-| Vulkan 渲染 | 确实有 65 个 `vk*` 函数,但**单 render pass、贴图槽上限 47、投影矩阵写死 1280×720**,OpenGL 仍在底下跑,自己标注 experimental |
-| 正式发布 | 最新 `1.1`(11-04)就是 `debuggable=true` 的 debug 包,按他自己"只有 `r-` 才算正式版"的规则不算正式版 |
-| 开源 | 仓库 `license: null`,APK 内无 LICENSE/NOTICE,上游是 Apache-2.0 |
+| | `1.0`<br>10-26 | `r-1.0.0`<br>11-01 | `1.1`<br>11-04 |
+|---|---|---|---|
+| 资产名 | `PsychEngine-debug.apk` | `PEQuickJsEngine-release.apk` | `PEQuickJsEngine-debug-test.apk` |
+| package | `com.shadowmario.psychengine` | `DingLing.pe.QuickJs.Engine` | 同左 |
+| versionName | `0.2.8` | `1.0.0` | `1.1.0` |
+| debuggable | ✔ | — | ✔ |
+| dex 数 | 6 | 1 | 7 |
+| **Lua 运行时** | **有** | 无 | 无 |
+| **Vulkan** | **0 个 `vk*`** | 65 个 | 65 个 |
+| **防改 `Qz7`** | **无** | 有 | 有 |
+| 投影写死 1280×720 | — | 无 | **有** |
+| 基底 | 1.0 | 1.0 | 1.0 |
+
+---
+
+## 时间线才是重点
+
+**10 月 26 日 —— 第一版**
+
+包名还是 `com.shadowmario.psychengine`,版本号还是 Psych 默认的 `0.2.8`,连元数据都没改。这一版:
+
+- Lua 运行时**完整存在**,`FunkinLua.hx` 在
+- **QuickJS 也已经在了**,`FunkinJS.hx` 同时存在
+- **没有 Vulkan**,`vk*` 函数 0 个
+- **没有防改**
+
+两套脚本引擎并行——他的路线不是"把 Lua 换成 JS",是"先并存,后来直接砍掉"。
+
+**11 月 1 日 —— 一次性换了四样东西**
+
+改包名、删 Lua、上 Vulkan、上防改,全在这一版。也是这一天,宣传视频发了,简介写着"比原先 PE 兼容模组性更上一层楼"。
+
+**11 月 4 日 —— 回到 debug**
+
+`debuggable=true`,签名是 debug 证书。按他自己 README 的规则("只有 `r-` 前缀才是正式版"),这版不算正式发布。而 `1280×720` 的写死投影,也是这一版才出现的。
 
 ---
 
@@ -23,21 +51,19 @@
 
 ```
 219 / 219     Lua API 函数名,一个不落全保留
-   0          Lua 运行时符号
+   0          Lua 运行时符号（r-1.0.0 起）
   47          Vulkan 贴图槽硬上限
 ```
 
-**函数名全抄、引擎换掉**——这是整件事最核心的一句。所有现成 mod 都得改写成 JS,而 API 名字看起来还是原来那套,`makeLuaSprite` 还是 `makeLuaSprite`。
+**函数名全抄、引擎换掉。**所有现成 mod 都要重写成 JS,而 `makeLuaSprite` 还是叫 `makeLuaSprite`。
 
 ---
 
-## 关于"我怎么知道是 1.0,不是 0.7.3"
+## 关于"是不是 1.0"
 
-版本号字符串是可以改的,所以不看它。看两样改不动的东西:
+版本号可以改,所以不看版本号。看两样改不动的东西。
 
-**① 方法名分布**
-
-拿两版都有的 4 个类,比方法差集,再看包里有没有:
+**① 方法名分布**（两版都有的 4 个类,比方法差集,再看包里有没有）
 
 | 类 | 仅 1.0 有 → 包里有 | 仅 0.7.3 有 → 包里有 |
 |---|---|---|
@@ -47,66 +73,61 @@
 | `objects.Note` | 1 → 1 | 0 → 0 |
 | 合计 | **9 → 7** | **7 → 0** |
 
-`Paths` 里 6 个 0.7.3 时代的 mods 路径方法（`getLibraryPath`、`modsAchievements`、`modsShaderVertex`…）**一个都不在了**,换成 1.0 的 `getFolderPath`、`getMultiAtlas`。
+`Paths` 里 6 个 0.7.3 时代的 mods 路径方法（`getLibraryPath`、`modsAchievements`、`modsShaderVertex`…）一个都不在了,换成 1.0 的 `getFolderPath`、`getMultiAtlas`。
 
 移植是加法,旧方法不会消失。**7 → 0 只有一种解释:底座换了。**
 
 **② 资源**
 
-包里带 `weekend1/` 全套、`Voices-Player` / `Voices-Opponent` 拆分人声、`zh-CN.lang`——全是 1.0 的资产约定,0.7.3 没有这些文件。要"改字符串"改到这个程度,得把 310MB 资源一起改。
+三个包都带 `weekend1/` 全套、`Voices-Player`/`Voices-Opponent` 拆分人声、`zh-CN.lang`——全是 1.0 的资产约定,0.7.3 没这些文件。要"改字符串"改到这个程度,得把 308MB 资源一起改。
+
+**③ 时间点**
+
+最早那版（10-26）就已经是 1.0 了。那时还没有后续开发,也就没有"顺手把 1.0 移植进来"的空间。
 
 ---
 
-## 还有一层:他自己加了防改
+## 防改
 
-`Qz7` 这套 Java 探针会查:
+`Qz7` 四类探针:
 
 - 签名证书的 SHA-256
 - 签名者数量
 - **debuggable 标志**（`flags & 0x2`）
-- APK 条目白名单（根目录只放行 3 个文件,`lib/` 只放行 4 个 `.so`）
+- APK 条目白名单（根目录 3 项,`lib/` 4 项）
 
-命中就提示 `This copy of the game was modified or re-signed.`,脚本功能关掉。
+命中提示 `This copy of the game was modified or re-signed.`,脚本功能关闭。
 
-而这份**官方发布的包,`debuggable=true`**,最基础那一条自己就先命中了。
+把 `debuggable` 也算作可疑信号——而 `1.0` 和 `1.1` 两个发布包本身就是 `debuggable=true`。
 
 ---
 
-## 想自己验
+## 自己验
 
 ```bash
-sha256sum PEQuickJsEngine-debug-test.apk
-# 2a24ebb00bb15efcc2d25eebda88d2067a2386554649d9e77cc0de961bf67142
-
-java -jar apktool.jar d -f --no-assets -o out PEQuickJsEngine-debug-test.apk
-grep -c "^.method" out/smali_classes5/DingLing/pe/QuickJs/Engine/Qz7.smali
-
-python scan.py lib/arm64-v8a/libApplicationMain.so lua   # 0 条
+# 三个包都能从 Releases 下到,校验值见各版本报告开头
+python tools/analyze.py <apk> out.json
 ```
 
-命令、原始数据、反汇编都在 [`evidence/`](evidence/)。
+`analyze.py` 输出:清单字段、dex 数与字节、assets 标记（weekend1 / 拆分人声 / zh-CN）、`.so` 内的 Lua 与 QuickJS 符号、`vk*` 函数数、`.hx` 路径集与两个上游 tag 的交集。
+
+原始指标在 [`evidence/metrics/`](evidence/metrics/),1.1 的详证（smali、字符串、资源清单）在 [`evidence/`](evidence/)。
 
 ---
 
-## 版本
+## 版本报告
 
-报告改过五版,每版都在,包括我自己出错的那两版:
-
-| 版本 | 要点 |
-|---|---|
-| [v1](v1/report.md) | 初版。**错了**:误判"APK 里没资源",且误信 0.7.3 |
-| [v2](v2/report.md) | 修正基准为 1.0,补资源与贴图哈希比对 |
-| [v3](v3/report.md) | 收窄范围,去掉与主题无关的争议项 |
-| [v4](v4/report.md) | 补发布归属、修正 Qz7 机制描述、文档不一致 |
-| [v5](v5/report.md) | **当前版**。新增方法级判定,回应"只是移植"的说法 |
-
-改了什么、为什么改,见 [`VERSIONS.md`](VERSIONS.md)。
+| 版本 | 报告 | 一句话 |
+|---|---|---|
+| `1.0` | [md](1.0/report.md) · [html](1.0/report.html) | 1.0 基底,Lua 与 QuickJS 并存,无 Vulkan 无防改,包名未改 |
+| `r-1.0.0` | [md](r-1.0.0/report.md) · [html](r-1.0.0/report.html) | 删 Lua、上 Vulkan、上防改、改包名,同一天 |
+| `1.1` | [md](1.1/report.md) · [html](1.1/report.html) | 回到 debug 构建,`1280×720` 写死投影首次出现 |
 
 ---
 
 ## 边界
 
-- 全部为**静态取证**,没有安装运行,不含任何动态测试结论。
-- 只就可复现的技术事实作说明,不对作者个人作评价。
-- "文件不存在"类判断基于编译产物中的符号与路径字符串,方法学限制写在每版报告第 1 节。
-- 反汇编内容来自上述 APK,其上游为 Apache-2.0,许可证全文见 [`LICENSE-APACHE-2.0.txt`](LICENSE-APACHE-2.0.txt),来源说明见 [`NOTICE.md`](NOTICE.md)。
+- 全部为**静态取证**,没有安装运行,不含动态测试结论。
+- 只陈述可复现的技术事实,不评价作者个人。
+- "文件不存在"类判断基于编译产物中的符号与路径字符串,限制写在每份报告的方法一节。
+- 反汇编内容来自上述三个 APK,其上游为 Apache-2.0,许可证见 [`LICENSE-APACHE-2.0.txt`](LICENSE-APACHE-2.0.txt),来源说明见 [`NOTICE.md`](NOTICE.md)。
