@@ -6,10 +6,10 @@
 
 ## 上游作品归属
 
-该 APK 是 **Friday Night Funkin': Psych Engine 0.7.3** 的二次开发产物。
+该 APK 声明基于 **Friday Night Funkin': Psych Engine 0.7.3**；经文件集比对，其源码与资源分布更接近 tag `1.0`（见 README 第 4 节）。两个 tag 均以同一许可发布，本仓库据此引用。
 
 - 项目：https://github.com/ShadowMario/FNF-PsychEngine
-- 版本：tag `0.7.3`（commit `2dfa277`）
+- 涉及版本：tag `0.7.3`（commit `2dfa277`）与 tag `1.0`
 - 许可：Apache License 2.0
 - 版权：ShadowMario 及 Psych Engine 贡献者
 
