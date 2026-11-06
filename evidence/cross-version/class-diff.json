@@ -1,0 +1,1477 @@
+[
+{
+"file": "states/PlayState.hx",
+"removed": [
+"initHScript",
+"onVideoEnd",
+"startHScriptsNamed",
+"startLuasNamed"
+],
+"added": [
+"addCustomFCBadge",
+"addCustomRank",
+"addCustomRating",
+"addHealthIconBand",
+"addNoteLane",
+"applyNoteLane",
+"boot",
+"buildDefaultRanks",
+"callOnGameplayScripts",
+"callOnJS",
+"clampHealth",
+"clearCustomFCBadges",
+"clearCustomRanks",
+"clearCustomRatings",
+"clearFCBadgeRequirements",
+"clearHealthIconFrames",
+"create",
+"createCountdownSprite",
+"getFCBadge",
+"getFCBadgeMaxHits",
+"getFCBadgeMaxMisses",
+"getFCBadgeMinAccuracy",
+"getFCBadgeMinHits",
+"getFCBadgeNames",
+"getFCBadgePriority",
+"getHealthDisplayMax",
+"getHealthIcon",
+"getHealthIconBands",
+"getHealthIconFrame",
+"getHealthIconFrameCount",
+"getHealthPercent",
+"getHealthPercentInt",
+"getKeyFromEvent",
+"getLastFinishedVideo",
+"getNoteKeyCount",
+"getNoteLaneCount",
+"getRank",
+"getRankAccuracy",
+"getRankAt",
+"getRankNameFor",
+"getRankNames",
+"getRating",
+"getRatingHits",
+"getRatingImage",
+"getRatingMod",
+"getRatingNames",
+"getRatingNoteSplash",
+"getRatingScore",
+"getRatingWindow",
+"getVideoLayout",
+"getVideoName",
+"hasAnyScripts",
+"isNoteLaneEnabled",
+"isVideoFinished",
+"isVideoPlaying",
+"laneSpacingFor",
+"new",
+"onFocus",
+"parseHealthIconBands",
+"parseHealthIconNumber",
+"pauseVideo",
+"purgeDisabledLanes",
+"purgeLaneNotes",
+"rebuildStaticArrows",
+"refreshFCBadge",
+"refreshHealthBarBounds",
+"refreshInputKeys",
+"refreshLaneLayout",
+"refreshRank",
+"refreshRatingHitWindow",
+"releaseSongAudio",
+"removeCustomFCBadge",
+"removeCustomRating",
+"removeNoteLane",
+"removeRank",
+"rescaleExistingNotes",
+"resetNoteLanes",
+"resetRanks",
+"resetRatings",
+"resumeAfterFocus",
+"resumeVideo",
+"setFCBadgeMaxMisses",
+"setFCBadgeMinAccuracy",
+"setFCBadgePriority",
+"setFCBadgeRequirement",
+"setHealthBounds",
+"setHealthDisplayMax",
+"setHealthIconFrames",
+"setHealthMax",
+"setHealthMin",
+"setHealthPercent",
+"setNoteKeyCount",
+"setNoteLaneAlpha",
+"setNoteLaneCount",
+"setNoteLaneEnabled",
+"setNoteLaneOffset",
+"setOnJS",
+"setRankAccuracy",
+"setRatingHits",
+"setRatingImage",
+"setRatingMod",
+"setRatingNoteSplash",
+"setRatingScore",
+"setRatingWindow",
+"setVideoAutoLayout",
+"setVideoPos",
+"setVideoScale",
+"setVideoSize",
+"setupNoteLanes",
+"sortByTime",
+"sortFCBadges",
+"sortHitNotes",
+"sortRanks",
+"sortRatings",
+"startJSNamed",
+"startJSScriptsFolder",
+"startNamedScripts",
+"update",
+"updateBackendWorldVisibility",
+"updateStrumDefaultsOnScripts",
+"videoCharacterIndex",
+"videoFillScreen",
+"videoFitScreen"
+]
+},
+{
+"file": "states/MainMenuState.hx",
+"removed": [],
+"added": [
+"addMenuItem",
+"addMenuItemGraphic",
+"addMenuItemSprite",
+"addScriptButton",
+"boot",
+"clickScriptButton",
+"columnName",
+"confirmSelection",
+"destroy",
+"gestureTapAllowed",
+"getCurrentItem",
+"getMenuItem",
+"getMenuItemCount",
+"getMenuItemEnabledAt",
+"getMenuItemId",
+"getMenuItemIndex",
+"getSelectedItem",
+"handleOption",
+"handleTouchInput",
+"handleTouchTap",
+"isMenuItemUsable",
+"isSideItemUsable",
+"layoutMenuItems",
+"markMenuLeft",
+"new",
+"refreshMenu",
+"registerMenuItem",
+"removeMenuItemAt",
+"removeScriptButton",
+"resolveMenuState",
+"selectMenuItem",
+"setBackgroundImage",
+"setColumnByName",
+"setMenuItemColorAt",
+"setMenuItemEnabledAt",
+"setMenuItemVisibleAt",
+"setOptionCallback",
+"setOptionPage",
+"setOptionState",
+"setScriptButtonCallback",
+"sideItem",
+"switchToMenuState",
+"unlockMenu",
+"updateScriptButtons"
+]
+},
+{
+"file": "unused/Snd.hx",
+"removed": [
+"dispose",
+"f",
+"fadePlay",
+"fadePlayLoop",
+"fadeStop",
+"getData",
+"getDuration",
+"getDurationMs",
+"getDurationSec",
+"getPlayCursorMs",
+"getPlayCursorSec",
+"getVolume",
+"isComplete",
+"isLoaded",
+"isPlaying",
+"mute",
+"new",
+"onComplete",
+"onEndOnce",
+"pause",
+"play",
+"playLoop",
+"poolBack",
+"refresh",
+"refreshAll",
+"reset",
+"resume",
+"setNbLoops",
+"setPanning",
+"setPlayCursorMs",
+"setPlayCursorSec",
+"setVolume",
+"start",
+"startNoStop",
+"stop",
+"toggleMute",
+"trunk",
+"tweenPan",
+"tweenVolume",
+"unmute"
+],
+"added": []
+},
+{
+"file": "states/FreeplayState.hx",
+"removed": [],
+"added": [
+"_updateSongLastDifficulty",
+"addScriptButton",
+"boot",
+"confirmSong",
+"destroyFreeplayVocals",
+"getDifficultyIndex",
+"getDifficultyNameAt",
+"getSelectedIndex",
+"getSelectedSong",
+"getSongCharacterAt",
+"getSongColorAt",
+"getSongCount",
+"getSongNameAt",
+"getTouchMode",
+"handlePointerInput",
+"isPreviewPlaying",
+"markMenuLeft",
+"normalizeTouchMode",
+"playSong",
+"removeScriptButton",
+"resolveSongIndex",
+"selectSongByIndex",
+"setDifficultyValue",
+"setScriptButtonCallback",
+"setSongAction",
+"setTouchMode",
+"songAtPointer",
+"songKey",
+"updateScriptButtons"
+]
+},
+{
+"file": "debug/FPSCounter.hx",
+"removed": [],
+"added": [
+"__enterFrame",
+"applyFontFormat",
+"boot",
+"currentTextColor",
+"formatDataMemory",
+"formatMegas",
+"formatMemory",
+"formatResident",
+"getSystemInfo",
+"layoutBackground",
+"onPanelClick",
+"opaqueColor",
+"refreshBackgroundVisibility",
+"resetPanel",
+"sampleMemory",
+"setBackgroundColor",
+"setBackgroundImage",
+"setBackgroundVisible",
+"setCollapsed",
+"setFontSize",
+"setTextColor",
+"toggleCollapsed",
+"updateScale"
+]
+},
+{
+"file": "states/StoryMenuState.hx",
+"removed": [],
+"added": [
+"addScriptButton",
+"boot",
+"confirmWeek",
+"getDifficultyIndex",
+"getDifficultyName",
+"getSelectedWeekId",
+"getSelectedWeekIndex",
+"getWeekCount",
+"getWeekIdAt",
+"getWeekNameAt",
+"getWeekSongsAt",
+"handlePointerInput",
+"isWeekLockedAt",
+"markMenuLeft",
+"new",
+"removeScriptButton",
+"resolveWeekIndex",
+"selectWeekByIndex",
+"setScriptButtonCallback",
+"setWeekAction",
+"updateScriptButtons",
+"weekAt",
+"weekAtPointer"
+]
+},
+{
+"file": "objects/VideoSprite.hx",
+"removed": [],
+"added": [
+"applyCustomLayout",
+"applyFormat",
+"boot",
+"fillScreen",
+"finishVideo",
+"fitScreen",
+"getVideoHeight",
+"getVideoWidth",
+"getVideoX",
+"getVideoY",
+"moveCameraBelow",
+"muteMenuMusic",
+"onFormatSetup",
+"onVideoEnded",
+"play",
+"setAutoLayout",
+"setRate",
+"setVideoPosition",
+"setVideoScale",
+"setVideoSize",
+"topCamera",
+"unmuteMenuMusic"
+]
+},
+{
+"file": "states/stages/Template.hx",
+"removed": [
+"beatHit",
+"closeSubState",
+"countdownTick",
+"create",
+"createPost",
+"destroy",
+"eventCalled",
+"eventPushed",
+"eventPushedUnique",
+"goodNoteHit",
+"noteMiss",
+"noteMissPress",
+"openSubState",
+"opponentNoteHit",
+"sectionHit",
+"startSong",
+"stepHit",
+"update"
+],
+"added": []
+},
+{
+"file": "unused/SndTV.hx",
+"removed": [
+"apply",
+"bezier",
+"clear",
+"count",
+"create_",
+"exists",
+"fastPow2",
+"fastPow3",
+"forceTerminateTween",
+"killWithoutCallbacks",
+"new",
+"onEnd",
+"onError",
+"onUpdate",
+"terminate",
+"terminateAll",
+"terminateTween",
+"update"
+],
+"added": []
+},
+{
+"file": "states/editors/StageEditorState.hx",
+"removed": [
+"addAnimationsUI",
+"formatToJson",
+"loadSprite",
+"playAnim",
+"recalcFilter",
+"reloadAnimList",
+"reloadAnimationDropDown",
+"saveFile",
+"setMetaData",
+"setScale",
+"setScrollFactor",
+"updateFlip",
+"updateScale",
+"updateScroll",
+"updateTextColors",
+"visibilityFilterUpdate"
+],
+"added": [
+"getCompiledAssetFolders"
+]
+},
+{
+"file": "states/editors/ChartingState.hx",
+"removed": [
+"changeEventsValue",
+"copyNotesOnSection",
+"curSecFilter",
+"destroyFromArr",
+"genericEventButton",
+"nextChart",
+"otherSecFilter",
+"updateTime"
+],
+"added": [
+"addNoteSkinNoteTypes",
+"applyKeyCount",
+"beginSusDrag",
+"boot",
+"chartKeyCount",
+"exitChartEditor",
+"rebuildStrumLine",
+"updateSusDrag"
+]
+},
+{
+"file": "backend/Achievements.hx",
+"removed": [],
+"added": [
+"addScore",
+"boot",
+"createAchievement",
+"exists",
+"get",
+"getScore",
+"init",
+"isUnlocked",
+"load",
+"loadAchievementJson",
+"reloadList",
+"save",
+"setScore",
+"startPopup",
+"unlock"
+]
+},
+{
+"file": "backend/WeekData.hx",
+"removed": [],
+"added": [
+"addWeek",
+"applyWeekVisibility",
+"boot",
+"clearWeekHiding",
+"createWeekFile",
+"getCurrentWeek",
+"getWeekFile",
+"getWeekFileName",
+"hiddenWeekNames",
+"isWeekHidden",
+"isWeekNameHidden",
+"reloadWeekFiles",
+"repairWeekFile",
+"setDirectoryFromWeek",
+"setWeekHidden"
+]
+},
+{
+"file": "states/LoadingState.hx",
+"removed": [
+"completedThread"
+],
+"added": [
+"_loaded",
+"_startPool",
+"_threadFunc",
+"addBehindBar",
+"boot",
+"checkLoaded",
+"clearInvalids",
+"getCPUThreadsCount",
+"loadAndSwitchState",
+"loadNextDirectory",
+"preloadCharacter",
+"prepare",
+"prepareToSong",
+"startThreads"
+]
+},
+{
+"file": "backend/Conductor.hx",
+"removed": [],
+"added": [
+"beatToSeconds",
+"boot",
+"calculateCrochet",
+"getBPMFromSeconds",
+"getBPMFromStep",
+"getBeat",
+"getBeatRounded",
+"getCrotchetAtTime",
+"getHitWindow",
+"getStep",
+"getStepRounded",
+"judgeNote",
+"mapBPMChanges"
+]
+},
+{
+"file": "backend/MusicBeatState.hx",
+"removed": [],
+"added": [
+"addVirtualPad",
+"boot",
+"destroy",
+"getState",
+"getVariables",
+"inMenuFamily",
+"isVirtualPadPoint",
+"new",
+"removeVirtualPad",
+"resetState",
+"startTransition",
+"switchState",
+"touchOnVirtualPad"
+]
+},
+{
+"file": "states/editors/WeekEditorState.hx",
+"removed": [
+"addFreeplayUI",
+"changeSelection",
+"updateBG"
+],
+"added": [
+"boot",
+"loadWeek",
+"onLoadCancel",
+"onLoadComplete",
+"onLoadError",
+"onSaveCancel",
+"onSaveComplete",
+"onSaveError",
+"saveWeek"
+]
+},
+{
+"file": "unused/NoteSplashDebugState.hx",
+"removed": [
+"UIEvent",
+"addAnimAndCheck",
+"changeAnim",
+"changeSelection",
+"create",
+"destroy",
+"loadFrames",
+"reloadAnims",
+"saveFile",
+"selectedArray",
+"update",
+"updateOffsetText"
+],
+"added": []
+},
+{
+"file": "backend/Highscore.hx",
+"removed": [],
+"added": [
+"boot",
+"formatSong",
+"getRating",
+"getScore",
+"getWeekScore",
+"load",
+"resetSong",
+"resetWeek",
+"saveScore",
+"saveWeekScore"
+]
+},
+{
+"file": "psychlua/FunkinLua.hx",
+"removed": [
+"addLocalCallback",
+"call",
+"findScript",
+"getErrorMessage",
+"initLuaShader",
+"new",
+"noteTweenFunction",
+"oldTweenFunction",
+"set",
+"stop"
+],
+"added": []
+},
+{
+"file": "backend/ui/PsychUIInputText.hx",
+"removed": [],
+"added": [
+"backspaceChar",
+"boot",
+"confirm",
+"destroy",
+"getAccentCharCode",
+"moveCaret",
+"setGraphicSize",
+"typeChar",
+"updateHitbox"
+]
+},
+{
+"file": "objects/NoteSplash.hx",
+"removed": [
+"copyValues",
+"reset",
+"useDefault"
+],
+"added": [
+"addAnimationToConfig",
+"boot",
+"checkForAnim",
+"createConfig",
+"getSplashSkinPostfix",
+"splashRefWidth"
+]
+},
+{
+"file": "objects/StrumNote.hx",
+"removed": [],
+"added": [
+"addByIndexSafe",
+"addByPrefixSafe",
+"addMissingStrumAnims",
+"boot",
+"getDefaultSkin",
+"getUsableSkin",
+"loadStrumSkin",
+"logOnce",
+"skinFilePath"
+]
+},
+{
+"file": "states/editors/NoteSplashEditorState.hx",
+"removed": [
+"addProperitiesTab",
+"check",
+"onCheck",
+"reloadImage",
+"setAnimDropDown",
+"splash"
+],
+"added": [
+"addPropertiesTab",
+"boot",
+"parseTxt"
+]
+},
+{
+"file": "objects/Alphabet.hx",
+"removed": [
+"setupAlphaCharacter",
+"updateLetterOffset"
+],
+"added": [
+"boot",
+"createFallbackText",
+"destroyFallbackText",
+"fallbackAlignment",
+"needsFallbackText"
+]
+},
+{
+"file": "Main.hx",
+"removed": [
+"init",
+"new",
+"setupGame"
+],
+"added": [
+"boot",
+"exportCrashLogs",
+"runJavaScriptSelfTest"
+]
+},
+{
+"file": "states/TitleState.hx",
+"removed": [],
+"added": [
+"boot",
+"create",
+"hideRendererLogos",
+"makeIntroLogo",
+"new",
+"showRendererLogo"
+]
+},
+{
+"file": "objects/Character.hx",
+"removed": [],
+"added": [
+"boot",
+"destroy",
+"draw",
+"getAnimationName",
+"isAnimationNull"
+]
+},
+{
+"file": "objects/Note.hx",
+"removed": [],
+"added": [
+"boot",
+"destroy",
+"getNoteSkinPostfix",
+"initializeGlobalRGBShader",
+"rescaleLane"
+]
+},
+{
+"file": "cutscenes/DialogueBoxPsych.hx",
+"removed": [],
+"added": [
+"boot",
+"dummy",
+"parseDialogue",
+"updateBoxOffsets"
+]
+},
+{
+"file": "objects/HealthIcon.hx",
+"removed": [],
+"added": [
+"clampFrame",
+"pickFrame",
+"setFrameBands",
+"updateHealth"
+]
+},
+{
+"file": "options/GameplayChangersSubstate.hx",
+"removed": [
+"change",
+"getValue",
+"setChild",
+"setValue"
+],
+"added": []
+},
+{
+"file": "options/NoteOffsetState.hx",
+"removed": [],
+"added": [
+"beatHit",
+"create",
+"new",
+"update"
+]
+},
+{
+"file": "psychlua/CustomSubstate.hx",
+"removed": [],
+"added": [
+"boot",
+"closeCustomSubstate",
+"insertToCustomSubstate",
+"openCustomSubstate"
+]
+},
+{
+"file": "unused/GitarooPause.hx",
+"removed": [
+"changeThing",
+"create",
+"new",
+"update"
+],
+"added": []
+},
+{
+"file": "backend/MusicBeatSubstate.hx",
+"removed": [],
+"added": [
+"addVirtualPad",
+"destroy",
+"removeVirtualPad"
+]
+},
+{
+"file": "objects/Bar.hx",
+"removed": [],
+"added": [
+"boot",
+"regenerateFills",
+"setBarLength"
+]
+},
+{
+"file": "psychlua/HScript.hx",
+"removed": [
+"executeCode",
+"executeFunction",
+"preset"
+],
+"added": []
+},
+{
+"file": "shaders/WiggleEffect.hx",
+"removed": [
+"new",
+"setValue",
+"update"
+],
+"added": []
+},
+{
+"file": "states/FlashingState.hx",
+"removed": [],
+"added": [
+"boot",
+"new",
+"updateItems"
+]
+},
+{
+"file": "states/editors/content/Prompt.hx",
+"removed": [
+"create",
+"destroy",
+"update"
+],
+"added": []
+},
+{
+"file": "states/editors/content/VSlice.hx",
+"removed": [],
+"added": [
+"boot",
+"convertToPsych",
+"export"
+]
+},
+{
+"file": "states/stages/PhillyStreets.hx",
+"removed": [
+"createCan",
+"precacheCasing"
+],
+"added": [
+"new"
+]
+},
+{
+"file": "substates/PauseSubState.hx",
+"removed": [],
+"added": [
+"boot",
+"new",
+"restartSong"
+]
+},
+{
+"file": "backend/BaseStage.hx",
+"removed": [],
+"added": [
+"destroy",
+"trackSound"
+]
+},
+{
+"file": "backend/Controls.hx",
+"removed": [],
+"added": [
+"get",
+"hasAction"
+]
+},
+{
+"file": "backend/CustomFadeTransition.hx",
+"removed": [],
+"added": [
+"destroy",
+"setFinishCallback"
+]
+},
+{
+"file": "backend/Discord.hx",
+"removed": [
+"new",
+"toString"
+],
+"added": []
+},
+{
+"file": "backend/PsychCamera.hx",
+"removed": [],
+"added": [
+"new",
+"update"
+]
+},
+{
+"file": "backend/ui/PsychUIEventHandler.hx",
+"removed": [
+"UIEvent"
+],
+"added": [
+"event"
+]
+},
+{
+"file": "backend/ui/PsychUIRadioGroup.hx",
+"removed": [
+"boxGraphic"
+],
+"added": [
+"boot"
+]
+},
+{
+"file": "options/ModSettingsSubState.hx",
+"removed": [],
+"added": [
+"close",
+"update"
+]
+},
+{
+"file": "options/OptionsState.hx",
+"removed": [],
+"added": [
+"boot",
+"new"
+]
+},
+{
+"file": "psychlua/ReflectionFunctions.hx",
+"removed": [
+"callMethodFromObject",
+"parseInstances"
+],
+"added": []
+},
+{
+"file": "shaders/RGBPalette.hx",
+"removed": [
+"cloneOriginal"
+],
+"added": [
+"copyValues"
+]
+},
+{
+"file": "states/AchievementsMenuState.hx",
+"removed": [
+"updateOptions"
+],
+"added": [
+"sortByID"
+]
+},
+{
+"file": "states/ModsMenuState.hx",
+"removed": [
+"centerOnBg",
+"setButtonVisibility"
+],
+"added": []
+},
+{
+"file": "states/OutdatedState.hx",
+"removed": [
+"create",
+"update"
+],
+"added": []
+},
+{
+"file": "states/editors/DialogueCharacterEditorState.hx",
+"removed": [],
+"added": [
+"boot",
+"new"
+]
+},
+{
+"file": "states/editors/DialogueEditorState.hx",
+"removed": [],
+"added": [
+"boot",
+"new"
+]
+},
+{
+"file": "states/editors/content/FileDialogHandler.hx",
+"removed": [
+"browseEx",
+"saveFileDialog_onSelect"
+],
+"added": []
+},
+{
+"file": "states/editors/content/MetaNote.hx",
+"removed": [
+"updateEventText"
+],
+"added": [
+"boot"
+]
+},
+{
+"file": "states/editors/content/PreloadListSubState.hx",
+"removed": [
+"addToList",
+"updateFilters"
+],
+"added": []
+},
+{
+"file": "states/editors/content/PsychJsonPrinter.hx",
+"removed": [],
+"added": [
+"new",
+"print"
+]
+},
+{
+"file": "states/stages/PhillyBlazin.hx",
+"removed": [
+"setupScale"
+],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/Tank.hx",
+"removed": [
+"picoStressCycle"
+],
+"added": [
+"new"
+]
+},
+{
+"file": "substates/GameOverSubstate.hx",
+"removed": [],
+"added": [
+"boot",
+"resetVariables"
+]
+},
+{
+"file": "unused/LatencyState.hx",
+"removed": [
+"create",
+"update"
+],
+"added": []
+},
+{
+"file": "backend/Rating.hx",
+"removed": [],
+"added": [
+"loadDefault"
+]
+},
+{
+"file": "backend/ui/PsychUIBox.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "backend/ui/PsychUIButton.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "backend/ui/PsychUICheckBox.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "backend/ui/PsychUIDropDownMenu.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "backend/ui/PsychUINumericStepper.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "backend/ui/PsychUISlider.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "cutscenes/DialogueCharacter.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "flxanimate/PsychFlxAnimate.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "objects/MenuCharacter.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "options/ControlsSubState.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "options/GraphicsSettingsSubState.hx",
+"removed": [],
+"added": [
+"onChangeRenderer"
+]
+},
+{
+"file": "options/NotesColorSubState.hx",
+"removed": [],
+"added": [
+"destroy"
+]
+},
+{
+"file": "options/VisualsSettingsSubState.hx",
+"removed": [
+"onChangeFPSCounter"
+],
+"added": []
+},
+{
+"file": "shaders/BlendModeEffect.hx",
+"removed": [
+"new"
+],
+"added": []
+},
+{
+"file": "shaders/OverlayShader.hx",
+"removed": [
+"new"
+],
+"added": []
+},
+{
+"file": "shaders/RainShader.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "states/CreditsState.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/editors/MasterEditorMenu.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/editors/MenuCharacterEditorState.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/Limo.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/Mall.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/MallEvil.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/Philly.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/School.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/SchoolEvil.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/Spooky.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/StageWeek1.hx",
+"removed": [],
+"added": [
+"new"
+]
+},
+{
+"file": "states/stages/objects/PhillyGlowParticle.hx",
+"removed": [],
+"added": [
+"start"
+]
+},
+{
+"file": "states/stages/objects/PhillyTrain.hx",
+"removed": [],
+"added": [
+"destroy"
+]
+},
+{
+"file": "states/stages/objects/TankmenBG.hx",
+"removed": [],
+"added": [
+"boot"
+]
+},
+{
+"file": "unused/ButtonRemapSubstate.hx",
+"removed": [
+"new"
+],
+"added": []
+},
+{
+"file": "backend/ui/PsychUITab.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "cutscenes/CutsceneHandler.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "cutscenes/DialogueBox.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/AchievementPopup.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/AttachedSprite.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/AttachedText.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/BGSprite.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/CheckboxThingie.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/MenuItem.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/MusicPlayer.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "objects/TypedAlphabet.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "options/BaseOptionsMenu.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "options/GameplaySettingsSubState.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "options/LanguageSubState.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "options/Option.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "psychlua/DebugLuaText.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "psychlua/ModchartAnimateSprite.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "psychlua/ModchartSprite.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "shaders/ColorSwap.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/ErrorState.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/editors/CharacterEditorState.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/editors/content/ChartingGridSprite.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/editors/content/EditorPlayState.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/ABotSpeaker.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/BackgroundDancer.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/BackgroundGirls.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/BackgroundTank.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/DadBattleFog.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/DarnellBlazinHandler.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/MallCrowd.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/PhillyGlowGradient.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/PicoBlazinHandler.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "states/stages/objects/SpraycanAtlasSprite.hx",
+"removed": [],
+"added": []
+},
+{
+"file": "substates/ResetScoreSubState.hx",
+"removed": [],
+"added": []
+}
+]
