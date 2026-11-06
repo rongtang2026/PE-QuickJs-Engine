@@ -209,6 +209,7 @@ okSo(path)    仅允许: libApplicationMain.so / libc++_shared.so / liblime.so /
 <li><b>§4(d)</b> 原作品含 NOTICE 时须附带 —— 未附带</li>
 </ul>
 <p><b>准确表述</b>：闭源合法，不带许可证副本与归属声明分发不合法。</p>
+<p>&gt; <b>11-06 补充</b>：本节针对 SHA-256 为 <code>2a24ebb0…</code> 的原始资产。11 月 6 日 11:56，作者在同一 tag 下替换了该资产，新增 <code>assets/LICENSE</code>（Apache-2.0 全文）与 <code>assets/NOTICE</code>（含归属）。现资产 SHA-256 为 <code>18c7a99b…</code>。详见 [<code>../TIMELINE.md</code>](../TIMELINE.md)。</p>
 <p>附带一条：README 声明基于 0.7.3，实际基于 1.0，这属于对来源的失实陈述——与许可义务是两件事，但同样影响可信度。</p>
 <hr>
 <h2>9. 与社区批评的逐条核对</h2>
@@ -315,4 +316,32 @@ Download the official build and install it again.
 [ CONTINUE WITHOUT MODS ]
 </pre>
 <p>而本版 <code>debuggable=true</code>——<code>Qz7.c()</code> 对此返回 1。是否计入判定、会不会让官方包自己弹这个页面，本报告无法静态确定，需要实机验证。</p>
+<hr>
+<h2>14. 工件变更（2026-11-06）</h2>
+<p>本报告分析的 APK 是 <code>1.1</code> 的<b>原始资产</b>：</p>
+<pre>
+SHA-256  2a24ebb00bb15efcc2d25eebda88d2067a2386554649d9e77cc0de961bf67142
+大小      400,750,869
+versionCode 476
+</pre>
+<p>11 月 6 日 11:56（UTC+8），同一 release tag、同一文件名被替换：</p>
+<pre>
+SHA-256  18c7a99b9563540d21bf5cb2e23f8f8b14982399cd79efc5937a9d1d2da42de5
+大小      400,763,276
+versionCode 484        （versionName 仍为 1.1.0）
+</pre>
+<h3>重构建的实际差异</h3>
+<table><tr><th>项</th><th>变化</th></tr><tr><td>新增资源</td><td><code>assets/LICENSE</code>（11,324 B）、<code>assets/NOTICE</code>（2,592 B）</td></tr><tr><td>新增源码</td><td><code>backend/SecStr.hx</code>（方法 <code>boot</code> / <code>h</code> / <code>hexVal</code>）</td></tr><tr><td>Java</td><td><code>BuildConfig</code>（版本号）、<code>Qz7</code> 新增 <code>e()I</code>——检查 <code>splitSourceDirs</code>，即<b>分包 APK 检测</b></td></tr><tr><td>清单 / 签名</td><td>因重构建而变</td></tr><tr><td><code>assets/manifest/default.json</code></td><td>资源索引，随构建变化</td></tr><tr><td><code>classes5.dex</code></td><td>因 <code>Qz7</code> 与 <code>BuildConfig</code> 变化</td></tr></table>
+<h3>未变项</h3>
+<p>复核重构建后的包，第 4、5、6、7 节的结论全部维持：</p>
+<pre>
+基底 1.0（∩1.0=130 / ∩0.7.3=96，只属 0.7.3 的文件 0 个）
+Lua 运行时 0 个符号
+219 个 API 名仍全部以明文存在
+65 个 vk* 函数、1280×720 硬编码投影、47 槽上限
+Qz7 四类探针仍在
+</pre>
+<p><code>SecStr</code> 尚未改变可读性：219 个 API 名依旧明文。</p>
+<h3>结论</h3>
+<p>许可证文本是<b>在报告指出后补上的</b>，不是首发即有。这一点值得记录，但它确实被修好了——原报告第 8 节指出的&quot;无 LICENSE/NOTICE&quot;对现资产已不成立，对原始资产仍成立。</p>
 </div></body></html>

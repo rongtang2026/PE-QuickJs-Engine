@@ -1,0 +1,44 @@
+# 1.1 release 资产被替换（2026-11-06 11:56 UTC+8）
+
+同一个 tag、同一个文件名：PEQuickJsEngine-debug-test.apk
+
+## 前后对比
+
+原资产（本报告分析对象）
+  SHA-256  2a24ebb00bb15efcc2d25eebda88d2067a2386554649d9e77cc0de961bf67142
+  大小      400,750,869
+  versionCode 476 / versionName 1.1.0
+
+现资产
+  SHA-256  18c7a99b9563540d21bf5cb2e23f8f8b14982399cd79efc5937a9d1d2da42de5
+  大小      400,763,276  (+12,407 B)
+  versionCode 484 / versionName 1.1.0（未变）
+
+## 条目级差异（899 个共有条目）
+
+新增条目:
+  assets/LICENSE   11,324 B  Apache License 2.0 全文
+  assets/NOTICE     2,592 B  含 Shadow Mario / Riveren / ninjamuffin99 归属
+
+内容变化（除签名与清单外）:
+  assets/manifest/default.json
+  classes5.dex
+  lib/arm64-v8a/libApplicationMain.so
+
+## 代码层差异
+
+新增源文件:
+  backend/SecStr.hx       方法 boot / h / hexVal
+
+Java 层（303 个类，2 个变化）:
+  BuildConfig      versionCode 476 -> 484
+  Qz7              新增 e()I，229 行，检查 ApplicationInfo.splitSourceDirs 与签名 => 分包 APK 检测
+
+## 未变项（重构建后复核）
+
+  基底 1.0            ∩1.0=130 / ∩0.7.3=96 / only073=0
+  Lua 运行时符号      0
+  Lua API 名可见      219/219
+  vk* 函数            65
+  1280x720 硬编码     存在
+  Qz7 四类探针        仍在
