@@ -115,6 +115,49 @@
 
 ---
 
+## 补充弹药（第二轮,三个包横向比对出来的）
+
+**1. 第一版是 Android Studio 直接导出的 debug 包**
+
+```
+subject : CN=Android Debug, O=Android, C=US
+notBefore: 2026-09-23
+```
+
+包名 `com.shadowmario.psychengine`、版本号 `0.2.8`（Psych 的 `Project.xml` 默认值）、debug 证书。三样都是原样。
+
+**2. 从 1.0 升级到 r-1.0.0 必须卸载重装**
+
+`r-1.0.0` 换成自签密钥（`CN=DingLing`，2026-10-31 生成），与前者签名不一致。用户存档一并丢失。
+
+**3. 1.1 一个素材都没改**
+
+`r-1.0.0 → 1.1`，871 个资源文件 SHA-256 全部相同，差异 **0**。上一版到这一版之间,只动了代码。
+
+**4. 拦截页不是提示框,是全屏**
+
+```
+ILLEGAL PACKAGE MODIFICATION
+...
+all mods and scripts have been disabled in this session.
+[ CONTINUE WITHOUT MODS ]
+```
+
+**5. 每次 API 调用都要 JSON 序列化一次**
+
+引擎注入的预置脚本（`.so` 偏移 `0x25ce7b2`）：
+
+```js
+g.__psych_native = function(name) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  return __psych_dispatch(name, JSON.stringify(args));
+};
+```
+
+QuickJS 没有 JIT，外加每个参数都要 `JSON.stringify` 再走字符串分发。这是设计层面的开销，不是猜测；但我没做基准测试，只说设计。
+
+---
+
 ## 应答话术
 
 有人来反驳时,尽量只回一句 + 一个证据。

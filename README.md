@@ -20,6 +20,7 @@
 | **Vulkan** | **0 个 `vk*`** | 65 个 | 65 个 |
 | **防改 `Qz7`** | **无** | 有 | 有 |
 | 投影写死 1280×720 | — | 无 | **有** |
+| 签名证书 | Android Debug 默认 | 自签 DingLing | 同左 |
 | 基底 | 1.0 | 1.0 | 1.0 |
 
 ---
@@ -56,6 +57,23 @@
 ```
 
 **函数名全抄、引擎换掉。**所有现成 mod 都要重写成 JS,而 `makeLuaSprite` 还是叫 `makeLuaSprite`。
+
+---
+
+## 签名与资源
+
+**签名**：`1.0` 用的是 Android SDK 自带的 debug 证书（`CN=Android Debug`，2026-09-23 生成）；`r-1.0.0` 换成自签密钥（`CN=DingLing`，2026-10-31 生成），`1.1` 沿用同一把。
+
+后果很实际：**从 `1.0` 升级到 `r-1.0.0` 必须卸载重装**，签名对不上。而后两个版本可以互相覆盖。
+
+**资源**：
+
+| 对比 | 结果 |
+|---|---|
+| `1.0` → `r-1.0.0` | 868 个同名文件里 **867 个逐字节相同**，只加了 3 张图（`vulkan_logo`、`opengl_logo`、`warn_icon`） |
+| `r-1.0.0` → `1.1` | 871 个文件 **全部逐字节相同，差异 0** |
+
+也就是说，`1.1` 相对上一版**没有动过任何素材**，只改了代码。
 
 ---
 
@@ -96,9 +114,24 @@
 - **debuggable 标志**（`flags & 0x2`）
 - APK 条目白名单（根目录 3 项,`lib/` 4 项）
 
-命中提示 `This copy of the game was modified or re-signed.`,脚本功能关闭。
+命中后不是弹个提示框，是**全屏拦截页**：
+
+```
+ILLEGAL PACKAGE MODIFICATION
+
+This copy of the game was modified or re-signed.
+To keep your device and your saves safe, all mods and scripts
+have been disabled in this session.
+Download the official build and install it again.
+
+[ CONTINUE WITHOUT MODS ]
+```
+
+继续进去，本局所有 mod 与脚本被禁用。
 
 把 `debuggable` 也算作可疑信号——而 `1.0` 和 `1.1` 两个发布包本身就是 `debuggable=true`。
+
+另一处结构性问题在脚本层：每个 JS API 都由包装器生成，调用时先 `JSON.stringify(args)` 再过字符串分发到 native。QuickJS 本身没有 JIT。这套链路在逐帧调用的场景下开销是结构性的——但没做基准测试，只记录设计，不下性能结论。
 
 ---
 
@@ -119,9 +152,9 @@ python tools/analyze.py <apk> out.json
 
 | 版本 | 报告 | 一句话 |
 |---|---|---|
-| `1.0` | [md](1.0/report.md) · [html](1.0/report.html) | 1.0 基底,Lua 与 QuickJS 并存,无 Vulkan 无防改,包名未改 |
-| `r-1.0.0` | [md](r-1.0.0/report.md) · [html](r-1.0.0/report.html) | 删 Lua、上 Vulkan、上防改、改包名,同一天 |
-| `1.1` | [md](1.1/report.md) · [html](1.1/report.html) | 回到 debug 构建,`1280×720` 写死投影首次出现 |
+| `1.0` | [md](1.0/report.md) · [html](1.0/report.html) | 1.0 基底,Lua 与 QuickJS 并存,无 Vulkan 无防改,包名与版本号都是上游默认值,Android Debug 签名 |
+| `r-1.0.0` | [md](r-1.0.0/report.md) · [html](r-1.0.0/report.html) | 删 Lua（含整个 `llua/` 绑定）、上 Vulkan、上防改、改包名,同一天;资源只加 3 张图 |
+| `1.1` | [md](1.1/report.md) · [html](1.1/report.html) | 回到 debug 构建,`1280×720` 写死投影首次出现;资源与上一版 871 个文件逐字节相同 |
 
 ---
 

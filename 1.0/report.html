@@ -83,4 +83,30 @@ python tools/analyze.py PsychEngine-debug.apk metrics_1.0.json
 </pre>
 <p>原始指标见 [<code>../evidence/metrics/1.0.json</code>](../evidence/metrics/1.0.json)。</p>
 <p><b>限制</b>：静态取证，未安装运行；&quot;文件不存在&quot;基于编译产物中的符号与路径字符串推断，空类或纯类型别名可能漏检。</p>
+<hr>
+<h2>9. 第二轮补充取证</h2>
+<h3>9.1 签名证书</h3>
+<pre>
+subject : CN=Android Debug, O=Android, C=US
+issuer  : CN=Android Debug, O=Android, C=US
+notBefore: 2026-09-23
+SHA-256 : 59:FC:2C:B1:38:B2:71:D3:C4:46:26:64:FB:F9:48:FD:CE:07:B2:9D:52:15:73:11:AB:CF:A5:82:5A:6E:A5:AD
+</pre>
+<p>这是 <b>Android SDK 自带的默认 debug 证书</b>，不是发布用密钥。配合前文&quot;versionName 仍是 Psych 默认的 0.2.8、包名仍是 <code>com.shadowmario.psychengine</code>&quot;，可以判断这一版是开发环境直接导出的 debug 包。</p>
+<h3>9.2 自有 Java 类只有 5 个</h3>
+<pre>
+BuildConfig  MainActivity  MemoryInfoHelper  R  R$drawable
+</pre>
+<p>没有 <code>VulkanSurfaceHelper</code>，没有 <code>Qz7</code>——与&quot;无 Vulkan、无防改&quot;在 native 侧的结论一致。</p>
+<h3>9.3 外部目录用的是 <code>.PsychEngine</code></h3>
+<p><code>.so</code> 内 <code>/storage/emulated/0/.PsychEngine</code> 出现 <b>7 次</b>，<code>.QJsEngine</code> <b>0 次</b>。改目录名是下一版的事。</p>
+<h3>9.4 Lua 绑定的完整程度</h3>
+<p>这一版带完整的 <code>llua/</code> Haxe 绑定包：</p>
+<pre>
+llua/Lua.hx            llua/Convert.hx        llua/LuaCallback.hx
+llua/LuaException.hx   llua/LuaStateStorage.hx
+</pre>
+<p>不是&quot;象征性支持&quot;，是完整接入。这些文件在 <code>r-1.0.0</code> 里全部消失。</p>
+<h3>9.5 没有安全提示页</h3>
+<p><code>ILLEGAL PACKAGE MODIFICATION</code> 那套提示在这一版不存在，与无 <code>Qz7</code> 一致。</p>
 </div></body></html>

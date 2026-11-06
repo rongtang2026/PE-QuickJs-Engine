@@ -426,3 +426,80 @@ guides/getting-started.md  health.md  judgement.md  key-lanes.md
 3. **dex 从 1 个变回 7 个**。`r-1.0.0` 做过合并，`1.1` 又拆开了。
 
 其余特征（1.0 基底、Lua 运行时缺失、219 个 API 名保留、Vulkan 旁挂、47 槽上限、Qz7 四类探针）与上一版一致。
+
+---
+
+## 13. 第二轮补充取证
+
+### 13.1 资源与上一版逐字节相同
+
+`r-1.0.0 → 1.1`，871 个 resource 文件全部按 SHA-256 比对：
+
+```
+共有 871 个，内容不同 0 个
+```
+
+**这一版没有改动任何素材**，连 `manifest/default.json` 都一样。变化只在代码与构建配置。
+
+### 13.2 源码只多了两个文件
+
+```
+backend/MathX.hx
+backend/Physics.hx
+```
+
+移除了 0 个。
+
+### 13.3 签名与 `r-1.0.0` 同一把钥匙
+
+```
+subject : C=CN, O=DingLing, OU=PE-QuickJs-Engine, CN=DingLing
+notBefore: 2026-10-31
+SHA-256 : CF:FB:98:17:23:11:27:4A:7A:B6:27:09:78:EE:C0:44:F1:CE:9A:B5:89:09:E5:B9:C5:54:BC:69:56:51:6F:02
+```
+
+与 `r-1.0.0` 指纹一致，两版可互相覆盖安装。与 `1.0` 不同（那一版用的是 Android Debug 默认证书），从 `1.0` 升上来必须卸载重装。
+
+### 13.4 JS 桥：每次调用都序列化一次
+
+引擎在 QuickJS 上下文里注入一段预置脚本，原文（`.so` 偏移 `0x25ce7b2`）：
+
+```js
+__psych_dispatch(function(g) {
+  g.__psych_invoke = function(fn, argsJson) {
+    var args = argsJson ? JSON.parse(argsJson) : [];
+    return fn.apply(undefined, args);
+  };
+  g.__psych_native = function(name) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return __psych_dispatch(name, JSON.stringify(args));
+  };
+})(globalThis);
+```
+
+每个 API 由包装器动态生成，形如：
+
+```js
+globalThis.<name> = (...args) => __psych_native("<name>", ...args);
+```
+
+也就是说，**任何一次 API 调用都要走 `JSON.stringify(args)` → 字符串分发 → native 解析 → 反射调用**。加上 QuickJS 本身没有 JIT，这套链路在密集调用（如逐帧 `setProperty`）下的开销是结构性的。
+
+这与宣传里的"性能优化"存在张力，但本报告没有做基准测试，不给结论——只记录设计事实。
+
+### 13.5 安全提示页
+
+与 `r-1.0.0` 相同的全屏拦截页：
+
+```
+ILLEGAL PACKAGE MODIFICATION
+
+This copy of the game was modified or re-signed.
+To keep your device and your saves safe, all mods and scripts
+have been disabled in this session.
+Download the official build and install it again.
+
+[ CONTINUE WITHOUT MODS ]
+```
+
+而本版 `debuggable=true`——`Qz7.c()` 对此返回 1。是否计入判定、会不会让官方包自己弹这个页面，本报告无法静态确定，需要实机验证。

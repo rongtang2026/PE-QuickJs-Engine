@@ -1,0 +1,5 @@
+Lcom/shadowmario/psychengine/BuildConfig;
+Lcom/shadowmario/psychengine/MainActivity;
+Lcom/shadowmario/psychengine/MemoryInfoHelper;
+Lcom/shadowmario/psychengine/R$drawable;
+Lcom/shadowmario/psychengine/R;

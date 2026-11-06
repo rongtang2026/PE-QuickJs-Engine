@@ -261,4 +261,58 @@ guides/getting-started.md  health.md  judgement.md  key-lanes.md
 <p>2. <b><code>1280×720</code> 的写死投影出现在这一版</b>。<code>r-1.0.0</code> 里没有这个值，所以&quot;Vulkan 画面被固定 720P&quot;是从 <code>1.1</code> 开始的，不是从 Vulkan 引入时就有。</p>
 <p>3. <b>dex 从 1 个变回 7 个</b>。<code>r-1.0.0</code> 做过合并，<code>1.1</code> 又拆开了。</p>
 <p>其余特征（1.0 基底、Lua 运行时缺失、219 个 API 名保留、Vulkan 旁挂、47 槽上限、Qz7 四类探针）与上一版一致。</p>
+<hr>
+<h2>13. 第二轮补充取证</h2>
+<h3>13.1 资源与上一版逐字节相同</h3>
+<p><code>r-1.0.0 → 1.1</code>，871 个 resource 文件全部按 SHA-256 比对：</p>
+<pre>
+共有 871 个，内容不同 0 个
+</pre>
+<p><b>这一版没有改动任何素材</b>，连 <code>manifest/default.json</code> 都一样。变化只在代码与构建配置。</p>
+<h3>13.2 源码只多了两个文件</h3>
+<pre>
+backend/MathX.hx
+backend/Physics.hx
+</pre>
+<p>移除了 0 个。</p>
+<h3>13.3 签名与 <code>r-1.0.0</code> 同一把钥匙</h3>
+<pre>
+subject : C=CN, O=DingLing, OU=PE-QuickJs-Engine, CN=DingLing
+notBefore: 2026-10-31
+SHA-256 : CF:FB:98:17:23:11:27:4A:7A:B6:27:09:78:EE:C0:44:F1:CE:9A:B5:89:09:E5:B9:C5:54:BC:69:56:51:6F:02
+</pre>
+<p>与 <code>r-1.0.0</code> 指纹一致，两版可互相覆盖安装。与 <code>1.0</code> 不同（那一版用的是 Android Debug 默认证书），从 <code>1.0</code> 升上来必须卸载重装。</p>
+<h3>13.4 JS 桥：每次调用都序列化一次</h3>
+<p>引擎在 QuickJS 上下文里注入一段预置脚本，原文（<code>.so</code> 偏移 <code>0x25ce7b2</code>）：</p>
+<pre>
+__psych_dispatch(function(g) {
+  g.__psych_invoke = function(fn, argsJson) {
+    var args = argsJson ? JSON.parse(argsJson) : [];
+    return fn.apply(undefined, args);
+  };
+  g.__psych_native = function(name) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return __psych_dispatch(name, JSON.stringify(args));
+  };
+})(globalThis);
+</pre>
+<p>每个 API 由包装器动态生成，形如：</p>
+<pre>
+globalThis.&lt;name&gt; = (...args) =&gt; __psych_native(&quot;&lt;name&gt;&quot;, ...args);
+</pre>
+<p>也就是说，<b>任何一次 API 调用都要走 <code>JSON.stringify(args)</code> → 字符串分发 → native 解析 → 反射调用</b>。加上 QuickJS 本身没有 JIT，这套链路在密集调用（如逐帧 <code>setProperty</code>）下的开销是结构性的。</p>
+<p>这与宣传里的&quot;性能优化&quot;存在张力，但本报告没有做基准测试，不给结论——只记录设计事实。</p>
+<h3>13.5 安全提示页</h3>
+<p>与 <code>r-1.0.0</code> 相同的全屏拦截页：</p>
+<pre>
+ILLEGAL PACKAGE MODIFICATION
+
+This copy of the game was modified or re-signed.
+To keep your device and your saves safe, all mods and scripts
+have been disabled in this session.
+Download the official build and install it again.
+
+[ CONTINUE WITHOUT MODS ]
+</pre>
+<p>而本版 <code>debuggable=true</code>——<code>Qz7.c()</code> 对此返回 1。是否计入判定、会不会让官方包自己弹这个页面，本报告无法静态确定，需要实机验证。</p>
 </div></body></html>

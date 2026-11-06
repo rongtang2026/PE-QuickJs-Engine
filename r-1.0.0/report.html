@@ -81,4 +81,54 @@ python tools/analyze.py PEQuickJsEngine-release.apk metrics_r-1.0.0.json
 </pre>
 <p>原始指标见 [<code>../evidence/metrics/r-1.0.0.json</code>](../evidence/metrics/r-1.0.0.json)。</p>
 <p><b>限制</b>：静态取证，未安装运行；&quot;文件不存在&quot;基于编译产物符号推断。</p>
+<hr>
+<h2>9. 第二轮补充取证</h2>
+<h3>9.1 首次改用自签名证书</h3>
+<pre>
+subject : C=CN, O=DingLing, OU=PE-QuickJs-Engine, CN=DingLing
+notBefore: 2026-10-31
+SHA-256 : CF:FB:98:17:23:11:27:4A:7A:B6:27:09:78:EE:C0:44:F1:CE:9A:B5:89:09:E5:B9:C5:54:BC:69:56:51:6F:02
+</pre>
+<p>上一版用的是 Android Debug 默认证书，这一版换成了自签密钥（生成于发布前 1 天）。<code>1.1</code> 用的是同一把钥匙，指纹完全相同。</p>
+<p><b>用户侧后果</b>：从 <code>1.0</code> 升级到本版，签名不一致，必须卸载重装，存档与应用数据一并丢失。</p>
+<h3>9.2 自有 Java 类从 5 个涨到 24 个</h3>
+<p>新增 <code>Qz7</code>、<code>VulkanSurfaceHelper</code> 及 7 个内部类。同时<b>旧包名 <code>com.shadowmario.psychengine</code> 下的 10 个类没有清理</b>，同一份实现打了两遍。</p>
+<h3>9.3 源码层的一次性替换</h3>
+<p><code>1.0 → r-1.0.0</code> 之间：</p>
+<p><b>移除 17 个文件</b></p>
+<pre>
+llua/Lua.hx  llua/Convert.hx  llua/LuaCallback.hx  llua/LuaException.hx  llua/LuaStateStorage.hx
+psychlua/FunkinLua.hx  psychlua/CallbackHandler.hx  psychlua/LuaCallbacks.hx
+psychlua/ExtraFunctions.hx  psychlua/DeprecatedFunctions.hx  psychlua/ReflectionFunctions.hx
+psychlua/ShaderFunctions.hx  psychlua/TextFunctions.hx  psychlua/FlxAnimateFunctions.hx
+psychlua/OverlayFunctions.hx  psychlua/HScript.hx  android/os/Environment.hx
+</pre>
+<p><b>新增 9 个</b></p>
+<pre>
+backend/VulkanAndroid.hx  backend/RenderBackend.hx  backend/Qz7r.hx
+backend/ScriptContext.hx  backend/FpsPanelApi.hx
+substates/VulkanWarningSubState.hx  states/SecurityNoticeState.hx
+psychlua/ScriptVars.hx  mobile/PianoKeys.hx
+</pre>
+<p>删 Lua 绑定、加 Vulkan、加防改、加安全提示页，是同一批提交。</p>
+<h3>9.4 资源只动了 3 个文件</h3>
+<p><code>1.0 → r-1.0.0</code>，868 个同名资源里 <b>867 个逐字节相同</b>，唯一变化是 <code>assets/manifest/default.json</code>（资源索引，随构建变化）。新增的只有：</p>
+<pre>
+shared/images/opengl_logo.png
+shared/images/vulkan_logo.png
+shared/images/warn_icon.png
+</pre>
+<p>也就是说，这一版<b>没有替换任何游戏素材</b>，只加了切换渲染器和警告页要用的图标。</p>
+<h3>9.5 安全提示页的原文</h3>
+<pre>
+ILLEGAL PACKAGE MODIFICATION
+
+This copy of the game was modified or re-signed.
+To keep your device and your saves safe, all mods and scripts
+have been disabled in this session.
+Download the official build and install it again.
+
+[ CONTINUE WITHOUT MODS ]
+</pre>
+<p>这是全屏拦截页，不是一句日志。触发后本局所有 mod 与脚本被禁用。</p>
 </div></body></html>
