@@ -181,6 +181,26 @@ README 里那句"你们连自定义 API 都没找到"——API 列出来了：**
 
 ---
 
+## Java 层
+
+四个包的 dex 都反编译了（jadx，每份 8 秒，122 个类）。
+
+- `1.1` → 重传版：122 个文件只有 **2 个**不同（`BuildConfig` 版本号、`Qz7` 新增 `e()`）
+- `r-1.0.0` → `1.1`：同为 122 个，60 处"差异"全是 gson 的反编译噪点（变量名），**源码没动**
+- `VulkanSurfaceHelper` 两版完全相同 → `1280×720` 不在 Java 层，在 native
+
+`Qz7.e()` 是新东西，把三个状态压进一个 int：
+
+```
+bit 0       debuggable
+bit 8-15    签名数量
+bit 16-23   分包数量（splitSourceDirs）
+```
+
+细节见 [JAVA-LAYER.md](JAVA-LAYER.md)。
+
+---
+
 ## 工件变更
 
 `1.1` 这个 tag 下的文件被换过一次。
