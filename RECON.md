@@ -13,6 +13,7 @@
 | 对齐 | 类名取文件路径（`objects/Alphabet.hx` → `objects.Alphabet`），方法名取 `function` 声明 |
 | 双向差集 | 上游有、二进制没有 = 删；二进制有、上游没有 = 加 |
 | 过滤 | 剔除 `get_*`/`set_*`/`__default_*`——这些是 hxcpp 为 `var x(get,set)` 自动生成的访问器，不是人写的 |
+| Java 层 | jadx 1.5.1，参数 `-Xmx448m -XX:+UseSerialGC -cp jadx-all.jar jadx.cli.JadxCLI` |
 
 **为什么可信**：hxcpp 会把每个类的方法表写进二进制的只读段，是编译产物，不是注释或调试信息。要抹掉得 strip 或改符号，普通构建不会做。
 
@@ -109,5 +110,5 @@ README 里有一句："你们连自定义 API 都没找到，拿 `strings` 玩�
 
 1. **方法名 ≠ 实现**。这份文档能说明"哪个类被改过、加了什么方法"，不能说明"这个方法怎么写的"。要看实现得反汇编原生代码。
 2. **缺失可能是内联**。Haxe 会把短方法内联，符号就不产生了，所以"删除"的 188 个里可能混有少量误判。
-3. **Java 层没做结构还原**。jadx 在本机三个版本上都被系统终止（单 dex 也一样），Java 侧仍基于 smali 阅读，只覆盖了 `Qz7` 和 `VulkanSurfaceHelper`。
+3. **Java 层已通过 jadx 反编译**（122 个类）。此前失败的原因是本机可用内存仅 0.9GB，而默认 `-Xmx2g` 直接触发换页被终止；改用 `-Xmx448m` 并把入口指定为 `jadx.cli.JadxCLI` 后 8 秒完成。反编译产物见 `evidence/1.1/java/`。
 4. **`.so` 无 `.symtab`**（已 strip），只有 2648 个 `.dynsym` 条目，且不含 Haxe 符号。所以无法按地址反汇编指定方法，只能靠 `.rodata` 的字符串还原结构。

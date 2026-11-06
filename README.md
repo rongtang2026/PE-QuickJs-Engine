@@ -150,6 +150,10 @@ Download the official build and install it again.
 ```bash
 # 三个包都能从 Releases 下到,校验值见各版本报告开头
 python tools/analyze.py <apk> out.json
+
+# Java 层反编译（内存紧张时务必限堆，否则会被系统终止）
+java -Xmx448m -XX:+UseSerialGC -cp jadx-all.jar jadx.cli.JadxCLI \
+     -d out --no-res --no-debug-info <dex 或目录>
 ```
 
 `analyze.py` 输出:清单字段、dex 数与字节、assets 标记（weekend1 / 拆分人声 / zh-CN）、`.so` 内的 Lua 与 QuickJS 符号、`vk*` 函数数、`.hx` 路径集与两个上游 tag 的交集。

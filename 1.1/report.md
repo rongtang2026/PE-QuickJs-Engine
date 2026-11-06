@@ -308,7 +308,19 @@ okRoot(name)  仅允许: AndroidManifest.xml / resources.arsc / DebugProbesKt.bi
 okSo(path)    仅允许: libApplicationMain.so / libc++_shared.so / liblime.so / libvlc.so
 ```
 
+`d()` 返回的是**位掩码**，不是布尔值：
+
+| 位 | 触发条件 |
+|---|---|
+| `& 1` | dex 编号异常——缺 `classes.dex`、编号解析失败，或 `classesN` 数量与最大编号不符 |
+| `& 2` | `lib/` 下出现白名单外的 `.so` |
+| `& 4` | 根目录出现白名单外的条目 |
+
+`v()` 只取 `signatures[0]`——**第一张证书**做 SHA-256，多签名时其余忽略。
+
 **即：结构白名单 + 签名摘要 + debuggable 标志的组合，不做逐条目哈希。**比对所需的期望值以编译常量形式存在于 `.so` 中（非字符串），无法直接从二进制读出。
+
+以上为 **jadx 1.5.1 反编译确认**的 Java 源码，非 smali 推断。源码见 [`../evidence/1.1/java/Qz7.java`](../evidence/1.1/java/Qz7.java)。
 
 失败文案 `This copy of the game was modified or re-signed.`，命中后 `scriptsAllowed` 置否。
 

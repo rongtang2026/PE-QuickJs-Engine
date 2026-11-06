@@ -196,7 +196,11 @@ Typeface.DEFAULT_BOLD  Bitmap.createBitmap / setPixel / getPixels / recycle
 okRoot(name)  仅允许: AndroidManifest.xml / resources.arsc / DebugProbesKt.bin
 okSo(path)    仅允许: libApplicationMain.so / libc++_shared.so / liblime.so / libvlc.so
 </pre>
+<p><code>d()</code> 返回的是<b>位掩码</b>，不是布尔值：</p>
+<table><tr><th>位</th><th>触发条件</th></tr><tr><td><code>&amp; 1</code></td><td>dex 编号异常——缺 <code>classes.dex</code>、编号解析失败，或 <code>classesN</code> 数量与最大编号不符</td></tr><tr><td><code>&amp; 2</code></td><td><code>lib/</code> 下出现白名单外的 <code>.so</code></td></tr><tr><td><code>&amp; 4</code></td><td>根目录出现白名单外的条目</td></tr></table>
+<p><code>v()</code> 只取 <code>signatures[0]</code>——<b>第一张证书</b>做 SHA-256，多签名时其余忽略。</p>
 <p><b>即：结构白名单 + 签名摘要 + debuggable 标志的组合，不做逐条目哈希。</b>比对所需的期望值以编译常量形式存在于 <code>.so</code> 中（非字符串），无法直接从二进制读出。</p>
+<p>以上为 <b>jadx 1.5.1 反编译确认</b>的 Java 源码，非 smali 推断。源码见 [<code>../evidence/1.1/java/Qz7.java</code>](../evidence/1.1/java/Qz7.java)。</p>
 <p>失败文案 <code>This copy of the game was modified or re-signed.</code>，命中后 <code>scriptsAllowed</code> 置否。</p>
 <p>补一条：本包 <code>debuggable=true</code>，<code>c()</code> 必然返回 1——若该项被计入判定，这份官方发布包自己就会命中最基础的一条。</p>
 <h2>8. 协议合规性</h2>
