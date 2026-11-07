@@ -31,5 +31,7 @@ If the version looks like just "1.0", it is a debug test build. Only versions pr
             *   但是吧，我承认确实有些地方可能有点小 Bug，那只不过是因为盲目做自定义 API 忘了。还有，这个项目确实 100% 是 AI 做的。
             *   我终于明白为什么那么多作者都停止甚至跑路了，还是因为你们这帮无脑玩意和伸手党。唉，怪不得说这个圈子没救了。
          
+            *   If you don't even know what a reverse-engineering tool like IDA is, please don't comment randomly. I cannot guarantee whether the author of that fake repo secretly embedded viruses. If you download and run it, don't blame me, go find them. I've already checked it, and if you truly believe in that empty shell, you are beyond saving. Take care of yourselves.
+         
             *   ---
             *   *License compliance (LICENSE & NOTICE) has been included in the APK since v1.1.0. The source code is private and closed-source. If you don't like it, don't use it.*
