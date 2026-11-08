@@ -1,0 +1,15 @@
+<xml>
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="psyqjs">
+  <compilerflag value="-I${this_dir}"/>
+  <compilerflag value="-std=c++17"/>
+  <compilerflag value="-DPSYQJS_NAN_BOXING=1"/>
+  <file name="PsyQjsBridge.cpp"/>
+</files>
+
+<target id="haxe">
+  <files id="psyqjs"/>
+  <lib name="-ldl"/>
+</target>
+</xml>

@@ -1,0 +1,6 @@
+.haxelib/
+assets/
+export/
+crash/
+js_debug.log
+*.log
