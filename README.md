@@ -34,6 +34,8 @@ If the version looks like just "1.0", it is a debug test build. Only versions pr
             *   If you don't even know what a reverse-engineering tool like IDA is, please don't comment randomly. I cannot guarantee whether the author of that fake repo secretly embedded viruses. If you download and run it, don't blame me, go find them. I've already checked it, and if you truly believe in that empty shell, you are beyond saving. Take care of yourselves.
          
             *   <img width="1920" height="1040" alt="94fee7da-c6c0-4f86-a24a-b3167914aea9" src="https://github.com/user-attachments/assets/0742bc1f-e702-44fd-82ce-27d049596a66" />
+     
+            *   该IDA使用的是网上的盗版/破解版本，违反HexRay用户协议，请勿学习
 
          
             *   ---
