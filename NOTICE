@@ -1,0 +1,22 @@
+NOTICE
+======
+
+PE-QuickJs-Engine is a modified distribution based on:
+
+* FNF-Psych Engine
+  Copyright 2021 ShadowMario and FNF-PsychEngine contributors
+  https://github.com/ShadowMario/FNF-PsychEngine
+  Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product also uses the following third-party components:
+
+* QuickJS (script runtime)
+  Copyright (c) 2019 Fabrice Bellard
+  https://bellard.org/quickjs/
+  Licensed under the MIT License.
+
+* Haxe / OpenFL / Lime
+  Licensed under the MIT License.
+
+Per Apache License 2.0 section 4, redistribution of this product in
+source or binary form must retain this NOTICE and the LICENSE file.
