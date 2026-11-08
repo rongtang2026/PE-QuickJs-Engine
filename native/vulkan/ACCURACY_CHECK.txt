@@ -1,0 +1,8 @@
+loader commands ............ 64
+actual call sites .......... 64
+calls outside APK table .... 0
+loaded but unused .......... 0
+JNI exports implemented .... 13 / 13
+Vulkan identifiers checked . 94 / 94 present in NDK r20b headers
+vk* raw strings preserved .. 65 / 65
+C++ structural sanity ...... braces/parens balanced in both .cpp

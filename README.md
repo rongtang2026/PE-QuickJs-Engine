@@ -1,37 +1,29 @@
 # PE-QuickJs-Engine
-A highly optimized mobile engine with QuickJS, OpenGL shaders, and custom APIs.
 
-This engine is a heavily modified, pure mobile reconstruction based on the original Psych Engine 0.7.3. You can find the original PC source code here: https://github.com/ShadowMario/FNF-PsychEngine
+一个引擎。有代码的那种。🤚
 
-"I have the utmost respect for the original authors and pay my highest tribute to them."
+## Credits
 
-If the version looks like just "1.0", it is a debug test build. Only versions prefixed with "r-" are official releases.
+- **逆向还原与源码整理：[@Lv233-Haxe](https://github.com/Lv233-Haxe) 及 [Open-QuickJs-Engine](https://github.com/Lv233-Haxe/Open-QuickJs-Engine) 全体贡献者**（Apache-2.0）—— 本仓库全部源码来自该项目对本引擎发行 APK 的还原，取证报告见 [issue #7](https://github.com/rongtang2026/PE-QuickJs-Engine/issues/7)
+- 本分支由 [mohong2](https://github.com/mohong2) 搬运提交 PR，仅做文档补充，不主张任何还原署名
+- 上游 [ShadowMario/FNF-PsychEngine](https://github.com/ShadowMario/FNF-PsychEngine)（Apache-2.0），归属声明见 [NOTICE](NOTICE)
+- 脚本运行时 [QuickJS](https://bellard.org/quickjs/)（Fabrice Bellard，MIT）
 
-### Performance Test on Ultra-Budget Phone
-*   **Device**: itel P663L (Android 13, 8GB RAM)
-*   *   **Shader**: Complex "Corruption" glitch shader (heavy GPU load)
-    *   *   **Result**: "doesn't lag much" - Tested by our community member Sky.
-        *   *   **Conclusion**: This proves that the engine is highly optimized and can easily run on cheap devices. *(P.S. The default UI is kept to ensure maximum compatibility and minimal VRAM usage. I'm sorry if you expected a brand new 3D UI. The focus of this engine is performance and physics, not a superficial facelift.)*
-         
-            *   ---
-         
-            *   ### 💬 A Message to the "Reverse Engineers" and Beggars / 致“逆向大师”与伸手党
-         
-            *   I don't want to follow in the footsteps of the older generation. You also know how chaotic this community is.
-         
-            *   ---
-         
-            *   **【English Version】**
-            *   I honestly don't know what makes some of you so smug, thinking you've successfully "reverse-engineered" this engine. You couldn't even find the custom APIs. Just a bunch of half-baked amateurs playing with `strings` and writing fake reports.
-            *   I genuinely don't understand: must a new modded engine completely change its UI style to be considered "real"? I admit there are some minor bugs right now, but that's just because I was too focused on building blind custom APIs and forgot some details.
-            *   Yes, this project is 100% built with AI. And I finally understand why so many great developers just quit or abandoned their projects. It's because of you brainless beggars. This community is truly hopeless.
-         
-            *   **【中文版】**
-            *   我并不知道某些人装模作样的以为自己成功逆向了，连自定义 API 都不知道，依旧是一群半吊子。我真搞不懂，难不成弄一个新的魔改引擎就必须把整个界面的 UI 风格全变了吗？
-            *   但是吧，我承认确实有些地方可能有点小 Bug，那只不过是因为盲目做自定义 API 忘了。还有，这个项目确实 100% 是 AI 做的。
-            *   我终于明白为什么那么多作者都停止甚至跑路了，还是因为你们这帮无脑玩意和伸手党。唉，怪不得说这个圈子没救了。
-         
-            *   If you don't even know what a reverse-engineering tool like IDA is, please don't comment randomly. I cannot guarantee whether the author of that fake repo secretly embedded viruses. If you download and run it, don't blame me, go find them. I've already checked it, and if you truly believe in that empty shell, you are beyond saving. Take care of yourselves.
-         
-            *   ---
-            *   *License compliance (LICENSE & NOTICE) has been included in the APK since v1.1.0. The source code is private and closed-source. If you don't like it, don't use it.*
+## 构建
+
+```bash
+haxelib install hmm.json
+haxelib run lime build android
+```
+
+游戏资源未随源码分发，按上游许可自行获取。
+
+## 目录
+
+| 路径 | 内容 |
+|---|---|
+| `source/` | 226 个 Haxe 源文件：QuickJS 绑定、自定义 API、`FunkinJS.hx` 等脚本桥接层 |
+| `native/` | QuickJS 与 Vulkan 原生层 |
+| `docs/original-readme.md` | 原 README（3454 字节散文版），历史文物，温柔保存 |
+
+> 本仓库曾连续 13 天没有任何代码。这个 PR 结束了那个时代。

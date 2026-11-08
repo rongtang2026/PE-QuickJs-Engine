@@ -1,0 +1,21 @@
+<xml>
+<!-- hxcpp 4.3.2 build fragment for the project-native Vulkan renderer.
+     Optional: add <include path="native/vulkan/Build.xml" /> to Project.xml
+     on Android builds only. Kept separate so the Windows build is unaffected. -->
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="psyvk">
+  <compilerflag value="-I${this_dir}"/>
+  <compilerflag value="-I${ANDROID_NDK_ROOT}/sysroot/usr/include/vulkan"/>
+  <compilerflag value="-std=c++17"/>
+  <file name="PsyVkRenderer.cpp"/>
+  <file name="PsyVkJNI.cpp"/>
+</files>
+
+<target id="haxe">
+  <files id="psyvk"/>
+  <lib name="-ldl"/>
+  <lib name="-landroid"/>
+  <lib name="-llog"/>
+</target>
+</xml>

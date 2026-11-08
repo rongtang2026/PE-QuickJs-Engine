@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!-- _________________________ Application Settings _________________________ -->
+
+	<project> <app title="PE-QuickJs-Engine" file="PEQuickJsEngine" packageName="DingLing.pe.QuickJs.Engine" package="DingLing.pe.QuickJs.Engine" main="Main" version="1.1.0" company="DingLing" />
+
+	<app preloader="flixel.system.FlxPreloader" />
+
+
+	<set name="SWF_VERSION" value="11.8" />
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
+	<set name="BUILD_DIR" value="export/release" unless="debug" />
+
+	<!-- Psych Engine feature flags (mirrors official 1.0) -->
+	<define name="MODS_ALLOWED" />
+	<!-- HSCRIPT_ALLOWED disabled -->
+	<!-- LUA_ALLOWED -->
+	<define name="ACHIEVEMENTS_ALLOWED" />
+	<!-- DISCORD_ALLOWED off: hxdiscord_rpc 1.3.0 API mismatch with 1.0 source -->
+	<define name="TRANSLATIONS_ALLOWED" />
+	<define name="VIDEOS_ALLOWED" if="desktop || mobile" unless="32bits" />
+	<define name="SHOW_LOADING_SCREEN" />
+	<define name="PSYCH_WATERMARKS" />
+	<define name="CRASH_HANDLER" if="desktop release" />
+	<define name="QUICKJS" />
+	<define name="VULKAN_ANDROID" if="android" />
+
+	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
+	<window if="html5" resizable="true" />
+	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false" />
+	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false" />
+
+	<classpath name="source" />
+
+	<!-- APK contained assets/assets/**, assets/flixel/**, assets/flxanimate/**,
+	     assets/manifest/default.json. rename="assets" preserves that layout. -->
+	<assets path="assets" rename="assets" />
+	<assets path="assets/embed" rename="embed" embed="true" />
+	<assets path="art/readme.txt" rename="do NOT readme.txt" />
+	<section if="MODS_ALLOWED">
+		<assets path="example_mods" rename="mods" embed="false" type="template" />
+	</section>
+
+	<!-- Libraries (versions pinned through setup-haxelib.bat / haxelib dev) -->
+	<haxelib name="lime" />
+	<haxelib name="openfl" />
+	<haxelib name="hxcpp" />
+	<haxelib name="actuate" />
+	<haxelib name="flixel" />
+	<haxelib name="flixel-addons" />
+	<haxelib name="flxanimate" />
+	<haxelib name="hscript" />
+	<haxelib name="hxvlc" />
+	<haxelib name="tjson" />
+	<haxelib name="grig.audio" />
+	<haxelib name="funkin.vis" />
+	<haxelib name="linc_luajit" />
+	<haxelib name="hxdiscord_rpc" />
+	<haxelib name="json2object" />
+	<haxelib name="hxjsonast" />
+	<haxedef name="HXC_LIBVLC_LOGGING" if="VIDEOS_ALLOWED debug" />
+	<haxedef name="HXVLC_NO_SHARE_DIRECTORY" if="VIDEOS_ALLOWED" />
+	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
+	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
+	<haxedef name="HXC_DEBUG_TRACE" if="debug" />
+	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+	<haxedef name="no-deprecation-warnings" />
+	<haxedef name="message.reporting" value="pretty" />
+	<haxeflag name="--macro" value="allowPackage('flash')" />
+	<haxeflag name="--macro" value="include('my.pack')" />
+
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
+	<haxedef name="HXCPP_CATCH_SEGV" />
+	<haxedef name='no-deprecation-warnings' />
+
+	<icon path="art/icon16.png" size="16"/>
+	<icon path="art/icon32.png" size="32"/>
+	<icon path="art/icon64.png" size="64"/>
+	<icon path="art/iconOG.png" />
+</project>
