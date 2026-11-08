@@ -1,37 +1,71 @@
 # PE-QuickJs-Engine
-A highly optimized mobile engine with QuickJS, OpenGL shaders, and custom APIs.
 
-This engine is a heavily modified, pure mobile reconstruction based on the original Psych Engine 0.7.3. You can find the original PC source code here: https://github.com/ShadowMario/FNF-PsychEngine
+# 😭😭😭 我错了大佬们，求求你们别骂我了，我真的只是个溜溜梅开发者啊！！！🙏🙏🙏
 
-"I have the utmost respect for the original authors and pay my highest tribute to them."
+各位逆向仙人、斧头巨佬、C艹祖师爷们，求求你们放过我吧😭😭😭
+我承认，我就是个只会抱着吃白饭大肥鱼写代码的溜溜梅小登，我真不会 斧头 啊！！！我本来就是想给 心理引擎 换个皮，再让吃白饭大肥鱼帮我搓点祖传科技狠活，怎么就招惹到各位神仙了😭😭😭
 
-If the version looks like just "1.0", it is a debug test build. Only versions prefixed with "r-" are official releases.
+**我以为让大肥鱼把 Lua 换成 QuickJS 就算性能飞升了啊！！！**
+结果你们还真去逆向我的引擎？？？不是哥们，谁家正常人玩个 同性恋音游 还要开 IDA 啊😭😭我自己都看不懂的代码你们怎么一扒就明白了！！！你们这不是欺负老实人吗！！！
 
-### Performance Test on Ultra-Budget Phone
-*   **Device**: itel P663L (Android 13, 8GB RAM)
-*   *   **Shader**: Complex "Corruption" glitch shader (heavy GPU load)
-    *   *   **Result**: "doesn't lag much" - Tested by our community member Sky.
-        *   *   **Conclusion**: This proves that the engine is highly optimized and can easily run on cheap devices. *(P.S. The default UI is kept to ensure maximum compatibility and minimal VRAM usage. I'm sorry if you expected a brand new 3D UI. The focus of this engine is performance and physics, not a superficial facelift.)*
-         
-            *   ---
-         
-            *   ### 💬 A Message to the "Reverse Engineers" and Beggars / 致“逆向大师”与伸手党
-         
-            *   I don't want to follow in the footsteps of the older generation. You also know how chaotic this community is.
-         
-            *   ---
-         
-            *   **【English Version】**
-            *   I honestly don't know what makes some of you so smug, thinking you've successfully "reverse-engineered" this engine. You couldn't even find the custom APIs. Just a bunch of half-baked amateurs playing with `strings` and writing fake reports.
-            *   I genuinely don't understand: must a new modded engine completely change its UI style to be considered "real"? I admit there are some minor bugs right now, but that's just because I was too focused on building blind custom APIs and forgot some details.
-            *   Yes, this project is 100% built with AI. And I finally understand why so many great developers just quit or abandoned their projects. It's because of you brainless beggars. This community is truly hopeless.
-         
-            *   **【中文版】**
-            *   我并不知道某些人装模作样的以为自己成功逆向了，连自定义 API 都不知道，依旧是一群半吊子。我真搞不懂，难不成弄一个新的魔改引擎就必须把整个界面的 UI 风格全变了吗？
-            *   但是吧，我承认确实有些地方可能有点小 Bug，那只不过是因为盲目做自定义 API 忘了。还有，这个项目确实 100% 是 AI 做的。
-            *   我终于明白为什么那么多作者都停止甚至跑路了，还是因为你们这帮无脑玩意和伸手党。唉，怪不得说这个圈子没救了。
-         
-            *   If you don't even know what a reverse-engineering tool like IDA is, please don't comment randomly. I cannot guarantee whether the author of that fake repo secretly embedded viruses. If you download and run it, don't blame me, go find them. I've already checked it, and if you truly believe in that empty shell, you are beyond saving. Take care of yourselves.
-         
-            *   ---
-            *   *License compliance (LICENSE & NOTICE) has been included in the APK since v1.1.0. The source code is private and closed-source. If you don't like it, don't use it.*
+---
+
+## 🥺 关于为什么仓库里只有 README.md
+大佬们，我真的不是故意的😭
+我以为 6202年在一个拥有超过两千万同性恋的开源代码托管平台 就是展示自己高科技成果的地方啊！！！我都已经把 README 写得那么有科技感了，你们怎么还要源码？？？源码都在吃白饭大肥鱼的肚子里呢，我上哪给你们找啊😭😭😭
+而且我天天都在更新仓库！！！你们可以去看我的 Commit 啊！！！今天改 README，明天改 README，后天继续改 README！
+
+**这不都是实打实的开发进度吗！！！😭**
+再说了，README 是我唯一不用求大肥鱼就能自己修改的东西了。
+**你们连这点开发者尊严都不愿意留给我吗！！！😭😭😭**
+
+---
+
+## 😭 关于史诗级性能优化
+我真的没有骗人啊！！！Sky 都亲口说了：
+> doesn't lag much
+这不就是国际公认的高性能测试结果吗？？？
+为什么你们还要什么 FPS、CPU Profiler、GPU Timestamp 啊！！！这些洋文我哪认识啊😭😭😭
+我问过吃白饭大肥鱼了，它说 QuickJS 是轻量级脚本引擎！轻量级不就是性能好吗？？？而且我还给引擎装上了火山渲染！！！
+虽然我也不懂 Vulkan 具体是干什么的，但它名字里有火山啊！！！
+**火山都烧起来了，性能能不猛吗！！！😭😭😭**
+你们怎么就是不信呢！！！
+
+---
+
+## 🥹 关于 100% 溜溜梅开发
+我承认！我全都承认还不行吗😭😭😭
+我就是个提示词炼丹师！！！每天对着吃白饭大肥鱼疯狂磕头求代码！！！
+大肥鱼吐一口，我复制一口。大肥鱼拉一坨，我粘贴一坨。报错了就把报错扔回鱼塘里，让它重新给我嚼一遍！！！
+有时候大肥鱼上下文爆了，我还得新开个聊天继续求它😭😭😭
+
+**你们知道养这么一条鱼有多累吗！！！**
+代码是鱼写的，架构是鱼想的，虫子 是鱼修的。
+
+但是！！！
+
+### 鱼是我亲自打开的啊！！！😭😭😭
+为什么这都不能算我的技术成果！！！
+
+---
+
+## 😭 关于我骂大家是半吊子
+对不起大佬们，我真的错了。我不该骂你们半吊子的，我就是一时红温了😭😭
+你们拿 IDA 扒我的引擎，拿性能分析工具抓我的帧数，拿源码对比我的架构。而我只能颤抖着打开吃白饭大肥鱼：
+> 大肥鱼大肥鱼，他们说我的引擎是溜溜梅大作，我该怎么用高级技术术语反驳他们？
+结果这条肥鱼居然跟我说让我虚心接受批评！！！
+不是哥们？？？
+**怎么连我亲手养大的鱼都开始背刺我了啊！！！😭😭😭**
+
+---
+
+## 🙏 最后求求各位大佬了
+别再逆向我的引擎了😭 别再问我 斧头 怎么写了😭 别再让我拿性能测试数据了😭 别再问我 火山 到底怎么渲染的了😭 别再问我源码在哪了😭 更别问我为什么天天修改 README 了😭
+**我真的只是一个想靠吃白饭大肥鱼实现引擎梦的普通小登啊！！！**
+虽然我不会写代码，虽然我看不懂底层，虽然我不知道自己的 空气污染指数 怎么实现的，虽然我连报错都要喂给肥鱼看。
+但是至少……
+
+### 至少我给大肥鱼发送提示词的时候，用的是我自己的手指头啊！！！😭😭😭
+我已经决定痛改前非了！！！从明天开始认真学 斧头！今天就先不学了，大肥鱼还在帮我修 虫子 呢😭
+各位大佬求求你们高抬贵手，给我们溜溜梅开发者留条活路吧！！！
+**再骂下去，我连吃白饭大肥鱼都要养不起了啊！！！😭🙏🙏🙏**
