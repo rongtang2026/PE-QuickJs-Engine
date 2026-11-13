@@ -88,3 +88,24 @@ Qz7               仍在，并新增分包检测
 > This engine is a heavily modified, pure mobile reconstruction based on the original Psych Engine 0.7.3.
 
 三个发布包的实测结果都是 1.0 基底（11-06 的重构建也一样）。这一句从 10-26 到现在没有变过。
+
+---
+
+## 11-12 的 `r-1.1`
+
+| | `1.1`（11-06 重传） | `r-1.1`（11-12） |
+|---|---|---|
+| 大小 | 400,763,276 | 516,978,674 |
+| SHA-256 | `18c7a99b…` | `696a6041…` |
+| versionCode | 484 | **618** |
+| debuggable | true | **false** |
+| dex | 7 | **1** |
+| `.hx` 路径串 | 1,099 条真实 | **77 条，全部打码** |
+| `libApplicationMain.so` CRC | 正常 | **被改坏**（两架构各一） |
+| 压缩后体积 | 382 MB | 493 MB（485MB 改为不压缩） |
+| 素材 | 871 | 873 个里 872 个与上版逐字节相同 |
+| 新增 | — | `backend.Hardening`（混淆名 `hz57`）、`mods_example.zip`、`res/` 重命名 |
+
+反调试检测项：`TracerPid`、`hooking library mapped`、`hooking thread`、`code injected from /data/local/tmp`、`root framework (not fatal)`、`payload sentinel not decrypted`。
+
+README 同期改动：开头版本声明被改成 "based on the original Psych Engine . You 1.0.4"（句子本身残缺），并新增一段称本仓库"可能是假仓库、可能藏病毒"。

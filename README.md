@@ -376,7 +376,7 @@ Lua 换成 QuickJS 是真换，兼容是假的。运行时符号归零，452 个
 
 ```
 README.md                    本文，跨版本综合取证
-1.0/  r-1.0.0/  1.1/         三个发布版各自的分版报告（report.md + report.html）
+1.0/  r-1.0.0/  1.1/  r-1.1/  四个发布版各自的分版报告（report.md + report.html）
 COMPARE.md                   功能矩阵、代码差集、工程配置
 TIMELINE.md                  发布与改动时间线
 PRESS.md                     宣传文案与实测对照
@@ -418,7 +418,58 @@ evidence/                    原始数据
 - 贴图槽超过 47 后的具体视觉表现。
 - Weekend1 进场崩溃的成因。
 - `Qz7` 校验失败后的实际行为，是否只关脚本，有没有其它降级。
-- 1.1 替换前那份 400,750,869 字节的原包已不可得，只能引用 issue #7 的记录。
+- 1.1 替换前那份 400,750,869 字节的原包（sha `2a24ebb0…`）已不在 release 上，但本仓库取证时留存了副本，`1.1/report.md` 的全部数据基于该包。
+
+## 13. 补记：r-1.1（2026-11-12）
+
+11-12 17:31 发布 `r-1.1`，资产名 `PEQuickJsEngine-release-encrypted.apk`，516,978,674 字节，sha `696a6041…`，versionCode 618，`debuggable` 未声明。
+
+文件名写着 encrypted，但**没有任何内容被加密**。
+
+| 他做的 | 实际效果 |
+|---|---|
+| 破坏两个 `libApplicationMain.so` 的 CRC | 894 个条目里只有这 2 个坏；Android 不校验条目 CRC，照常运行，常规解包工具直接报 `BadZipFile` |
+| 把 485MB 条目改为不压缩（STORED） | 压缩后体积 382MB → 493MB，**+122MB 由此而来**，与加密无关 |
+| 抹掉 1,099 条 `.hx` 源文件路径 | 新包里只剩 77 条，且全部是 `C:xxxx…hx`；按文件路径做比对的旧方法失效 |
+| 类名混淆 | `backend.Hardening` → `hz57`（两条字符串并列，等于自报家门）；另有一批 `a.E`/`b.J` 单字母类 |
+| `res/` 图标改随机名、dex 合并 7→1 | 标准资源混淆，无加密作用 |
+
+**没有变的**（也是"未加密"的直接反证）：
+
+- 219 个 Lua API 名全部明文
+- `states.PlayState` 217 个方法符号、`psychlua.FunkinJS` 126 个，全部可读
+- 873 个共有素材里 **872 个与上一版逐字节相同**，只有 `manifest/default.json` 变化
+- `assets/LICENSE`、`assets/NOTICE` 仍在
+- Java 层 122 个类与上一版一致
+
+### 13.1 新增的运行时反调试
+
+这一版真正的新东西是 `backend.Hardening`（混淆名 `hz57`），检测项以字符串形式写在 `.so` 里：
+
+```
+[Integrity] build check failed / build ok
+[Integrity] native check / native check: clean
+[Integrity] runtime check failed: rt =
+[Integrity] certificate unavailable, check skipped
+
+debugger (TracerPid)                     /proc/self/status
+hooking library mapped                   /proc/self/maps
+hooking thread                           /proc/self/task
+code injected from /data/local/tmp
+executable code mapped from /data/local/tmp
+root framework (not fatal)
+payload sentinel not decrypted
+```
+
+内部标志：`TRACER` `PTRACE` `MAPS` `INJECT` `ROOT` `FATAL` `THREADS` `PAYBLOB`。
+
+与 `Qz7` 分工不同：`Qz7` 看包（签名、dex 编号、so 白名单），`Hardening` 看运行时（调试器、注入、hook、可疑线程）。`ROOT` 标为非致命。
+
+### 13.2 判定
+
+"加密"这个说法不成立。实际做的是**反分析**：抹路径、混淆少量类名、破坏 CRC、加运行时检测。核心可读性没有变化——API 名、引擎类名、方法名、素材全部原样。
+
+完整分析见 [`r-1.1/report.md`](r-1.1/report.md)。
 
 ---
 

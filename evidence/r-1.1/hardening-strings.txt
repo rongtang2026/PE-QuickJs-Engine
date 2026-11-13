@@ -1,0 +1,51 @@
+# r-1.1 Hardening（hz57）检测项字符串
+
+[Integrity]
+  [Integrity] build check failed: 
+  [Integrity] build ok
+  [Integrity] certificate unavailable, check skipped
+  [Integrity] native check: 
+  [Integrity] native check: clean
+  [Integrity] runtime check failed: rt = 
+
+[TracerPid]
+  TracerPid:
+  debugger (TracerPid)
+
+[hooking]
+  debugger or hooking agent detected
+  hooking agent thread detected
+  hooking library mapped
+  hooking thread
+
+[/data/local/tmp]
+  /data/local/tmp
+  code injected from /data/local/tmp
+  executable code mapped from /data/local/tmp
+
+[payload sentinel]
+  payload sentinel not decrypted
+
+[root framework]
+  root framework (not fatal)
+
+[TRACER]
+  TRACER
+
+[PTRACE]
+  PTRACE
+
+[MAPS]
+  MAPS
+
+[INJECT]
+  INJECT
+
+[PAYBLOB]
+  PAYBLOB
+
+[THREADS]
+  THREADS
+
+[FATAL]
+  FATAL

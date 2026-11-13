@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PE-QuickJs-Engine 逆向取证报告</title>
+<style>
+  :root{--bg:#f7f7f5;--ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#767676;--line:#e3e2de;--accent:#b4501f}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:56px 28px 100px}
+  h1{font-size:29px;line-height:1.3;margin:0 0 18px;letter-spacing:-.4px;padding-bottom:18px;border-bottom:2px solid var(--ink)}
+  h2{font-size:20px;margin:48px 0 16px;padding-left:12px;border-left:3px solid var(--accent);line-height:1.5}
+  h3{font-size:17px;margin:34px 0 12px}
+  h4{font-size:15px;margin:24px 0 10px;color:var(--ink2)}
+  p{margin:11px 0}
+  ul{margin:10px 0;padding-left:22px} li{margin:6px 0}
+  code{font-family:"Cascadia Mono",Consolas,monospace;font-size:12.5px;background:#f0efec;padding:1px 5px;border-radius:3px}
+  pre{background:#1e1e1c;color:#e8e6e1;padding:16px 18px;border-radius:6px;overflow-x:auto;font-family:"Cascadia Mono",Consolas,monospace;font-size:12.5px;line-height:1.7}
+  pre code{background:none;padding:0;color:inherit}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:#fff}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f0efec;font-weight:600;font-size:13px}
+  tr:last-child td{border-bottom:none}
+  hr{border:none;border-top:1px solid var(--line);margin:40px 0}
+  @media print{body{background:#fff}.wrap{padding:0}pre{background:#f4f4f2;color:#1a1a1a}}
+</style></head>
+<body><div class="wrap">
+<h1>PE-QuickJs-Engine <code>r-1.1</code> 逆向取证</h1>
+<p><b>发布</b>：2026-11-12 17:31　<b>资产</b>：<code>PEQuickJsEngine-release-encrypted.apk</code></p>
+<p><b>大小</b>：516,978,674 字节</p>
+<p><b>SHA-256</b>：<code>696a6041289242211c605206bb8afa2d4da0dcf52f5118cc3d9a182f49d69b63</code></p>
+<p><b>versionCode / Name</b>：618 / <code>1.1.0</code></p>
+<p><b>debuggable</b>：未声明（false）</p>
+<p><b>上游</b>：ShadowMario/FNF-PsychEngine（Apache-2.0）</p>
+<hr>
+<h2>0. 先说结论</h2>
+<p>文件名带 <code>encrypted</code>，但<b>没有任何内容被加密</b>：</p>
+<table><tr><th>他做的</th><th>实际效果</th></tr><tr><td>破坏两个 <code>.so</code> 的 CRC</td><td>常规解包工具报错，Android 照常运行</td></tr><tr><td>485MB 条目改为不压缩</td><td><b>APK 变大 122MB</b>，与加密无关</td></tr><tr><td>抹掉 1,099 条 <code>.hx</code> 源文件路径</td><td>挡住了&quot;按源文件比对&quot;这一种方法</td></tr><tr><td>部分类名混淆（<code>hz57</code> 等）</td><td>只混淆了自家少数类，核心引擎类名仍在</td></tr><tr><td><code>res/</code> 图标改随机名、dex 合并</td><td>标准资源混淆，无加密作用</td></tr><tr><td>新增运行时反调试</td><td>唯一有实质作用的部分</td></tr></table>
+<p><b>没变的</b>：219 个 Lua API 名全部明文、<code>states.PlayState</code> 等核心类名与方法名明文、872/873 个素材文件与上一版逐字节相同、<code>assets/LICENSE</code> 与 <code>NOTICE</code> 仍在。</p>
+<hr>
+<h2>1. 那 122MB 是从哪来的</h2>
+<table><tr><th></th><th><code>1.1</code>（重传）</th><th><code>r-1.1</code></th></tr><tr><td>条目数</td><td>901</td><td>896</td></tr><tr><td>原始大小</td><td>500 MB</td><td>501 MB</td></tr><tr><td>压缩后</td><td><b>382 MB</b></td><td><b>493 MB</b></td></tr><tr><td>STORED（不压缩）条目</td><td>535 个 / 294 MB</td><td>543 个 / <b>485 MB</b></td></tr></table>
+<p>内容几乎没变，<b>只是把绝大多数条目从 deflate 改成 store</b>。体积涨了 111MB，换来的是读取时少一次解压——与安全性无关。</p>
+<hr>
+<h2>2. CRC 被改坏</h2>
+<pre>
+可读条目 894 个
+坏条目   2 个：lib/arm64-v8a/libApplicationMain.so
+              lib/armeabi-v7a/libApplicationMain.so
+</pre>
+<p>其余条目 CRC 全部正常，说明不是下载损坏，是<b>打包后动过 so 的字节却没更新 CRC</b>。</p>
+<p>Android 安装与运行都按偏移读，不校验单条目 CRC，所以应用不受影响；但 <code>unzip</code>、Python <code>zipfile</code>、部分逆向工具会直接报 <code>BadZipFile</code> 并拒绝输出。</p>
+<p>绕过方式：读本地文件头，按 <code>header_offset + 30 + nlen + elen</code> 定位数据段，<code>compress_type == 0</code> 时直接读取——本文的所有 so 分析都走这条路。</p>
+<hr>
+<h2>3. 源码路径被抹掉</h2>
+<table><tr><th></th><th><code>1.1</code></th><th><code>r-1.1</code></th></tr><tr><td><code>.hx</code> 路径串</td><td><b>1,099 条，全部真实</b></td><td><b>77 条，全部打码</b></td></tr></table>
+<p>打码形如：</p>
+<pre>
+C:xxxxxxxxxxxxxxxxxxxxxxxxx.hx
+C:xxxxxxxxxxxxxxxxxxxxxxxxxxxx.hx
+</pre>
+<p>连 <code>backend/</code>、<code>psychlua/</code>、<code>states/</code> 这些目录名也一并消失（各 0 条）。</p>
+<p><b>影响</b>：以&quot;源文件路径集合&quot;为基准的比对（此前报告的 ∩1.0=130 vs ∩0.7.3=96）在这一版上失效。</p>
+<p><b>但没挡住</b>：类名与方法名仍是明文。</p>
+<pre>
+states.PlayState          217 个方法符号
+psychlua.FunkinJS         126 个方法符号
+backend.Qz7r              类名仍在
+</pre>
+<p>用&quot;上游 1.0 的 1361 个方法&quot;去比对，仍命中 <b>1125 个（82.7%）</b>，命中率低于 60% 的类还是那 20 个（<code>Discord</code>、<code>FunkinLua</code>、<code>HScript</code>、<code>WiggleEffect</code> 等——都是之前就确认删掉的）。</p>
+<p><b>结论</b>：结构比对照常成立，只是从&quot;按文件&quot;退回到&quot;按类&quot;。</p>
+<hr>
+<h2>4. 类名混淆：只混淆了自家少数类</h2>
+<p>新增的单字母类：<code>a.E</code>、<code>a.N</code>、<code>b.J</code>、<code>d.I</code>、<code>d.L</code>、<code>e.T</code>、<code>e.U</code>……</p>
+<p>而 <code>backend.*</code> 下的方法符号从 838 条降到 547 条——被混淆的是他自己的模块，不是引擎主体。</p>
+<p>最典型的是安全模块：</p>
+<pre>
+backend.Qz7r.boot      →  只剩 &quot;backend.Qz7r&quot; 与 &quot;Main.new(): Qz7r&quot;
+backend.Hardening      →  hz57.boot / hz57.scan / hz57.tick / hz57.fatal / hz57.describe
+</pre>
+<p><code>hz57</code> 就是 <code>backend/Hardening.hx</code> 的混淆名——字符串表里两条并列摆着，等于自报家门。</p>
+<hr>
+<h2>5. 新增：运行时反调试</h2>
+<p><code>hz57</code>（<code>backend.Hardening</code>）的检测项全部以字符串形式写在 <code>.so</code> 里：</p>
+<pre>
+[Integrity] native check: 
+[Integrity] native check: clean
+
+debugger (TracerPid)                  → /proc/self/status 里的 TracerPid
+hooking library mapped                → /proc/self/maps
+hooking thread                        → /proc/self/task
+code injected from /data/local/tmp    → /data/local/tmp
+executable code mapped from /data/local/tmp
+root framework (not fatal)            → root 检测，非致命
+payload sentinel not decrypted        → 载荷哨兵未解密
+</pre>
+<p>内部标志位：</p>
+<pre>
+TRACER  PTRACE  MAPS  INJECT  ROOT  FATAL  THREADS  PAYBLOB
+</pre>
+<p>这是一套游戏外挂级别的反分析：<b>调试器、注入、hook 库映射、可疑线程、可疑执行权限路径</b>都在扫。<code>ROOT</code> 标记为 not fatal，其余会置 FATAL。</p>
+<p>与 <code>Qz7</code>（静态校验）分工不同：<code>Qz7</code> 看包，<code>Hardening</code> 看运行时。</p>
+<hr>
+<h2>6. 没变的部分</h2>
+<table><tr><th>项</th><th>结果</th></tr><tr><td>Lua API 名</td><td><b>219/219 全部明文</b></td></tr><tr><td><code>lua_*</code> / LuaJIT 运行时符号</td><td>仍为 0</td></tr><tr><td>核心类与方法名</td><td>明文（PlayState 217、FunkinJS 126）</td></tr><tr><td>游戏素材</td><td>873 个共有文件，<b>872 个与上一版逐字节相同</b>，仅 <code>manifest/default.json</code> 变化</td></tr><tr><td>许可文件</td><td><code>assets/LICENSE</code>、<code>assets/NOTICE</code> 仍在</td></tr><tr><td>新资源</td><td>只多了一个 <code>assets/assets/shared/mods_example.zip</code>（2,761 字节）</td></tr><tr><td>Java 层</td><td>122 个类，与上一版一致；<code>versionCode</code> 476→484→<b>618</b></td></tr></table>
+<p><b>素材一个都没加密</b>——这是最直接的反证：如果真做了内容加密，871 个资源文件不可能与上一版哈希全等。</p>
+<hr>
+<h2>7. 结论</h2>
+<p>1. <b><code>encrypted</code> 是文件名，不是事实。</b> 没有任何资源、脚本或代码被加密。</p>
+<p>2. <b>做了三件反分析的事</b>：抹源文件路径、混淆自家类名、破坏 so 的 CRC；外加一套运行时反调试。</p>
+<p>3. <b>核心仍然可读</b>：API 名、引擎类名、方法名、素材全部原样。</p>
+<p>4. <b>代价是体积</b>：不压缩让 APK 从 382MB 涨到 493MB。</p>
+<p>5. 这一版<b>关闭了 debuggable</b>，是三个版本里唯一像发布构建的。</p>
+<hr>
+<h2>8. 方法</h2>
+<pre>
+# CRC 被破坏，不能直接解压，按偏移读取
+python - &lt;&lt;&#x27;PY&#x27;
+i = z.getinfo(&quot;lib/arm64-v8a/libApplicationMain.so&quot;)
+f.seek(i.header_offset + 30 + nlen + elen)
+data = f.read(i.compress_size)      # compress_type == 0，即原始字节
+PY
+
+# Java 层
+java -Xmx448m -XX:+UseSerialGC -cp jadx-all.jar jadx.cli.JadxCLI -d out --no-res --no-debug-info dex_r11
+</pre>
+<p><b>限制</b>：<code>.so</code> 仍无 <code>.symtab</code>；<code>Hardening</code> 的判定阈值与触发后果在 native 代码里，无法静态还原，只能确认它检查哪些项。</p>
+</div></body></html>
