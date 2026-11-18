@@ -1062,9 +1062,9 @@ by Wqawa
 ![Image](images/75b69c92-dffc-43ff-acc8-03d6c118be83.png)
 
 答：这tm是靠[PE](https://github.com/ShadowMario/FNF-PsychEngine)的1.0[兼容性](https://baike.baidu.com/item/%E5%85%BC%E5%AE%B9%E6%80%A7/1446869)硬顶着，所谓[js](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)实际上就是[跳板](https://baike.baidu.com/item/%E8%B7%B3%E6%9D%BF/35705)跳来跳去最后还是由一个被砍废的[解释器](https://www.cnblogs.com/lemon-le/p/13840014.html)运行，甚至只用改一下[闭合符](https://baike.baidu.com/item/%E6%8B%AC%E5%8F%B7/999048)&[后缀](https://baike.baidu.com/item/%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D/1270230)就行了，你说好的
-<img width="235" height="27" alt="Image" src="images/7fc0fefa-b8a4-4fe4-bbfb-2a837f4a31ab.png" /> 然后
-<img width="147" height="32" alt="Image" src="images/98288770-48c0-4f36-a386-a19b5168c6ee.png" /> 顺手
-<img width="206" height="24" alt="Image" src="images/07bfbb6b-156a-44b2-8ab4-b23f37b3f9de.png" /> 最后 <img width="117" height="25" alt="Image" src="images/321798e9-ef97-4b93-8ab5-7f39a2ae246a.png" />
+![Image](images/7fc0fefa-b8a4-4fe4-bbfb-2a837f4a31ab.png) 然后
+![Image](images/98288770-48c0-4f36-a386-a19b5168c6ee.png) 顺手
+![Image](images/07bfbb6b-156a-44b2-8ab4-b23f37b3f9de.png) 最后 ![Image](images/321798e9-ef97-4b93-8ab5-7f39a2ae246a.png)
 
 PE如果是[活人](https://baike.baidu.com/item/%E6%B4%BB%E4%BA%BA/514783)高低给你[磕一个](https://baike.baidu.com/item/%E7%A3%95%E5%A4%B4/4492211)
 
