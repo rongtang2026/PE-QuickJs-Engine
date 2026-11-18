@@ -14,13 +14,13 @@
      首先笔者进入就发现了一个问题：**我操！怎么这么糊？？？？**
      请看以下图片
 
-     <img width="320" height="213" alt="Image" src="https://github.com/user-attachments/assets/0421fb1c-3455-48d0-b20a-6dcb2a45a768" />
+     <img width="320" height="213" alt="Image" src="images/0421fb1c-3455-48d0-b20a-6dcb2a45a768.png" />
 
      笔者认为这可能是开发者**不小心的把分辨率锁定到了[720P](https://baike.baidu.com/item/720p/1155748)这个在6202极其不高清的瞎眼分辨率**，这个暂不评价
 
      在随后笔者发现了第二个问题：我操！这个按钮怎么这么**古老**？？？？
 
-     <img width="522" height="146" alt="Image" src="https://github.com/user-attachments/assets/504c91b5-a4fd-4b22-8b89-714335f7da21" />
+     <img width="522" height="146" alt="Image" src="images/504c91b5-a4fd-4b22-8b89-714335f7da21.png" />
 
      笔者认为能在6202年再次见到这个按钮贴图简直是 **[伏黑甚尔给五条悟脖子戳了再补了不知道多少刀最后在离开时遇到充满鲜血活蹦乱跳的五条悟](https://www.bilibili.com/zh-Hans/video/BV1VgTN64EQM)并且还有一句** **"哟，撒西不理"**
      **_”真的假的“_**
@@ -41,18 +41,18 @@
      [**_到头来还得自己拼_**](https://cnmeme.wiki/entry/%E6%90%9E%E5%8D%8A%E5%A4%A9%E8%BF%98%E8%A6%81%E8%87%AA%E5%B7%B1%E6%8B%BC#:~:text=%E8%AF%A5%E6%A2%97%E5%87%BA%E8%87%AAB%E7%AB%99UP%E4%B8%BB%20Otto%20Croy,%E7%9A%84%E9%92%A2%E9%93%81%E4%BE%A0%E6%8B%BC%E8%A3%85%E6%A8%A1%E5%9E%8B%E5%90%90%E6%A7%BD%E8%A7%86%E9%A2%91%E3%80%82%20%E8%A7%86%E9%A2%91%E4%B8%ADUP%E4%B8%BB%E8%8A%B1%E7%BA%A6%E4%B8%89%E7%99%BE%E5%85%83%E8%B4%AD%E4%B9%B0%E9%92%A2%E9%93%81%E4%BE%A0%E6%8B%BC%E8%A3%85%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%9C%AC%E4%BB%A5%E4%B8%BA%E6%98%AF%E6%88%90%E5%93%81%E6%89%8B%E5%8A%9E%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%BC%80%E7%AE%B1%E5%90%8E%E6%89%8D%E5%8F%91%E7%8E%B0%E9%9C%80%E8%A6%81%E8%87%AA%E8%A1%8C%E6%8B%BC%E8%A3%85%EF%BC%9B%E8%80%8C%E4%B8%94%E9%9B%B6%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E7%BB%84%E5%90%88%E5%BA%A6%E4%B8%80%E8%88%AC%EF%BC%8C%E7%94%9A%E8%87%B3%E4%B8%8D%E5%A6%82%E7%99%BE%E5%85%83%E7%BA%A7%E6%88%90%E5%93%81%EF%BC%8C%E4%BA%8E%E6%98%AF%E5%90%90%E6%A7%BD%E2%80%9C%E6%90%9E%E5%8D%8A%E5%A4%A9%E8%BF%98%E8%A6%81%E8%87%AA%E5%B7%B1%E6%8B%BC%E2%80%9D%E3%80%82%20%E7%94%A8%E4%BA%8E%E5%90%90%E6%A7%BD%E2%80%9C%E4%BB%A5%E4%B8%BA%E6%98%AF%E6%88%90%E5%93%81%E6%88%96%E5%88%B0%E6%89%8B%E5%8D%B3%E7%94%A8%EF%BC%8C%E7%BB%93%E6%9E%9C%E8%BF%98%E8%A6%81%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E7%BB%84%E8%A3%85%E2%80%9D%E7%9A%84%E8%90%BD%E5%B7%AE%E6%84%9F%E3%80%82%20%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%E5%8C%85%E6%8B%AC%E4%B9%B0%E6%8B%BC%E8%A3%85%E6%A8%A1%E5%9E%8B%E3%80%81%E6%8B%BC%E8%A3%85%E5%AE%B6%E5%85%B7%E3%80%81DIY%E4%BA%A7%E5%93%81%E7%AD%89%EF%BC%8C%E5%B0%A4%E5%85%B6%E6%98%AF%E5%9C%88%E5%A4%96%E4%BA%BA%E9%81%87%E5%88%B0%E7%BC%BA%E4%BB%B6%E3%80%81%E5%8D%A1%E6%A6%AB%E3%80%81%E5%B7%A5%E5%85%B7%E4%B8%8D%E9%BD%90%E3%80%81%E9%9B%B6%E4%BB%B6%E9%9A%BE%E5%AE%89%E7%AD%89%E6%83%85%E5%86%B5%E6%97%B6%E3%80%82)
      终于笔者进入了游戏并且看到了对笔者造成了[不可逆](https://baike.baidu.com/item/%E4%B8%8D%E5%8F%AF%E9%80%86/9966659)伤害的物品
 
-     <img width="320" height="213" alt="Image" src="https://github.com/user-attachments/assets/0377fe77-a668-4604-b023-ad2e8fc9d3cb" />
+     <img width="320" height="213" alt="Image" src="images/0377fe77-a668-4604-b023-ad2e8fc9d3cb.png" />
 
-     <img width="320" height="213" alt="Image" src="https://github.com/user-attachments/assets/c9ea85d4-28e8-41e3-9bf8-74295a4b1567" />
+     <img width="320" height="213" alt="Image" src="images/c9ea85d4-28e8-41e3-9bf8-74295a4b1567.png" />
 
      即使笔者拥有[绷神大赛](https://wenku.baidu.com/view/bcd8375a336baf1ffc4ffe4733687e21af45ff26.html#:~:text=%E2%80%9C%E9%87%8E%E7%BB%B7%E5%85%88%E7%94%9F%E2%80%9D%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BB%A5%E6%A0%87%E5%BF%97%E6%80%A7%E5%BC%80%E5%9C%BA%E7%99%BD%E2%80%9C%E6%88%91%E6%98%AF%E9%87%8E%E7%BB%B7%E5%85%88%E7%94%9F%E2%80%9D%E5%9C%A8%E7%BD%91%E7%BB%9C%E4%B8%AD%E6%B4%BB%E8%B7%83%E7%9A%84%E8%99%9A%E6%8B%9F%E8%A7%92%E8%89%B2%E6%88%96%E6%B5%81%E8%A1%8C%E6%A2%97%E3%80%82,%E5%85%B6%E6%A0%B8%E5%BF%83%E6%B4%BB%E5%8A%A8%E6%98%AF%E5%8F%91%E8%B5%B7%E2%80%9C%E7%BB%B7%E7%A5%9E%E5%A4%A7%E8%B5%9B%E2%80%9D%EF%BC%8C%E5%8D%B3%E5%90%91%E8%A7%82%E4%BC%97%E5%B1%95%E7%A4%BA%E4%B8%80%E7%B3%BB%E5%88%97%E6%90%9E%E7%AC%91%E6%88%96%E8%8D%92%E8%AF%9E%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%81%E8%A7%86%E9%A2%91%E7%89%87%E6%AE%B5%EF%BC%8C%E5%B9%B6%E6%8C%91%E6%88%98%E8%A7%82%E4%BC%97%E8%83%BD%E5%90%A6%E2%80%9C%E7%BB%B7%E4%BD%8F%E2%80%9D%E2%80%94%E2%80%94%E4%B9%9F%E5%B0%B1%E6%98%AF%E5%BF%8D%E4%BD%8F%E4%B8%8D%E7%AC%91%E6%88%96%E4%BF%9D%E6%8C%81%E9%95%87%E5%AE%9A%E3%80%82%20%E8%BF%99%E9%A1%B9%E5%A4%A7%E8%B5%9B%E9%80%9A%E5%B8%B8%E4%BC%B4%E9%9A%8F%E7%9D%80%E5%8D%95%E6%96%B9%E9%9D%A2%E5%AE%A3%E5%B8%83%E7%9A%84%E3%80%81%E6%9E%81%E5%85%B7%E8%AF%B1%E6%83%91%E5%8A%9B%E6%88%96%E6%9E%81%E5%85%B6%E6%97%A0%E5%8E%98%E5%A4%B4%E7%9A%84%E5%A5%96%E6%83%A9%E6%9D%A1%E6%AC%BE%EF%BC%8C%E6%9C%AC%E8%B4%A8%E6%98%AF%E4%B8%80%E7%A7%8D%E5%B8%A6%E6%9C%89%E6%88%8F%E8%B0%91%E5%92%8C%E9%80%BB%E8%BE%91%E5%8F%8D%E8%BD%AC%E8%89%B2%E5%BD%A9%E7%9A%84%E5%B9%BD%E9%BB%98%E4%BA%92%E5%8A%A8%E5%BD%A2%E5%BC%8F%EF%BC%8C%E5%9C%A8%E6%8A%96%E9%9F%B3%E3%80%81%E8%B4%B4%E5%90%A7%E7%AD%89%E5%B9%B3%E5%8F%B0%E5%B9%BF%E6%B3%9B%E4%BC%A0%E6%92%AD%E3%80%82)非[面瘫](https://baike.baidu.com/item/%E9%9D%A2%E7%A5%9E%E7%BB%8F%E9%BA%BB%E7%97%B9/31686)获得冠军的纪录可是该图片还是成功使笔者[破绷](https://wenku.baidu.com/view/55b7be8c564de518964bcf84b9d528ea81c72f8d.html)了并且笑爆我一颗[睾丸](https://baike.baidu.com/item/%E7%9D%BE%E4%B8%B8/613012)，导致笔者与[笔者老婆](https://moegirl.uk/index.php?title=%E9%99%86%E5%A5%A5%E5%B0%8F%E9%BA%BB%E5%90%95&variant=zh-cn)平均拥有1颗[睾丸](https://baike.baidu.com/item/%E7%9D%BE%E4%B8%B8/613012)下降到平均仅有0.5颗[睾丸](https://baike.baidu.com/item/%E7%9D%BE%E4%B8%B8/613012)
      所幸明日是笔者的换蛋期所以笔者将会与[笔者老婆](https://moegirl.uk/index.php?title=%E9%99%86%E5%A5%A5%E5%B0%8F%E9%BA%BB%E5%90%95&variant=zh-cn)再次平均拥有1颗[睾丸](https://baike.baidu.com/item/%E7%9D%BE%E4%B8%B8/613012)
 
      在最后笔者将发送最后两张图片
 
-     <img width="320" height="213" alt="Image" src="https://github.com/user-attachments/assets/1af8bd71-e429-459f-b9dc-6daf89ab43cc" />
+     <img width="320" height="213" alt="Image" src="images/1af8bd71-e429-459f-b9dc-6daf89ab43cc.png" />
 
-     <img width="216" height="48" alt="Image" src="https://github.com/user-attachments/assets/d80cc7af-c0cf-4838-a09f-48ed3d033a37" />
+     <img width="216" height="48" alt="Image" src="images/d80cc7af-c0cf-4838-a09f-48ed3d033a37.png" />
 
      笔者并不反对使用一个[输入侧支持图像的预生成式转换语言大模型](https://blog.csdn.net/2401_85375151/article/details/151864625)进行创作的开源项目，哦不对此项目甚至是闭源导致笔者无法下载源码进行品鉴，但是笔者认为使用[输入侧支持图像的预生成式转换语言大模型](https://blog.csdn.net/2401_85375151/article/details/151864625)应该拥有一个[健康](https://health.baidu.com/m/detail/ar_4377269509735249565)的[大脑](https://baike.baidu.com/item/%E5%A4%A7%E8%84%91/791360)提供良好的提示词进行创作，而不是做了一个糟糕至极[半成品](https://baike.baidu.com/item/%E7%8B%97%E5%B1%8E/2354738)就发给别人进行品鉴
 
@@ -60,9 +60,9 @@
 
 #4  [OPEN]  如图所示
  by Wqawa
-     <img width="244" height="169" alt="Image" src="https://github.com/user-attachments/assets/d3488331-7459-45cf-b946-0d905176dc49" />
+     <img width="244" height="169" alt="Image" src="images/d3488331-7459-45cf-b946-0d905176dc49.png" />
 
-     <img width="273" height="101" alt="Image" src="https://github.com/user-attachments/assets/f390d853-c665-46e5-b032-5cf11535cac2" />
+     <img width="273" height="101" alt="Image" src="images/f390d853-c665-46e5-b032-5cf11535cac2.png" />
 
      不想开源是因为99.9999% [vibe coding](https://zhuanlan.zhihu.com/p/1923403088338855693) 不敢吧，怕圈内人真扒开看到一堆浆糊来指责你，是这样吧？我们伟大的[QuickJS-Engine](https://github.com/rongtang2026/PE-QuickJs-Engine)作为[Psych-Engine](https://github.com/ShadowMario/FNF-PsychEngine)的二改分发版本怎么可能呢，对吧，所做的行为都是为了伟大的FNF社区的[进步](https://baike.baidu.com/item/%E5%8B%BF%E5%BC%80%E5%8E%86%E5%8F%B2%E5%80%92%E8%BD%A6/13210279)
 
@@ -75,7 +75,7 @@
  by Bonus-XK
      你的引擎只有 Android 构建吗，不尊重我们 MacOS 和 Windows 用户是违法的，你完了😡
 
-     <img width="1710" height="362" alt="Image" src="https://github.com/user-attachments/assets/b728bd79-c5b8-4d18-8a71-cf42a8443bb0" />
+     <img width="1710" height="362" alt="Image" src="images/b728bd79-c5b8-4d18-8a71-cf42a8443bb0.png" />
 
 #6  [OPEN]  This conversation has been locked and limited to collaborators.
  by Lv233-Haxe
@@ -455,13 +455,13 @@
  by Lv233-Haxe
      在笔者回家后看到了[两个issues](https://github.com/Wqawa/FuckYou_PE-QuickJs-Engine)，都是有关该项目的[反编译](https://baike.baidu.com/item/%E5%8F%8D%E5%90%91%E7%BC%96%E8%AF%91/9932384)结果
 
-     <img width="128" height="128" alt="Image" src="https://github.com/user-attachments/assets/30d9cc85-4db4-4661-9153-0176ea91a5e7" />
+     <img width="128" height="128" alt="Image" src="images/30d9cc85-4db4-4661-9153-0176ea91a5e7.png" />
 
-     <img width="128" height="128" alt="Image" src="https://github.com/user-attachments/assets/0d88e01f-d9c3-45cf-a4f7-7d265aefa8ce" />
+     <img width="128" height="128" alt="Image" src="images/0d88e01f-d9c3-45cf-a4f7-7d265aefa8ce.png" />
 
      在现在看来笔者昨天说的都是[没错](https://kmcha.com/cidian/%E6%B2%A1%E9%94%99)的
 
-     <img width="120" height="122" alt="Image" src="https://github.com/user-attachments/assets/b324eff0-e3f0-42b5-b91c-f6fff1989d4e" />
+     <img width="120" height="122" alt="Image" src="images/b324eff0-e3f0-42b5-b91c-f6fff1989d4e.png" />
 
      单论将基底引擎从 [心理发动机1.0.0](https://github.com/ShadowMario/FNF-PsychEngine/releases#release-1.0) 变成 [心理发动机0.7.3](https://github.com/ShadowMario/FNF-PsychEngine/releases#release-0.7.3) 这件事情笔者就认为该[项目作者](https://github.com/rongtang2026)可能患有以下[病症](https://baike.baidu.com/item/%E7%97%85%E7%97%87/307382)
 
@@ -471,7 +471,7 @@
 
      **_[后天性导致的眼部视力低下](https://baike.baidu.com/item/%E8%BF%91%E8%A7%86/298638)_**
 
-     <img width="256" height="252" alt="Image" src="https://github.com/user-attachments/assets/94974f7a-54c0-40ef-9e98-22083233dbcb" />
+     <img width="256" height="252" alt="Image" src="images/94974f7a-54c0-40ef-9e98-22083233dbcb.png" />
 
      > **_有钱玩[溜溜梅](https://www.deepseek.com)没钱配个[眼镜](https://baike.baidu.com/item/%E7%9C%BC%E9%95%9C/169796)？_**
      > **笔者发出询问**
@@ -486,7 +486,7 @@
 
      这可能你的[溜溜梅](https://www.deepseek.com/)忘记了这件事情吧
 
-     <img width="240" height="180" alt="Image" src="https://github.com/user-attachments/assets/73ee8dae-9220-4894-b182-876aaa6bc4f5" />
+     <img width="240" height="180" alt="Image" src="images/73ee8dae-9220-4894-b182-876aaa6bc4f5.png" />
 
      > **_正在工作的溜溜梅_**
 
@@ -504,7 +504,7 @@
 
      虽然这个已经很雷霆了但是你不应该先考虑一下 **_OpenGL 仍在底下运行_** 这一条吗？
 
-     <img width="256" height="188" alt="Image" src="https://github.com/user-attachments/assets/5d9d0b55-617a-4b75-b5be-2e618c3bb5e5" />
+     <img width="256" height="188" alt="Image" src="images/5d9d0b55-617a-4b75-b5be-2e618c3bb5e5.png" />
 
      > **_OpenGL的广泛才是王道你那硬件不支持根本没人要，良好的性能才受大众喜爱你那垃圾性能早就被时代落败_**
 
@@ -531,14 +531,14 @@
      在最后笔者再次呼吁大家：保护智力障碍人群！纯[傻逼](https://baike.baidu.com/item/%E5%82%BB%E9%80%BC/977754)除外
      这就是个[傻逼](https://baike.baidu.com/item/%E5%82%BB%E9%80%BC/977754)！
 
-     <img width="120" height="120" alt="Image" src="https://github.com/user-attachments/assets/13c37569-7935-4c4c-8bf5-efb67a348412" />
+     <img width="120" height="120" alt="Image" src="images/13c37569-7935-4c4c-8bf5-efb67a348412.png" />
 
 
      如果[项目作者](https://github.com/rongtang2026)**对有持有怀疑我的专业性的态度**，**欢迎打开我的Github主页查成分**
 
      > **_如果看不懂笔者也为您准备了这个_**
 
-     <img width="240" height="160" alt="Image" src="https://github.com/user-attachments/assets/dfa87e66-ee12-46c0-a115-7dfd5dc618e7" />
+     <img width="240" height="160" alt="Image" src="images/dfa87e66-ee12-46c0-a115-7dfd5dc618e7.png" />
 
      ED.
 
@@ -552,72 +552,72 @@
      评价是没有十年脑血栓做不出来这样的引擎
 
      首先看高能发言
-     <img width="349" height="214" alt="Image" src="https://github.com/user-attachments/assets/42d8c204-cabd-4ec4-851a-e48888fa61ab" />
+     <img width="349" height="214" alt="Image" src="images/42d8c204-cabd-4ec4-851a-e48888fa61ab.png" />
 
-     <img width="654" height="372" alt="Image" src="https://github.com/user-attachments/assets/0b3f1752-a714-4364-aece-388b4c374093" />
+     <img width="654" height="372" alt="Image" src="images/0b3f1752-a714-4364-aece-388b4c374093.png" />
 
-     <img width="385" height="468" alt="Image" src="https://github.com/user-attachments/assets/eee3ee1d-d2c5-4fcb-a126-168efafd3d11" />
+     <img width="385" height="468" alt="Image" src="images/eee3ee1d-d2c5-4fcb-a126-168efafd3d11.png" />
 
-     <img width="348" height="108" alt="Image" src="https://github.com/user-attachments/assets/e4f7eac1-aac0-41d9-aa38-dcd60bd55341" />
+     <img width="348" height="108" alt="Image" src="images/e4f7eac1-aac0-41d9-aa38-dcd60bd55341.png" />
 
      我去 居然是引擎自带的[hxcpp](https://github.com/HaxeFoundation/hxcpp/)[内存探测器](https://haxe.org/manual/target-cpp-ThreadsAndStacks.html#:~:text=hxcpp%20uses%20a%20conservative%20stop-the-world%20GC%2C%20where%20the,not%20change%20GC%20pointers%20in%20the%20collection%20phase.)??!! 不得不相信了!
      主播自己做的东西看的舍得打不开[Windows任务管理器](https://cn.bing.com/search?q=windows%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8&cvid=c66486f085f84b3186280b7d0153fb36&gs_lcrp=EgRlZGdlKgYIABAAGEAyBggAEAAYQDIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEAyBggJEAAYQNIBCDI4NTlqMGo0qAIIsAIB&FORM=ANAB01&PC=U531)进行一个查看 搞半天原来是如同滚木一般的GPU Cache发力了!
-     <img width="725" height="339" alt="Image" src="https://github.com/user-attachments/assets/b91fc702-04ad-46ca-a2af-03a89697c08c" />
+     <img width="725" height="339" alt="Image" src="images/b91fc702-04ad-46ca-a2af-03a89697c08c.png" />
 
-     <img width="301" height="62" alt="Image" src="https://github.com/user-attachments/assets/373a6469-b44a-4a6b-9591-cbdb7032e82a" />
+     <img width="301" height="62" alt="Image" src="images/373a6469-b44a-4a6b-9591-cbdb7032e82a.png" />
 
-     <img width="82" height="40" alt="Image" src="https://github.com/user-attachments/assets/aeb71a23-65bf-4814-8f3a-cb479160effb" />
+     <img width="82" height="40" alt="Image" src="images/aeb71a23-65bf-4814-8f3a-cb479160effb.png" />
 
-     <img width="203" height="74" alt="Image" src="https://github.com/user-attachments/assets/99e650b8-29ac-44e3-8834-9726d1403ab6" />
+     <img width="203" height="74" alt="Image" src="images/99e650b8-29ac-44e3-8834-9726d1403ab6.png" />
      [(你狐狸大人也是被这一坨大狗分震惊到了)](https://space.bilibili.com/511083372)
-     <img width="306" height="121" alt="Image" src="https://github.com/user-attachments/assets/f985c54d-623c-4cc2-9dfb-372ab1ecaca4" />
+     <img width="306" height="121" alt="Image" src="images/f985c54d-623c-4cc2-9dfb-372ab1ecaca4.png" />
 
-     <img width="136" height="48" alt="Image" src="https://github.com/user-attachments/assets/d794069f-b926-4da9-a206-a7fac46297a8" />
+     <img width="136" height="48" alt="Image" src="images/d794069f-b926-4da9-a206-a7fac46297a8.png" />
 
      (首先排除做这个的是人)
 
-     <img width="561" height="472" alt="Image" src="https://github.com/user-attachments/assets/8257eff5-321b-4bf8-bce2-7e88ed129fb9" />
+     <img width="561" height="472" alt="Image" src="images/8257eff5-321b-4bf8-bce2-7e88ed129fb9.png" />
 
-     <img width="385" height="429" alt="Image" src="https://github.com/user-attachments/assets/8f37dfe2-156a-4306-9e06-55d5c5149199" />
+     <img width="385" height="429" alt="Image" src="images/8f37dfe2-156a-4306-9e06-55d5c5149199.png" />
 
      其次就是宁[视频](https://www.bilibili.com/video/BV1Lvxx6vE8n/)所谓18年手机流畅运行大型模组辣
 
-     <img width="303" height="38" alt="Image" src="https://github.com/user-attachments/assets/edc06229-66ba-4179-8ef8-f2c2e692a2b3" />
+     <img width="303" height="38" alt="Image" src="images/edc06229-66ba-4179-8ef8-f2c2e692a2b3.png" />
 
      18年手机在哪呢 [大型模组](https://cn.bing.com/search?q=%E6%BB%9A%E6%9C%A8&cvid=74e70d733f064010952a33befcd869cd&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEAyBggJEAAYQNIBBzg5MmowajmoAgiwAgE&FORM=ANAB01&PC=U531)在哪呢 请问宁的338MB的APK里不能复制出来的Assets就是大型模组了吗 
 
      以及这个我看一次笑一次的简介和评论
 
-     <img width="266" height="97" alt="Image" src="https://github.com/user-attachments/assets/5c1b2105-51e2-414c-982c-935d887552c8" />
+     <img width="266" height="97" alt="Image" src="images/5c1b2105-51e2-414c-982c-935d887552c8.png" />
 
      建议下次在和溜溜梅交流时使用项目记忆 而不是使用人工记忆 因为下一秒
 
-     <img width="755" height="35" alt="Image" src="https://github.com/user-attachments/assets/b164f32b-3080-4a7f-9e0f-47a106a1265e" />
+     <img width="755" height="35" alt="Image" src="images/b164f32b-3080-4a7f-9e0f-47a106a1265e.png" />
 
      注意到  这个所谓类人生物上下文疑似不足300 前脚说完比pe兼容性更上一层楼 后脚就说只兼容[js](https://baike.baidu.com/item/JavaScript/321142)! 不兼容 [LUA](https://baike.baidu.com/item/lua/7570719)! 搞半天原来这个兼容性指的是我还要自己手动把lua脚本end换成j再脱裤子放屁把lua改成.js! 这无疑是令人难绷的
 
      更难绷的是 前文提到的雷霆大文档 以及评论区的傻逼狗托
      _这样都能有狗托你圈直接等死吧_
 
-     <img width="781" height="415" alt="Image" src="https://github.com/user-attachments/assets/c256e296-bc4a-45ea-801b-c5afa7ba3faa" />
+     <img width="781" height="415" alt="Image" src="images/c256e296-bc4a-45ea-801b-c5afa7ba3faa.png" />
 
-     <img width="379" height="120" alt="Image" src="https://github.com/user-attachments/assets/3dd12095-ed28-4fef-8e21-32ef1aae58a2" />
+     <img width="379" height="120" alt="Image" src="images/3dd12095-ed28-4fef-8e21-32ef1aae58a2.png" />
 
      你的意思是 我作为一个正常玩家 要使用这个溜溜梅引擎 还要我先自己把mod改好 才能运行?
      评价为豪情在天的嘉豪随手一个指令造出了一坨溜溜梅大狗使并发布到bilibili进行一个流量的雷霆大吃然后再买几个狗托进行一个雷霆大洗地
      好吧 如同前面几个issue提到的 作者如同丢失了[心灵的窗户](https://baike.baidu.com/item/%E7%9C%BC/4216399) 看不到溜溜梅基于psych engine 1.0.4构建的源码并坚称此为psych engine 0.7.3 
 
-     <img width="360" height="79" alt="Image" src="https://github.com/user-attachments/assets/e2297b59-52b4-4eec-96c9-901961f9361d" />
+     <img width="360" height="79" alt="Image" src="images/e2297b59-52b4-4eec-96c9-901961f9361d.png" />
 
      总之我再无话说 建议作者好自为之 停止使用豪情在天的语言高高在上批判hscript和lua 并修改标题为 我用溜溜梅搓了一坨大狗使 快点来吃。
 
 #11  [OPEN]  最客观的评论
  by D-C-LushiFu
      <p align="center">
-       <img src="https://img.shields.io/badge/Apache%202.0-§4(a)%20VIOLATED-critical?style=for-the-badge&logo=apache" />
-       <img src="https://img.shields.io/badge/LICENSE%20FILES-0-critical?style=for-the-badge&logo=files" />
-       <img src="https://img.shields.io/badge/STATUS-UNFIXED-critical?style=for-the-badge&logo=statuspage" />
-       <img src="https://img.shields.io/badge/HYPOCRISY-100%25-critical?style=for-the-badge&logo=openaccess" />
+       <img src="images/apache-badge.svg" />
+       <img src="images/LICENSE%20FILES-0-critical.png" />
+       <img src="images/STATUS-UNFIXED-critical.png" />
+       <img src="images/HYPOCRISY-100%25-critical.png" />
      </p>
 
      <p align="center">
@@ -892,7 +892,7 @@
 
      那真是抱歉了你看这张图片吧
 
-     <img width="1282" height="752" alt="Image" src="https://github.com/user-attachments/assets/03b256a1-3c0f-468d-a67a-a26629657273" />
+     <img width="1282" height="752" alt="Image" src="images/03b256a1-3c0f-468d-a67a-a26629657273.png" />
 
      > 使用JavaScript脚本在MainMenu中创建了一个BF人物
 
@@ -934,7 +934,7 @@
 
      相关聊天截图：
 
-     <img width="363" height="601" alt="Image" src="https://github.com/user-attachments/assets/8eb27770-c1a8-4d75-9c28-d40e29969d95" />
+     <img width="363" height="601" alt="Image" src="images/8eb27770-c1a8-4d75-9c28-d40e29969d95.png" />
 
      ### 二、关于“缺失 `FunkinJS.hx`”的说法
 
@@ -946,7 +946,7 @@
 
      更何况，这是一个在没有任何 agent 环境下的模型。该结论很明显是**模型幻觉**和**网页获取问题**共同造成的。
 
-     <img width="502" height="301" alt="Image" src="https://github.com/user-attachments/assets/029b175f-8dfa-4316-b925-1bcad54e869a" />
+     <img width="502" height="301" alt="Image" src="images/029b175f-8dfa-4316-b925-1bcad54e869a.png" />
 
      ### 三、关于公开聊天记录的问题
 
@@ -1021,7 +1021,7 @@
 
      ## ——————发布前
 
-     <img width="244" height="169" alt="Image" src="https://github.com/user-attachments/assets/de196989-da31-44a3-9ae2-19e513b5c993" />
+     <img width="244" height="169" alt="Image" src="images/de196989-da31-44a3-9ae2-19e513b5c993.png" />
 
      这谁[绷住了](https://baike.baidu.com/item/%E5%81%87%E5%A6%82%E6%88%91%E7%BB%B7%E4%BD%8F%E4%BA%86%E5%91%A2/67834270)可以被[野兽先生](https://baike.baidu.com/item/%E5%90%89%E7%B1%B3%C2%B7%E5%94%90%E7%BA%B3%E5%BE%B7%E6%A3%AE/63996140)[奖励](https://baike.baidu.com/item/%E5%A5%96%E5%8A%B1/984484)100w[刀乐](https://wenku.baidu.com/view/8fadb808ad8271fe910ef12d2af90242a995ab59.html)
      就不说[内容](https://baike.baidu.com/item/%E5%86%85%E5%AE%B9/869297)吧，这段[发言](https://baike.baidu.com/item/%E5%8F%91%E8%A8%80/4577070)是个[明眼人](https://baike.baidu.com/item/%E6%98%8E%E7%9C%BC%E4%BA%BA/2729136)就能看出来
@@ -1037,34 +1037,34 @@
 
      *我已[急哭](https://baike.baidu.com/item/%E5%93%AD/2330597)
 
-     <img width="1280" height="737" alt="Image" src="https://github.com/user-attachments/assets/5e627bdf-35d0-40ab-8d0b-9ff21510ba23" />
+     <img width="1280" height="737" alt="Image" src="images/5e627bdf-35d0-40ab-8d0b-9ff21510ba23.png" />
 
      ## 第二关：——————发布后
 
-     <img width="225" height="80" alt="Image" src="https://github.com/user-attachments/assets/5a693407-c9fd-4942-beba-63a4603b6e5c" />
+     <img width="225" height="80" alt="Image" src="images/5a693407-c9fd-4942-beba-63a4603b6e5c.png" />
 
-     <img width="603" height="185" alt="Image" src="https://github.com/user-attachments/assets/018688cb-2837-4830-ad81-03e2f7bc2678" />
+     <img width="603" height="185" alt="Image" src="images/018688cb-2837-4830-ad81-03e2f7bc2678.png" />
 
      哦不不不你怎么给你PE[灵魂](https://baike.baidu.com/item/%E7%81%B5%E9%AD%82/73763)[拆](https://baike.baidu.com/item/%E6%8B%86%E5%8D%B8/6714692)了
 
-     <img width="170" height="170" alt="Image" src="https://github.com/user-attachments/assets/4f3818e2-f4c2-4f7b-8b03-6d510879e7e9" />
+     <img width="170" height="170" alt="Image" src="images/4f3818e2-f4c2-4f7b-8b03-6d510879e7e9.png" />
 
      这么做好比你买了一台[冰箱](https://baike.baidu.com/item/%E5%86%B0%E7%AE%B1/28303)，你嫌冰箱难用给冰箱[压缩机](https://zhuanlan.zhihu.com/p/17360579542)拆了换成[冰块](https://www.thepaper.cn/newsDetail_forward_13851025)，[降效增本](https://baike.baidu.com/item/%E6%95%88%E7%8E%87/868847)就算了，你给我拆好了啊，压缩机的线还留着
 
-     <img width="554" height="55" alt="Image" src="https://github.com/user-attachments/assets/6fedafaa-50d4-4c47-a135-cff2a011e8a3" />
+     <img width="554" height="55" alt="Image" src="images/6fedafaa-50d4-4c47-a135-cff2a011e8a3.png" />
 
      （注意：[运行时](https://baike.baidu.com/item/%E8%BF%90%E8%A1%8C%E6%97%B6/3335184)移除是在代码执行的时候对着[lua](https://www.lua.org/)直接来了个destory，而不是从[源代码](https://baike.baidu.com/item/%E6%BA%90%E4%BB%A3%E7%A0%81/3587471)在[编译](https://www.runoob.com/w3cnote/working-process-of-the-compiler.html)前就从[硬盘](https://baike.baidu.com/item/%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98/8686272)上物理移除。并且我[推测](https://baike.baidu.com/item/%E6%8E%A8%E6%B5%8B/3011282)，是不是因为lua根深蒂固拆不掉导致只能用js+同名[函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions)顶上）
 
-     <img width="633" height="195" alt="Image" src="https://github.com/user-attachments/assets/281237c0-a77a-4303-9f53-49543bc5896f" />
+     <img width="633" height="195" alt="Image" src="images/281237c0-a77a-4303-9f53-49543bc5896f.png" />
 
      你可能疑惑怎么还能开发一键[转化](https://baike.baidu.com/item/%E8%BD%AC%E5%8C%96/5545339)？
 
-     <img width="463" height="422" alt="Image" src="https://github.com/user-attachments/assets/75b69c92-dffc-43ff-acc8-03d6c118be83" />
+     <img width="463" height="422" alt="Image" src="images/75b69c92-dffc-43ff-acc8-03d6c118be83.png" />
 
      答：这tm是靠[PE](https://github.com/ShadowMario/FNF-PsychEngine)的1.0[兼容性](https://baike.baidu.com/item/%E5%85%BC%E5%AE%B9%E6%80%A7/1446869)硬顶着，所谓[js](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)实际上就是[跳板](https://baike.baidu.com/item/%E8%B7%B3%E6%9D%BF/35705)跳来跳去最后还是由一个被砍废的[解释器](https://www.cnblogs.com/lemon-le/p/13840014.html)运行，甚至只用改一下[闭合符](https://baike.baidu.com/item/%E6%8B%AC%E5%8F%B7/999048)&[后缀](https://baike.baidu.com/item/%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D/1270230)就行了，你说好的
-     <img width="235" height="27" alt="Image" src="https://github.com/user-attachments/assets/7fc0fefa-b8a4-4fe4-bbfb-2a837f4a31ab" /> 然后
-     <img width="147" height="32" alt="Image" src="https://github.com/user-attachments/assets/98288770-48c0-4f36-a386-a19b5168c6ee" /> 顺手
-     <img width="206" height="24" alt="Image" src="https://github.com/user-attachments/assets/07bfbb6b-156a-44b2-8ab4-b23f37b3f9de" /> 最后 <img width="117" height="25" alt="Image" src="https://github.com/user-attachments/assets/321798e9-ef97-4b93-8ab5-7f39a2ae246a" />
+     <img width="235" height="27" alt="Image" src="images/7fc0fefa-b8a4-4fe4-bbfb-2a837f4a31ab.png" /> 然后
+     <img width="147" height="32" alt="Image" src="images/98288770-48c0-4f36-a386-a19b5168c6ee.png" /> 顺手
+     <img width="206" height="24" alt="Image" src="images/07bfbb6b-156a-44b2-8ab4-b23f37b3f9de.png" /> 最后 <img width="117" height="25" alt="Image" src="images/321798e9-ef97-4b93-8ab5-7f39a2ae246a.png" />
 
      PE如果是[活人](https://baike.baidu.com/item/%E6%B4%BB%E4%BA%BA/514783)高低给你[磕一个](https://baike.baidu.com/item/%E7%A3%95%E5%A4%B4/4492211)
 
@@ -1076,35 +1076,35 @@
 
      当我美滋滋打开[仓库](https://github.com/rongtang2026/PE-QuickJs-Engine)的时候
 
-     <img width="932" height="231" alt="Image" src="https://github.com/user-attachments/assets/10b58324-cb98-4693-ad62-68a5933c2584" />
+     <img width="932" height="231" alt="Image" src="images/10b58324-cb98-4693-ad62-68a5933c2584.png" />
 
      PE仓库分发的[开源协议](https://choosealicense.com/)呢？？？？
 
-     <img width="526" height="579" alt="Image" src="https://github.com/user-attachments/assets/affd86c2-8ac9-4e02-b92a-d72a4dbf9bd5" />
+     <img width="526" height="579" alt="Image" src="images/affd86c2-8ac9-4e02-b92a-d72a4dbf9bd5.png" />
 
      欸我去怎么在贴脸开大？？
      于是你又看向[B站](https://www.bilibili.com/)[宣发](https://baike.baidu.com/item/%E5%8F%91%E8%A1%8C/9875971)[评论区](https://baike.baidu.com/item/%E8%AF%84%E8%AE%BA/32357)
 
-     <img width="614" height="147" alt="Image" src="https://github.com/user-attachments/assets/e6474653-4484-4f11-b2e1-b2d3ea09ae59" />
+     <img width="614" height="147" alt="Image" src="images/e6474653-4484-4f11-b2e1-b2d3ea09ae59.png" />
 
      什么？被爆[源码](https://baike.baidu.com/item/%E6%BA%90%E4%BB%A3%E7%A0%81/3587471)了？？
 
-     <img width="940" height="940" alt="Image" src="https://github.com/user-attachments/assets/0d2485e1-5943-4c53-9b5d-d95c524f1fde" />
+     <img width="940" height="940" alt="Image" src="images/0d2485e1-5943-4c53-9b5d-d95c524f1fde.png" />
 
      （speechless）
 
      哦不不不你再去看看[issue](https://github.com/rongtang2026/PE-QuickJs-Engine/issues)
 
-     <img width="490" height="537" alt="Image" src="https://github.com/user-attachments/assets/bd4b2649-0211-40a2-bc75-6c1829a8f9ea" />
+     <img width="490" height="537" alt="Image" src="images/bd4b2649-0211-40a2-bc75-6c1829a8f9ea.png" />
 
      诶呀，怎么一堆[issue](https://github.com/rongtang2026/PE-QuickJs-Engine/issues)在骂你
      于是你找了找找到了所谓的[源码](https://github.com/Lv233-Haxe/Open-QuickJs-Engine)
 
-     <img width="1254" height="661" alt="Image" src="https://github.com/user-attachments/assets/167c9d80-9a42-4c66-951f-31ee835e455b" />
+     <img width="1254" height="661" alt="Image" src="images/167c9d80-9a42-4c66-951f-31ee835e455b.png" />
 
      好[可怜](https://baike.baidu.com/item/%E5%8F%AF%E6%80%9C/67653)啊，不对
 
-     <img width="844" height="480" alt="Image" src="https://github.com/user-attachments/assets/db67b5ca-9572-4f82-a260-d41865ea3b97" />
+     <img width="844" height="480" alt="Image" src="images/db67b5ca-9572-4f82-a260-d41865ea3b97.png" />
 
      原来作者也是[公关](https://baike.baidu.com/item/%E5%85%AC%E5%85%B1%E5%85%B3%E7%B3%BB/1386)[高手](https://baike.baidu.com/item/%E9%AB%98%E6%89%8B/7261331)啊，这么会公关
 
@@ -1112,55 +1112,55 @@
 
      进来第一眼：不对啊
 
-     <img width="622" height="347" alt="Image" src="https://github.com/user-attachments/assets/70e396d9-4aea-46f7-be21-810b94a60ad6" />
+     <img width="622" height="347" alt="Image" src="images/70e396d9-4aea-46f7-be21-810b94a60ad6.png" />
 
      怎么[主界面](https://developer.mozilla.org/zh-CN/docs/Glossary/UI)是PE1.0？？？？
      于是你又回去看[介绍](https://baike.baidu.com/item/%E4%BB%8B%E7%BB%8D/10004448)
 
-     <img width="295" height="155" alt="Image" src="https://github.com/user-attachments/assets/798697c9-9c0a-4af7-a0fc-4197545e8115" />
+     <img width="295" height="155" alt="Image" src="images/798697c9-9c0a-4af7-a0fc-4197545e8115.png" />
 
      然后[思考](https://www.zhihu.com/question/265073392)：不对啊，那么主界面怎么回事
      （思考过程中，你看向了左下角）
 
-     <img width="623" height="129" alt="Image" src="https://github.com/user-attachments/assets/0d916a82-43c7-48f7-99f4-5d18016d40bb" />
+     <img width="623" height="129" alt="Image" src="images/0d916a82-43c7-48f7-99f4-5d18016d40bb.png" />
 
      [FNF](https://github.com/FunkinCrew/Funkin) v 1.0.0？？！！！！
 
-     <img width="150" height="154" alt="Image" src="https://github.com/user-attachments/assets/29a669d5-8ce0-4139-a68e-3a41c47e3788" />
+     <img width="150" height="154" alt="Image" src="images/29a669d5-8ce0-4139-a68e-3a41c47e3788.png" />
 
      （已被未来版本吓到的劳[BF](https://github.com/FunkinCrew/Funkin)）
 
      疑似怀疑作者是否是只改了[版本号](https://semver.org/lang/zh-CN/)[替换](https://baike.baidu.com/item/%E6%9B%BF%E6%8D%A2/7715737)导致出现的问题
      你问我有没有可能为了拿到点PE1.0的优点？
 
-     <img width="300" height="99" alt="Image" src="https://github.com/user-attachments/assets/9dac5868-ffeb-420c-849b-ee4a99244ac4" />
+     <img width="300" height="99" alt="Image" src="images/9dac5868-ffeb-420c-849b-ee4a99244ac4.png" />
 
      哦不的不的
      还记得我说过的PE1.0吗，我怎么知道的？？
 
-     <img width="541" height="57" alt="Image" src="https://github.com/user-attachments/assets/847eef0c-1826-4cc6-9b10-648d0b02a496" />
+     <img width="541" height="57" alt="Image" src="images/847eef0c-1826-4cc6-9b10-648d0b02a496.png" />
 
-     <img width="525" height="160" alt="Image" src="https://github.com/user-attachments/assets/a391ccfe-1afb-4317-b8a5-476bd52869a0" />
+     <img width="525" height="160" alt="Image" src="images/a391ccfe-1afb-4317-b8a5-476bd52869a0.png" />
 
-     <img width="605" height="120" alt="Image" src="https://github.com/user-attachments/assets/8df354e2-15c9-49d3-86ad-327b102a7ac9" />
+     <img width="605" height="120" alt="Image" src="images/8df354e2-15c9-49d3-86ad-327b102a7ac9.png" />
 
      于是你吓得关上游戏，让其他issue来帮你[补充](https://baike.baidu.com/item/%E8%A1%A5%E5%85%85/2326085)
 
      #2 
      #9 
 
-     <img width="602" height="578" alt="Image" src="https://github.com/user-attachments/assets/ffc95d63-0490-45ae-a3a7-bc05ba6a0384" />
+     <img width="602" height="578" alt="Image" src="images/ffc95d63-0490-45ae-a3a7-bc05ba6a0384.png" />
      （我就这样）
 
 
      ## [第四关](https://www.gcores.com/articles/153327)：——————事后
 
-     <img width="363" height="601" alt="Image" src="https://github.com/user-attachments/assets/87d926f3-1dc3-4da2-8956-3559d8d0fd26" />
+     <img width="363" height="601" alt="Image" src="images/87d926f3-1dc3-4da2-8956-3559d8d0fd26.png" />
 
      哦太好了作者找到[反驳](https://baike.baidu.com/item/%E5%8F%8D%E9%A9%B3/4522096)点了
      但是你发现了疑点
 
-     <img width="210" height="89" alt="Image" src="https://github.com/user-attachments/assets/07d5a482-ea7f-48d5-bee1-1c28f62fc8b8" />
+     <img width="210" height="89" alt="Image" src="images/07d5a482-ea7f-48d5-bee1-1c28f62fc8b8.png" />
 
      你怎么用着[AI](https://baike.baidu.com/item/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/9180)最傻的状态啊，不让[联网](https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work)不让思考，还是[客户端](https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/First_steps/Client-Server_overview)的
 
@@ -1172,17 +1172,17 @@
 
      话说回来，你的仓库怎么只在改一个readme文件啊，改了7次了都
 
-     <img width="766" height="349" alt="Image" src="https://github.com/user-attachments/assets/69a756ac-6573-4877-9598-14c1754ef23b" />
+     <img width="766" height="349" alt="Image" src="images/69a756ac-6573-4877-9598-14c1754ef23b.png" />
 
      而且为什么你还要在发布后再加上“免责声明”
 
-     <img width="544" height="26" alt="Image" src="https://github.com/user-attachments/assets/5751ea6d-b7ff-43c2-9997-978e3956d318" />
+     <img width="544" height="26" alt="Image" src="images/5751ea6d-b7ff-43c2-9997-978e3956d318.png" />
 
      并且批判你后你怎么还偷偷换包了
 
-     <img width="748" height="86" alt="Image" src="https://github.com/user-attachments/assets/0ee98e3f-e516-462c-a752-1b72dee86aaf" />
+     <img width="748" height="86" alt="Image" src="images/0ee98e3f-e516-462c-a752-1b72dee86aaf.png" />
 
-     <img width="350" height="350" alt="Image" src="https://github.com/user-attachments/assets/77385009-a45c-42f0-85cd-ca796819bd3d" />
+     <img width="350" height="350" alt="Image" src="images/77385009-a45c-42f0-85cd-ca796819bd3d.png" />
      （我没招了）
 
 
@@ -1207,7 +1207,7 @@
 
      逼
 
-     <img width="471" height="512" alt="Image" src="https://github.com/user-attachments/assets/e9fcc82b-6528-4103-be18-bbe3a03f00b1" />
+     <img width="471" height="512" alt="Image" src="images/e9fcc82b-6528-4103-be18-bbe3a03f00b1.png" />
      （假设，假设此时天选就是作者）
 
 #21  [OPEN]  建议把仓库名从 PE-QuickJs-Engine 改成 PE-QuickJs-Confession
@@ -1348,26 +1348,26 @@
 
 #24  [OPEN]  这是我对JSE的构想:
  by IceTheAxe
-     <img width="2560" height="1440" alt="Image" src="https://github.com/user-attachments/assets/b1a01a0e-c1c2-4df0-bc2a-7ba84a8a642c" />
+     <img width="2560" height="1440" alt="Image" src="images/b1a01a0e-c1c2-4df0-bc2a-7ba84a8a642c.png" />
 
 #25  [OPEN]  提出的所有问题，根本不带看的😍😍😍😍😍
  by azmlpoh
      非常牛逼
      难说真的难说😎😎😎😎
-     ![Screenshot_2026_1108_115049.png](https://github.com/user-attachments/assets/b0068691-6f80-493d-973d-25afecc02427)
-     ![Image_1794109872179_548.jpg](https://github.com/user-attachments/assets/3fe8bfb5-b80d-427a-afbb-2cbc8c0b6e13)
+     ![Screenshot_2026_1108_115049.png](images/b0068691-6f80-493d-973d-25afecc02427.png)
+     ![Image_1794109872179_548.jpg](images/3fe8bfb5-b80d-427a-afbb-2cbc8c0b6e13.png)
 
      别人指出别人指出处视而不见 一直觉得自己是对的
-     ![Screenshot_2026_1108_115324.png](https://github.com/user-attachments/assets/8faa9816-5f49-4e60-949b-a188ab535495)
-     ![Image_1794110007663_863.jpg](https://github.com/user-attachments/assets/3623382c-34a5-4134-ba22-113a1e7e4e3d)
+     ![Screenshot_2026_1108_115324.png](images/8faa9816-5f49-4e60-949b-a188ab535495.png)
+     ![Image_1794110007663_863.jpg](images/3623382c-34a5-4134-ba22-113a1e7e4e3d.png)
 
      以及我不行了DeepSeek 未开启深度思考 智能搜索
-     ![Screenshot_2026_1108_115455.png](https://github.com/user-attachments/assets/505bcb4b-0590-4f97-b6a4-40ac6504a7ce)
-     ![Image_1794110107195_946.jpg](https://github.com/user-attachments/assets/0ccac501-ac9f-4461-a09e-31b22fd406e8)
-     ![Image_1794110109666_485.jpg](https://github.com/user-attachments/assets/c7a24866-3069-49aa-9c33-e08529ae8087)
+     ![Screenshot_2026_1108_115455.png](images/505bcb4b-0590-4f97-b6a4-40ac6504a7ce.png)
+     ![Image_1794110107195_946.jpg](images/0ccac501-ac9f-4461-a09e-31b22fd406e8.png)
+     ![Image_1794110109666_485.jpg](images/c7a24866-3069-49aa-9c33-e08529ae8087.png)
 
 
-     ![Image_1794110391700_655.jpg](https://github.com/user-attachments/assets/d6199608-056b-48fb-bbbf-847ee54827bd)
+     ![Image_1794110391700_655.jpg](images/d6199608-056b-48fb-bbbf-847ee54827bd.png)
 
 
 
@@ -1450,13 +1450,13 @@
      🤣
      哦对了笔者补充一张图片
 
-     <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/16469d4c-78d2-483b-a442-67ad120fad0d" />
+     <img width="1280" height="720" alt="Image" src="images/16469d4c-78d2-483b-a442-67ad120fad0d.png" />
 
 #29  [OPEN]  哦对了！
  by Lv233-Haxe
      你用的IDA Pro是盗版的吧
 
-     <img width="905" height="540" alt="Image" src="https://github.com/user-attachments/assets/69cea8b1-74d0-452d-aa07-3ff38deff972" />
+     <img width="905" height="540" alt="Image" src="images/69cea8b1-74d0-452d-aa07-3ff38deff972.png" />
 
      笔者认为你用的甚至是国模里面最便宜Deepseek已经达到了100%抠门穷逼的程度
 
