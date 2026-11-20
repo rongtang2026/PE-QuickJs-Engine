@@ -1013,7 +1013,7 @@ by Wqawa
 [被害妄想症](https://baike.baidu.com/item/%E8%A2%AB%E5%AE%B3%E5%A6%84%E6%83%B3%E7%97%87/644819)
 [城墙脸皮](https://baike.baidu.com/item/%E5%80%94%E5%BC%BA/608)
 
-的[作者](https://space.bilibili.com/3546917455792249)&他的[狗托](https://space.bilibili.com/3747561405943059)的[言论](https://baike.baidu.com/item/%E8%A8%80%E8%AE%BA%E8%87%AA%E7%94%B1/1520804)
+的[“无辜”宣发](https://space.bilibili.com/3546917455792249)&他的[豪情在天的作者&没长脑子的狗托&欺软怕硬的出生](https://space.bilibili.com/3747561405943059)的[言论](https://baike.baidu.com/item/%E8%A8%80%E8%AE%BA%E8%87%AA%E7%94%B1/1520804)
 
 我自己都[笑了](https://baike.baidu.com/item/%E6%88%91%E7%AC%91%E4%BA%86/50818365)，还是因为[SCP基金会](https://wiki.scpzh.org/%E9%A6%96%E9%A1%B5?variant=zh-cn)根本不存在要不然为什么遍地[异常](https://baike.baidu.com/item/%E5%BC%82%E5%B8%B8/33341)类人生物
 
